@@ -1,0 +1,60 @@
+[alias]
+    a = add
+    authors = !git log --pretty=format:%aN | sort | uniq -c | sort -rn
+    b = branch -vv
+    c = commit
+    ca = commit --amend
+    cm = commit --message
+    changes = diff --name-status -r
+    co = checkout
+    cp = cherry-pick
+    d = diff
+    dc = diff --cached
+    dt = difftool
+    filelog = log -u
+    fl = log -u
+    h = help
+    l = !git log --graph --pretty='tformat:%C(yellow)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS
+    la = !git list-aliases
+    list-aliases = !git config -l | grep alias | cut -c 7-
+    lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    p = push
+    ra = log --graph --abbrev-commit --date=relative -20 --all --pretty='format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
+    rh = reset --hard
+    s = status --short --branch
+    st = stash
+    stl = stash list
+    stp = stash pop
+    undo = reset --soft HEAD@{1}
+[color]
+    ui = true
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = cyan
+    changed = magenta
+    untracked = green
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+    whitespace = trailing-space,space-before-tab
+[diff]
+    mnemonicprefix = true
+    tool = meld
+[difftool]
+    prompt = false
+[merge]
+    tool = meld
+[mergetool]
+    keepBackup = false
+    prompt = false
+[pager]
+    color = true
+[pull]
+    rebase = true
+[push]
+    default = simple
