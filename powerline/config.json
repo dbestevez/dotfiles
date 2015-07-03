@@ -1,0 +1,10 @@
+{
+    "ext": {
+        "tmux": {
+            "theme": "custom"
+        },
+        "vim": {
+            "theme": "custom"
+        }
+    }
+}
