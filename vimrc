@@ -9,11 +9,13 @@ Plugin 'gmarik/vundle'
 
 Plugin 'airblade/vim-gitgutter'
 Plugin 'algotech/ultisnips-php'
+Plugin 'bkad/CamelCaseMotion'
 Plugin 'itchyny/lightline.vim'
 Plugin 'davidoc/taskpaper.vim'
 Plugin 'duggiefresh/vim-easydir'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'epmatsw/ag.vim'
 Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
@@ -62,6 +64,7 @@ set cindent
 
 " UI Layout --------------------------------------------------------------------
 set cursorline
+set lazyredraw
 set noshowmode
 set nowrap
 set number
@@ -144,6 +147,7 @@ set laststatus=2
 
 " Syntastic --------------------------------------------------------------------
 let g:syntastic_php_phpcs_args="--standard=PSR2 -n --report=csv"
+let g:syntastic_javascript_checkers = [ 'jshint' ]
 
 " UltiSnips --------------------------------------------------------------------
 let g:UltiSnipsEditSplit="vertical"
