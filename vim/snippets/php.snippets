@@ -7,6 +7,9 @@ snippet fdoc "PHP documentation for function"
 	 * @return ${5:type} ${6:Description}
 	 */
 
+snippet svdie "Dump variable and die using Symfony dumper"
+	\Symfony\Component\VarDumper\VarDumper::dump(${1:this});die();
+
 snippet vdie "Dump variable and die"
 	var_dump(${1:variable});die();
 
