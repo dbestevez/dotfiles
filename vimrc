@@ -10,7 +10,6 @@ Plugin 'gmarik/vundle'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'algotech/ultisnips-php'
 Plugin 'bkad/CamelCaseMotion'
-Plugin 'itchyny/lightline.vim'
 Plugin 'davidoc/taskpaper.vim'
 Plugin 'duggiefresh/vim-easydir'
 Plugin 'editorconfig/editorconfig-vim'
@@ -24,6 +23,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mhinz/vim-startify'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/NERDCommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -92,11 +92,6 @@ let g:ctrlp_max_files=0
 let g:ctrlp_switch_buffer=0
 let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 let g:ctrp_working_path_mode="ra"
-let g:ctrlp_status_func = {
-            \ 'main': 'CtrlPStatusFunc_1',
-            \ 'prog': 'CtrlPStatusFunc_2',
-            \ }
-
 
 " Easymotion -------------------------------------------------------------------
 nmap s <Plug>(easymotion-s)
@@ -109,31 +104,6 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " Emmet ------------------------------------------------------------------------
 let g:user_emmet_leader_key='<C-w>'
-
-" Lightline --------------------------------------------------------------------
-let g:lightline = {
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-            \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
-            \ },
-            \ 'component_function': {
-            \     'ctrlpmark': 'CtrlPMark',
-            \     'fileencoding': 'LighlineFileencoding',
-            \     'fileformat': 'LighlineFileformat',
-            \     'filename': 'LightlineFilename',
-            \     'filetype': 'LighlineFiletype',
-            \     'fugitive': 'LightlineFugitive',
-            \     'mode': 'LighlineMode'
-            \ },
-            \ 'component_expand': {
-            \   'syntastic': 'SyntasticStatuslineFlag',
-            \ },
-            \ 'component_type': {
-            \   'syntastic': 'error',
-            \ },
-            \ 'separator': { 'left': '⮀', 'right': '⮂' },
-            \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-            \ }
 
 " Neocomplete ------------------------------------------------------------------
 let g:neocomplete#enable_at_startup = 1
@@ -270,67 +240,6 @@ function! ZoomToggle()
     endif
 endfunction
 
-function! LightlineReadonly()
-    return &ft !~? 'help' && &readonly ? '' : ''
-endfunction
-
-function! LightLineModified()
-    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-endfunction
-
-function! LightlineFilename()
-    let fname = expand('%:t')
-    return fname == 'ControlP' ? g:lightline.ctrlp_item :
-                \ fname == '__Tagbar__' ? g:lightline.fname :
-                \ fname =~ '__Gundo\' ? '' :
-                \ fname =~ 'NERD_tree' ? 'NERDTree' :
-                \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-                \ &ft == 'unite' ? unite#get_status_string() :
-                \ &ft == 'vimshell' ? vimshell#get_status_string() :
-                \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
-                \ ('' != fname ? fname : '[No Name]') .
-                \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction
-
-function! LightlineFugitive()
-    try
-        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-            let mark = '⭠ '  " edit here for cool mark
-            let _ = fugitive#head()
-            return strlen(_) ? mark._ : ''
-        endif
-    catch
-    endtry
-
-    return ''
-endfunction
-
-function! LighlineFileformat()
-    return winwidth(0) > 80 ? &fileformat : ''
-endfunction
-
-function! LighlineFiletype()
-    return winwidth(0) > 60 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-endfunction
-
-function! LighlineFileencoding()
-    return winwidth(0) > 83 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LighlineMode()
-    let fname = expand('%:t')
-    let shortMode = matchstr(lightline#mode(), '^[A-Z]')
-    return fname == '__Tagbar__' ? 'Tagbar' :
-                \ fname == 'ControlP' ? 'CtrlP' :
-                \ fname == '__Gundo__' ? 'Gundo' :
-                \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-                \ fname =~ 'NERD_tree' ? '' :
-                \ &ft == 'unite' ? 'Unite' :
-                \ &ft == 'vimfiler' ? 'VimFiler' :
-                \ &ft == 'vimshell' ? 'VimShell' :
-                \ winwidth(0) > 60 ? lightline#mode() : ''
-endfunction
-
 function! CtrlPMark()
     if expand('%:t') =~ 'ControlP'
         call lightline#link('iR'[g:lightline.ctrlp_regex])
@@ -339,18 +248,6 @@ function! CtrlPMark()
     else
         return ''
     endif
-endfunction
-
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-    let g:lightline.ctrlp_regex = a:regex
-    let g:lightline.ctrlp_prev = a:prev
-    let g:lightline.ctrlp_item = a:item
-    let g:lightline.ctrlp_next = a:next
-    return lightline#statusline(0)
-endfunction
-
-function! CtrlPStatusFunc_2(str)
-    return lightline#statusline(0)
 endfunction
 
 augroup AutoSyntastic
