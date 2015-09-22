@@ -21,6 +21,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mhinz/vim-startify'
@@ -98,7 +99,11 @@ let g:ctrlp_status_func = {
             \ }
 
 
-" Easymotion -------------------------------------------------------------------
+" Easy-align -------------------------------------------------------------------
+nmap ga <Plug>(EasyAlign)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Easy-motion -------------------------------------------------------------------
 nmap s <Plug>(easymotion-s)
 nmap ss <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t)
