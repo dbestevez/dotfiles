@@ -20,6 +20,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mhinz/vim-startify'
@@ -93,7 +94,11 @@ let g:ctrlp_switch_buffer=0
 let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 let g:ctrp_working_path_mode="ra"
 
-" Easymotion -------------------------------------------------------------------
+" Easy-align -------------------------------------------------------------------
+nmap ga <Plug>(EasyAlign)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Easy-motion -------------------------------------------------------------------
 nmap s <Plug>(easymotion-s)
 nmap ss <Plug>(easymotion-s2)
 nmap t <Plug>(easymotion-t)
