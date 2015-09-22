@@ -169,7 +169,7 @@ nmap <leader>bb :CtrlPBuffer<CR>
 " Line shortcuts ---------------------------------------------------------------
 nmap <C-w>- :rightb new<CR>
 nmap <C-w>\| :vnew<CR>
-nmap <C-w>c :tabnew<CR>
+nmap <C-w>t :tabnew<CR>
 nmap <C-w><C-h> :tabprevious<CR>
 nmap <C-w><C-l> :tabnext<CR>
 nmap <C-w><S-h> :vertical res -5<CR>
@@ -193,8 +193,8 @@ nnoremap <silent> <C-z> :call ZoomToggle()<CR>
 noremap <F12> :NERDTreeToggle<CR>
 noremap <C-F12> :NERDTreeFocus<CR>
 
-inoremap <expr> <c-j> ("\<C-n>")
-inoremap <expr> <c-k> ("\<C-p>")
+inoremap <expr> <C-j> ("\<C-n>")
+inoremap <expr> <C-k> ("\<C-p>")
 
 " Autocommands -----------------------------------------------------------------
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
