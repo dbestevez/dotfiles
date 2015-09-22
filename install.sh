@@ -20,7 +20,7 @@ fi
 # Create symlinks
 files=`ls | sed -e "/\(install.sh\|powerline\)/d"`
 for file in $files; do
-    if [ ! -f ~/.$file ] && [ ! -d ~/.$file ]; then
+    if [ $file != "LICENSE" ] && [ ! -f ~/.$file ] && [ ! -d ~/.$file ]; then
         echo "Symlinking $file..."
         ln -s $PWD/$file ~/.$file
     fi
