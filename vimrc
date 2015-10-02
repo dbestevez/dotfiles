@@ -65,6 +65,7 @@ set cindent
 
 " UI Layout --------------------------------------------------------------------
 set cursorline
+set fillchars+=vert:\│
 set lazyredraw
 set noshowmode
 set nowrap
@@ -123,12 +124,12 @@ let g:lightline = {
             \ },
             \ 'component_function': {
             \     'ctrlpmark': 'CtrlPMark',
-            \     'fileencoding': 'LighlineFileencoding',
-            \     'fileformat': 'LighlineFileformat',
+            \     'fileencoding': 'LightlineFileencoding',
+            \     'fileformat': 'LightlineFileformat',
             \     'filename': 'LightlineFilename',
             \     'filetype': 'LighlineFiletype',
             \     'fugitive': 'LightlineFugitive',
-            \     'mode': 'LighlineMode'
+            \     'mode': 'LightlineMode',
             \ },
             \ 'component_expand': {
             \   'syntastic': 'SyntasticStatuslineFlag',
@@ -310,21 +311,20 @@ function! LightlineFugitive()
     return ''
 endfunction
 
-function! LighlineFileformat()
+function! LightlineFileformat()
     return winwidth(0) > 80 ? &fileformat : ''
 endfunction
 
-function! LighlineFiletype()
+function! LightlineFiletype()
     return winwidth(0) > 60 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
-function! LighlineFileencoding()
+function! LightlineFileencoding()
     return winwidth(0) > 83 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
-function! LighlineMode()
+function! LightlineMode()
     let fname = expand('%:t')
-    let shortMode = matchstr(lightline#mode(), '^[A-Z]')
     return fname == '__Tagbar__' ? 'Tagbar' :
                 \ fname == 'ControlP' ? 'CtrlP' :
                 \ fname == '__Gundo__' ? 'Gundo' :
@@ -360,7 +360,7 @@ endfunction
 
 augroup AutoSyntastic
     autocmd!
-    autocmd BufWritePost *.c,*.cpp call s:syntastic()
+    autocmd BufWritePost *.c,*.cpp,*.php call s:syntastic()
 augroup END
 
 function! s:syntastic()
