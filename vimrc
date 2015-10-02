@@ -65,6 +65,7 @@ set cindent
 
 " UI Layout --------------------------------------------------------------------
 set cursorline
+set fillchars+=vert:\│
 set lazyredraw
 set noshowmode
 set nowrap
