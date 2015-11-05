@@ -10,7 +10,6 @@ Plugin 'gmarik/vundle'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'algotech/ultisnips-php'
 Plugin 'bkad/CamelCaseMotion'
-Plugin 'itchyny/lightline.vim'
 Plugin 'davidoc/taskpaper.vim'
 Plugin 'duggiefresh/vim-easydir'
 Plugin 'editorconfig/editorconfig-vim'
@@ -19,11 +18,14 @@ Plugin 'epmatsw/ag.vim'
 Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
+Plugin 'itchyny/lightline.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mattn/emmet-vim'
+Bundle 'matze/vim-move'
 Plugin 'mhinz/vim-startify'
 Plugin 'scrooloose/NERDCommenter'
 Plugin 'scrooloose/nerdtree'
@@ -33,6 +35,8 @@ Plugin 'sickill/vim-monokai'
 Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
+Plugin 'dhruvasagar/vim-prosession'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'wesQ3/vim-windowswap'
@@ -104,11 +108,9 @@ let g:ctrlp_status_func = {
 nmap ga <Plug>(EasyAlign)
 vmap <Enter> <Plug>(EasyAlign)
 
-" Easy-motion -------------------------------------------------------------------
-nmap s <Plug>(easymotion-s)
-nmap ss <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t)
-nmap tt <Plug>(easymotion-t2)
+" Easy-motion-------------------------------------------------------------------
+"nmap <leader>s <Plug>(easymotion-s)
+"nmap <leader>ss <Plug>(easymotion-s2)
 
 " Editorconfig -----------------------------------------------------------------
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
@@ -161,9 +163,17 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
+" Vim-move ---------------------------------------------------------------------
+let g:move_map_keys = 0
+
 " Command shortcuts ------------------------------------------------------------
 cmap w!! w !sudo tee > /dev/null %
-cmap reload source ~/.vimrc
+
+" Disable arrow keys -----------------------------------------------------------
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
 
 " Leader shortcuts -------------------------------------------------------------
 nmap <leader>= :call Preserve("normal gg=G")<CR>
@@ -171,8 +181,12 @@ nmap <leader>a= :Tabularize /=<CR>
 nmap <leader>a=> :Tabularize /=><CR>
 nmap <leader>a: :Tabularize /:<CR>
 nmap <leader>bb :CtrlPBuffer<CR>
+nmap <leader>r :source ~/.vimrc<CR>
+nmap <leader>w :w!<CR>
 
 " Line shortcuts ---------------------------------------------------------------
+let g:move_map_keys = 0
+
 nmap <C-w>- :rightb new<CR>
 nmap <C-w>\| :vnew<CR>
 nmap <C-w>t :tabnew<CR>
@@ -184,10 +198,6 @@ nmap <C-w><S-k> :res -5<CR>
 nmap <C-w><S-l> :vertical res +5<CR>
 
 nnoremap ; :
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
 
 nnoremap <silent> <C-h> :call WinMove('h')<cr>
 nnoremap <silent> <C-j> :call WinMove('j')<cr>
@@ -201,6 +211,12 @@ noremap <C-F12> :NERDTreeFocus<CR>
 
 inoremap <expr> <C-j> ("\<C-n>")
 inoremap <expr> <C-k> ("\<C-p>")
+
+vmap <Up> <Plug>MoveBlockUp
+vmap <Down> <Plug>MoveBlockDown
+
+nmap <Up> <Plug>MoveLineUp
+nmap <Down> <Plug>MoveLineDown
 
 " Autocommands -----------------------------------------------------------------
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
