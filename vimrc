@@ -103,7 +103,6 @@ let g:ctrlp_status_func = {
             \ 'prog': 'CtrlPStatusFunc_2',
             \ }
 
-
 " Easy-align -------------------------------------------------------------------
 nmap ga <Plug>(EasyAlign)
 vmap <Enter> <Plug>(EasyAlign)
@@ -185,8 +184,6 @@ nmap <leader>r :source ~/.vimrc<CR>
 nmap <leader>w :w!<CR>
 
 " Line shortcuts ---------------------------------------------------------------
-let g:move_map_keys = 0
-
 nmap <C-w>- :rightb new<CR>
 nmap <C-w>\| :vnew<CR>
 nmap <C-w>t :tabnew<CR>
