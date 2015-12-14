@@ -18,13 +18,16 @@ Plugin 'epmatsw/ag.vim'
 Plugin 'ervandew/supertab'
 Plugin 'godlygeek/tabular'
 Plugin 'honza/vim-snippets'
+Plugin 'itchyny/lightline.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
+Plugin 'loremipsum'
 Plugin 'mattn/emmet-vim'
+Bundle 'matze/vim-move'
 Plugin 'mhinz/vim-startify'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'scrooloose/NERDCommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -33,6 +36,8 @@ Plugin 'sickill/vim-monokai'
 Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
+Plugin 'dhruvasagar/vim-prosession'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'wesQ3/vim-windowswap'
@@ -94,22 +99,49 @@ let g:ctrlp_max_files=0
 let g:ctrlp_switch_buffer=0
 let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 let g:ctrp_working_path_mode="ra"
+let g:ctrlp_status_func = {
+            \ 'main': 'CtrlPStatusFunc_1',
+            \ 'prog': 'CtrlPStatusFunc_2',
+            \ }
 
 " Easy-align -------------------------------------------------------------------
 nmap ga <Plug>(EasyAlign)
 vmap <Enter> <Plug>(EasyAlign)
 
-" Easy-motion -------------------------------------------------------------------
-nmap s <Plug>(easymotion-s)
-nmap ss <Plug>(easymotion-s2)
-nmap t <Plug>(easymotion-t)
-nmap tt <Plug>(easymotion-t2)
+" Easy-motion-------------------------------------------------------------------
+"nmap <leader>s <Plug>(easymotion-s)
+"nmap <leader>ss <Plug>(easymotion-s2)
 
 " Editorconfig -----------------------------------------------------------------
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " Emmet ------------------------------------------------------------------------
 let g:user_emmet_leader_key='<C-w>'
+
+" Lightline --------------------------------------------------------------------
+let g:lightline = {
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+            \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'], [ 'fileformat', 'fileencoding', 'filetype' ] ]
+            \ },
+            \ 'component_function': {
+            \     'ctrlpmark': 'CtrlPMark',
+            \     'fileencoding': 'LightlineFileencoding',
+            \     'fileformat': 'LightlineFileformat',
+            \     'filename': 'LightlineFilename',
+            \     'filetype': 'LighlineFiletype',
+            \     'fugitive': 'LightlineFugitive',
+            \     'mode': 'LightlineMode',
+            \ },
+            \ 'component_expand': {
+            \   'syntastic': 'SyntasticStatuslineFlag',
+            \ },
+            \ 'component_type': {
+            \   'syntastic': 'error',
+            \ },
+            \ 'separator': { 'left': '⮀', 'right': '⮂' },
+            \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+            \ }
 
 " Neocomplete ------------------------------------------------------------------
 let g:neocomplete#enable_at_startup = 1
@@ -122,6 +154,7 @@ let NERDTreeHighlightCursorline = 1
 set laststatus=2
 
 " Syntastic --------------------------------------------------------------------
+let g:syntastic_php_phpmd_post_args="cleancode,codesize,controversial,design,unusedcode"
 let g:syntastic_php_phpcs_args="--standard=PSR2 -n --report=csv"
 let g:syntastic_javascript_checkers = [ 'jshint' ]
 
@@ -131,9 +164,17 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
+" Vim-move ---------------------------------------------------------------------
+let g:move_map_keys = 0
+
 " Command shortcuts ------------------------------------------------------------
 cmap w!! w !sudo tee > /dev/null %
-cmap reload source ~/.vimrc
+
+" Disable arrow keys -----------------------------------------------------------
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
 
 " Leader shortcuts -------------------------------------------------------------
 nmap <leader>= :call Preserve("normal gg=G")<CR>
@@ -141,6 +182,8 @@ nmap <leader>a= :Tabularize /=<CR>
 nmap <leader>a=> :Tabularize /=><CR>
 nmap <leader>a: :Tabularize /:<CR>
 nmap <leader>bb :CtrlPBuffer<CR>
+nmap <leader>r :source ~/.vimrc<CR>
+nmap <leader>w :w!<CR>
 
 " Line shortcuts ---------------------------------------------------------------
 nmap <C-w>- :rightb new<CR>
@@ -154,10 +197,6 @@ nmap <C-w><S-k> :res -5<CR>
 nmap <C-w><S-l> :vertical res +5<CR>
 
 nnoremap ; :
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
 
 nnoremap <silent> <C-h> :call WinMove('h')<cr>
 nnoremap <silent> <C-j> :call WinMove('j')<cr>
@@ -172,12 +211,18 @@ noremap <C-F12> :NERDTreeFocus<CR>
 inoremap <expr> <C-j> ("\<C-n>")
 inoremap <expr> <C-k> ("\<C-p>")
 
+vmap <Up> <Plug>MoveBlockUp
+vmap <Down> <Plug>MoveBlockDown
+
+nmap <Up> <Plug>MoveLineUp
+nmap <Down> <Plug>MoveLineDown
+
 " Autocommands -----------------------------------------------------------------
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 autocmd VimEnter * call StartUp()
 autocmd VimEnter * wincmd p
 autocmd BufRead,BufNewFile *.done,*.todo,*.task set filetype=taskpaper
-autocmd BufRead,BufNewFile *.tpl set filetype=html
+autocmd BufRead,BufNewFile *.tpl,*.twig set filetype=html
 
 " Keep cursor on column when leaving INSERT mode
 let CursorColumnI = 0
@@ -246,6 +291,66 @@ function! ZoomToggle()
     endif
 endfunction
 
+function! LightlineReadonly()
+    return &ft !~? 'help' && &readonly ? '' : ''
+endfunction
+
+function! LightLineModified()
+    return &ft =~ 'help' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! LightlineFilename()
+    let fname = expand('%:t')
+    return fname == 'ControlP' ? g:lightline.ctrlp_item :
+                \ fname == '__Tagbar__' ? g:lightline.fname :
+                \ fname =~ '__Gundo\' ? '' :
+                \ fname =~ 'NERD_tree' ? 'NERDTree' :
+                \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
+                \ &ft == 'unite' ? unite#get_status_string() :
+                \ &ft == 'vimshell' ? vimshell#get_status_string() :
+                \ ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+                \ ('' != fname ? fname : '[No Name]') .
+                \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+endfunction
+
+function! LightlineFugitive()
+    try
+        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+            let mark = '⭠ '  " edit here for cool mark
+            let _ = fugitive#head()
+            return strlen(_) ? mark._ : ''
+        endif
+    catch
+    endtry
+
+    return ''
+endfunction
+
+function! LightlineFileformat()
+    return winwidth(0) > 80 ? &fileformat : ''
+endfunction
+
+function! LightlineFiletype()
+    return winwidth(0) > 60 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightlineFileencoding()
+    return winwidth(0) > 83 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! LightlineMode()
+    let fname = expand('%:t')
+    return fname == '__Tagbar__' ? 'Tagbar' :
+                \ fname == 'ControlP' ? 'CtrlP' :
+                \ fname == '__Gundo__' ? 'Gundo' :
+                \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
+                \ fname =~ 'NERD_tree' ? '' :
+                \ &ft == 'unite' ? 'Unite' :
+                \ &ft == 'vimfiler' ? 'VimFiler' :
+                \ &ft == 'vimshell' ? 'VimShell' :
+                \ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
 function! CtrlPMark()
     if expand('%:t') =~ 'ControlP'
         call lightline#link('iR'[g:lightline.ctrlp_regex])
@@ -256,9 +361,21 @@ function! CtrlPMark()
     endif
 endfunction
 
+function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+    let g:lightline.ctrlp_regex = a:regex
+    let g:lightline.ctrlp_prev = a:prev
+    let g:lightline.ctrlp_item = a:item
+    let g:lightline.ctrlp_next = a:next
+    return lightline#statusline(0)
+endfunction
+
+function! CtrlPStatusFunc_2(str)
+    return lightline#statusline(0)
+endfunction
+
 augroup AutoSyntastic
     autocmd!
-    autocmd BufWritePost *.c,*.cpp call s:syntastic()
+    autocmd BufWritePost *.c,*.cpp,*.php call s:syntastic()
 augroup END
 
 function! s:syntastic()
