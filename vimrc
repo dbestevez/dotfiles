@@ -24,6 +24,7 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
+Plugin 'loremipsum'
 Plugin 'mattn/emmet-vim'
 Bundle 'matze/vim-move'
 Plugin 'mhinz/vim-startify'
@@ -153,6 +154,7 @@ let NERDTreeHighlightCursorline = 1
 set laststatus=2
 
 " Syntastic --------------------------------------------------------------------
+let g:syntastic_php_phpmd_post_args="cleancode,codesize,controversial,design,unusedcode"
 let g:syntastic_php_phpcs_args="--standard=PSR2 -n --report=csv"
 let g:syntastic_javascript_checkers = [ 'jshint' ]
 
@@ -220,7 +222,7 @@ autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
 autocmd VimEnter * call StartUp()
 autocmd VimEnter * wincmd p
 autocmd BufRead,BufNewFile *.done,*.todo,*.task set filetype=taskpaper
-autocmd BufRead,BufNewFile *.tpl set filetype=html
+autocmd BufRead,BufNewFile *.tpl,*.twig set filetype=html
 
 " Keep cursor on column when leaving INSERT mode
 let CursorColumnI = 0
