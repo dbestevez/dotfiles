@@ -58,6 +58,3 @@
     rebase = true
 [push]
     default = simple
-[user]
-    name = Diego Blanco Estévez
-    email = diego@openhost.es
