@@ -11,12 +11,6 @@ if [ ! -d ~/.fonts ]; then
     fc-cache -vf
 fi
 
-# Install powerline
-if [ "`pip list | grep powerline`" == "" ]; then
-    echo "Installing powerline..."
-    sudo pip install powerline-status
-fi
-
 # Create symlinks
 files=`ls | sed -e "/\(install.sh\|powerline\)/d"`
 for file in $files; do
