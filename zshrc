@@ -49,7 +49,7 @@ plugins=(git git-flow jira vagrant vi-mode)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/diego/.devtools/vendor/bin:/home/diego/.devtools/node_modules/.bin:/home/diego/.gem/ruby/2.2.0/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/.devtools/vendor/bin:$HOME/.devtools/node_modules/.bin:/.gem/ruby/2.2.0/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
