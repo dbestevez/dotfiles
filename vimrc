@@ -7,6 +7,7 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
+Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'algotech/ultisnips-php'
 Plugin 'bkad/CamelCaseMotion'
@@ -23,7 +24,7 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'loremipsum'
 Plugin 'mattn/emmet-vim'
 Bundle 'matze/vim-move'
@@ -38,10 +39,13 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 Plugin 'dhruvasagar/vim-prosession'
+Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'wesQ3/vim-windowswap'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'Yggdroot/indentLine'
+Plugin 'ryanoasis/vim-devicons'
 
 filetype plugin indent on
 
@@ -52,6 +56,7 @@ syntax enable
 let &colorcolumn="".join(range(81,121),",")
 
 " Misc -------------------------------------------------------------------------
+set encoding=utf8
 set nobackup
 set noswapfile
 set mouse=a
@@ -80,6 +85,7 @@ set splitbelow
 set splitright
 set ttyfast
 set wildmenu
+set previewheight=80
 
 " Searching --------------------------------------------------------------------
 set hlsearch
@@ -94,7 +100,9 @@ set foldmethod=indent
 set foldnestmax=10
 
 " CtrlP ------------------------------------------------------------------------
-let g:ctrp_max_depth=20
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+let g:ctrlp_extensions = ['funky']
+let g:ctrlp_max_depth=20
 let g:ctrlp_max_files=0
 let g:ctrlp_switch_buffer=0
 let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
@@ -104,13 +112,15 @@ let g:ctrlp_status_func = {
             \ 'prog': 'CtrlPStatusFunc_2',
             \ }
 
+let g:ctrlp_funky_syntax_highlight = 1
+
 " Easy-align -------------------------------------------------------------------
 nmap ga <Plug>(EasyAlign)
 vmap <Enter> <Plug>(EasyAlign)
 
 " Easy-motion-------------------------------------------------------------------
-"nmap <leader>s <Plug>(easymotion-s)
-"nmap <leader>ss <Plug>(easymotion-s2)
+nmap <leader>s <Plug>(easymotion-s)
+nmap <leader>ss <Plug>(easymotion-s2)
 
 " Editorconfig -----------------------------------------------------------------
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
@@ -182,8 +192,11 @@ nmap <leader>a= :Tabularize /=<CR>
 nmap <leader>a=> :Tabularize /=><CR>
 nmap <leader>a: :Tabularize /:<CR>
 nmap <leader>bb :CtrlPBuffer<CR>
-nmap <leader>r :source ~/.vimrc<CR>
+nmap <leader>r :source $MYVIMRC<CR>
+nmap <leader>e :tabedit $MYVIMRC<CR>
 nmap <leader>w :w!<CR>
+nnoremap <Leader>fu :CtrlPFunky<Cr>
+nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
 " Line shortcuts ---------------------------------------------------------------
 nmap <C-w>- :rightb new<CR>
@@ -205,8 +218,7 @@ nnoremap <silent> <C-l> :call WinMove('l')<cr>
 
 nnoremap <silent> <C-z> :call ZoomToggle()<CR>
 
-noremap <F12> :NERDTreeToggle<CR>
-noremap <C-F12> :NERDTreeFocus<CR>
+noremap <F12> :NERDTreeTabsToggle<CR>
 
 inoremap <expr> <C-j> ("\<C-n>")
 inoremap <expr> <C-k> ("\<C-p>")
@@ -327,11 +339,11 @@ function! LightlineFugitive()
 endfunction
 
 function! LightlineFileformat()
-    return winwidth(0) > 80 ? &fileformat : ''
+    return winwidth(0) > 80 ? &fileformat . ' ' . WebDevIconsGetFileFormatSymbol() : ''
 endfunction
 
 function! LightlineFiletype()
-    return winwidth(0) > 60 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    return winwidth(0) > 60 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol(): 'no ft') : ''
 endfunction
 
 function! LightlineFileencoding()
