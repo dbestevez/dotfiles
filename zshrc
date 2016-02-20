@@ -45,7 +45,26 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-flow jira vagrant vi-mode)
+plugins=(
+    archlinux
+    bower
+    colored-man-pages
+    colorize
+    composer
+    git
+    git-extras
+    git-flowjira
+    history
+    redis-cli
+    sublime
+    thefuck
+    tmux
+    tmuxinator
+    vagrant
+    vi-mode
+    wd
+    web-search
+)
 
 # User configuration
 
@@ -80,7 +99,8 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source ~/.gem/ruby/2.2.0/gems/tmuxinator-0.6.11/completion/tmuxinator.zsh
-source ~/.aliases
+if [ -f .aliases ]; then
+    source ~/.aliases;
+fi
 
 bindkey -v
