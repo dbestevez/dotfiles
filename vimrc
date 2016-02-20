@@ -7,6 +7,7 @@ call vundle#rc()
 
 Plugin 'gmarik/vundle'
 
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'algotech/ultisnips-php'
@@ -33,7 +34,6 @@ Plugin 'scrooloose/NERDCommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'sickill/vim-monokai'
 Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
@@ -51,7 +51,10 @@ filetype plugin indent on
 
 " Colors -----------------------------------------------------------------------
 set t_Co=256
-colorscheme seti-monokai
+
+set background=dark
+colorscheme solarized
+
 syntax enable
 let &colorcolumn="".join(range(81,121),",")
 
@@ -85,7 +88,7 @@ set splitbelow
 set splitright
 set ttyfast
 set wildmenu
-set previewheight=80
+set previewheight=15
 
 " Searching --------------------------------------------------------------------
 set hlsearch
