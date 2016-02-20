@@ -14,7 +14,7 @@ if [ ! -d ~/.fonts ]; then
 fi
 
 # Create symlinks
-files=`ls | sed -e "/\(install.sh\|powerline\)/d"`
+files=`ls | sed -e "/\(install.sh\)/d"`
 for file in $files; do
     if [ $file != "LICENSE" ] && [ ! -f ~/.$file ] && [ ! -d ~/.$file ]; then
         echo "Symlinking $file..."
@@ -31,14 +31,8 @@ if [ ! -d ~/.vim/bundle/vundle ]; then
     vim -c BundleInstall -c q
 fi;
 
-# Install custom powerline
-if [ ! -d ~/.config/powerline ]; then
-    echo "Installing custom powerline..."
-    ln -s $PWD/powerline ~/.config/powerline
-fi
-
 # Ask for user and email for gitconfig
-if [ "`cat ~/.gitconfig | grep user`" == "" ]; then
+if [ "`grep user ~/.gitconfig`" == "" ]; then
     read -e -p "Do you want to add your credentials to your .gitconfig? (Y/n) " q
 
     if [ "$q" == "Y" ] || [ "$q" == "y" ] || [ "$q" == "" ]; then
