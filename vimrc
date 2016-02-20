@@ -177,71 +177,6 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 " Vim-move ---------------------------------------------------------------------
 let g:move_map_keys = 0
 
-" Command shortcuts ------------------------------------------------------------
-cmap w!! w !sudo tee > /dev/null %
-
-" Disable arrow keys -----------------------------------------------------------
-noremap <Up>    <NOP>
-noremap <Down>  <NOP>
-noremap <Left>  <NOP>
-noremap <Right> <NOP>
-
-" Leader shortcuts -------------------------------------------------------------
-nmap <leader>= :call Preserve("normal gg=G")<CR>
-nmap <leader>a= :Tabularize /=<CR>
-nmap <leader>a=> :Tabularize /=><CR>
-nmap <leader>a: :Tabularize /:<CR>
-nmap <leader>bb :CtrlPBuffer<CR>
-nmap <leader>r :source $MYVIMRC<CR>
-nmap <leader>e :tabedit $MYVIMRC<CR>
-nmap <leader>w :w!<CR>
-nnoremap <Leader>fu :CtrlPFunky<Cr>
-nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
-
-" Line shortcuts ---------------------------------------------------------------
-nmap <C-w>- :rightb new<CR>
-nmap <C-w>\| :vnew<CR>
-nmap <C-w>t :tabnew<CR>
-nmap <C-w><C-h> :tabprevious<CR>
-nmap <C-w><C-l> :tabnext<CR>
-nmap <C-w><S-h> :vertical res -5<CR>
-nmap <C-w><S-j> :res +5<CR>
-nmap <C-w><S-k> :res -5<CR>
-nmap <C-w><S-l> :vertical res +5<CR>
-
-nnoremap ; :
-
-nnoremap <silent> <C-h> :call WinMove('h')<cr>
-nnoremap <silent> <C-j> :call WinMove('j')<cr>
-nnoremap <silent> <C-k> :call WinMove('k')<cr>
-nnoremap <silent> <C-l> :call WinMove('l')<cr>
-
-nnoremap <silent> <C-z> :call ZoomToggle()<CR>
-
-noremap <F12> :NERDTreeTabsToggle<CR>
-
-inoremap <expr> <C-j> ("\<C-n>")
-inoremap <expr> <C-k> ("\<C-p>")
-
-vmap <Up> <Plug>MoveBlockUp
-vmap <Down> <Plug>MoveBlockDown
-
-nmap <Up> <Plug>MoveLineUp
-nmap <Down> <Plug>MoveLineDown
-
-" Autocommands -----------------------------------------------------------------
-autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
-autocmd VimEnter * call StartUp()
-autocmd VimEnter * wincmd p
-autocmd BufRead,BufNewFile *.done,*.todo,*.task set filetype=taskpaper
-autocmd BufRead,BufNewFile *.tpl,*.twig set filetype=html
-
-" Keep cursor on column when leaving INSERT mode
-let CursorColumnI = 0
-autocmd InsertEnter * let CursorColumnI = col('.')
-autocmd CursorMovedI * let CursorColumnI = col('.')
-autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) | endif
-
 " Custom functions -------------------------------------------------------------
 " Open NERDTree on stat up when no arguments
 function! StartUp()
@@ -384,11 +319,6 @@ endfunction
 function! CtrlPStatusFunc_2(str)
     return lightline#statusline(0)
 endfunction
-
-augroup AutoSyntastic
-    autocmd!
-    autocmd BufWritePost *.c,*.cpp,*.php call s:syntastic()
-augroup END
 
 function! s:syntastic()
     SyntasticCheck
