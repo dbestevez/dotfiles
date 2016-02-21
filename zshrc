@@ -5,7 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# Favorites: dst murilasso pmcgee pygmalion robbyrussell tjkirch_mod wezm+
+ZSH_THEME="murilasso"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -53,7 +54,8 @@ plugins=(
     composer
     git
     git-extras
-    git-flowjira
+    git-flow
+    jira
     history
     redis-cli
     sublime
@@ -99,7 +101,7 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-if [ -f .aliases ]; then
+if [ -f ~/.aliases ]; then
     source ~/.aliases;
 fi
 
