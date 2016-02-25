@@ -141,7 +141,7 @@ let g:lightline = {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
     \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'] ]
     \ },
-    \ 'colorscheme': 'solarized_dark',
+    \ 'colorscheme': 'solarized_custom',
     \ 'component_function': {
     \     'ctrlpmark': 'LightlineCtrlP',
     \     'fileencoding': 'LightlineFileEncoding',
