@@ -1,3 +1,8 @@
+function! CheckSyntax()
+    SyntasticCheck
+    call lightline#update()
+endfunction
+
 function! CtrlPStatusMain(focus, byfname, regex, prev, item, next, marked)
     let g:lightline.ctrlp_regex = a:regex
     let g:lightline.ctrlp_prev = a:prev
@@ -107,11 +112,6 @@ function! Preserve(command)
     " Clean up: restore previous search history, and cursor position
     let @/=_s
     call cursor(l, c)
-endfunction
-
-function! s:syntastic()
-    SyntasticCheck
-    call lightline#update()
 endfunction
 
 " Opens NERDTree on stat up when no arguments

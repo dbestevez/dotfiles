@@ -16,5 +16,5 @@ autocmd InsertLeave * if col('.') != CursorColumnI | call cursor(0, col('.')+1) 
 
 augroup AutoSyntastic
     autocmd!
-    autocmd BufWritePost *.c,*.cpp,*.php call s:syntastic()
+    autocmd BufWritePost *.c,*.cpp,*.js,*.php call CheckSyntax()
 augroup END
