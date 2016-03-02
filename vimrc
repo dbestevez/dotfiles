@@ -49,10 +49,6 @@ Plugin 'ryanoasis/vim-devicons'
 
 filetype plugin indent on
 
-source ~/.vim/functions.vim
-source ~/.vim/bindings.vim
-source ~/.vim/commands.vim
-
 " Colors
 set t_Co=256
 
@@ -105,6 +101,10 @@ set foldenable
 set foldlevelstart=10
 set foldmethod=indent
 set foldnestmax=10
+
+source ~/.vim/functions.vim
+source ~/.vim/bindings.vim
+source ~/.vim/commands.vim
 
 " CtrlP
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
