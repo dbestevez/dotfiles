@@ -10,7 +10,7 @@ function redis-search() {
 
 # Delete keys by pattern
 function redis-delete() {
-    redis_search $1 | xargs redis-cli del;
+    redis-search $1 | xargs redis-cli del;
 }
 
 # Alias
