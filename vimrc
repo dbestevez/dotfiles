@@ -40,6 +40,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 Plugin 'dhruvasagar/vim-prosession'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'tkhren/vim-fake'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'wesQ3/vim-windowswap'
@@ -181,6 +182,9 @@ let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
+
+" Vim-fake
+let g:fake_src_paths = [ '~/.vim/autoload/vim-fake' ]
 
 " Vim-move
 let g:move_map_keys = 0
