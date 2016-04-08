@@ -56,7 +56,6 @@ plugins=(
     git
     git-extras
     git-flow
-    jira
     history
     redis-cli
     sublime
