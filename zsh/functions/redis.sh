@@ -17,4 +17,4 @@ function redis-delete() {
 alias rdl='redis-list'
 alias rds='redis-search'
 alias rdd='redis-delete'
-alias rda='redis-cli flushall'
+alias rdf='redis-cli flushall'
