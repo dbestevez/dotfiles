@@ -34,6 +34,8 @@ nmap <leader>a= :Tabularize /=<CR>
 nmap <leader>a=> :Tabularize /=><CR>
 nmap <leader>a: :Tabularize /:<CR>
 nmap <leader>bb :CtrlPBuffer<CR>
+imap \foo <C-R>=fake#gen("foobar")<CR>
+
 nnoremap <Leader>fu :CtrlPFunky<Cr>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 noremap <F12> :NERDTreeTabsToggle<CR>
