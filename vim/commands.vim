@@ -7,6 +7,7 @@ autocmd VimEnter * call StartUp()
 autocmd VimEnter * wincmd p
 autocmd BufRead,BufNewFile *.done,*.todo,*.task set filetype=taskpaper
 autocmd BufRead,BufNewFile *.tpl,*.twig set filetype=html
+autocmd BufEnter * call UpdateJsHintConf()
 
 " Keep cursor on column when leaving INSERT mode
 let CursorColumnI = 0
