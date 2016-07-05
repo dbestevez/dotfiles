@@ -97,6 +97,7 @@ set showmatch
 set splitbelow
 set splitright
 set ttyfast
+set ttymouse=xterm2
 set wildmenu
 set previewheight=15
 
