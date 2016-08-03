@@ -41,7 +41,13 @@ nnoremap <Leader>fu :CtrlPFunky<Cr>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 noremap <F12> :NERDTreeTabsToggle<CR>
 
-" Movement for neocomplete
+" CamelCaseMotion
+map <silent> ,w <Plug>CamelCaseMotion_w
+map <silent> ,b <Plug>CamelCaseMotion_b
+map <silent> ,e <Plug>CamelCaseMotion_e
+map <silent> ,ge <Plug>CamelCaseMotion_ge
+
+" Neocomplete
 inoremap <expr> <C-j> ("\<C-n>")
 inoremap <expr> <C-k> ("\<C-p>")
 
