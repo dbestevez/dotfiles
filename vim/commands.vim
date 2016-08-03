@@ -1,5 +1,5 @@
 " Save read-only files
-cmap w!! w !sudo tee > /dev/null %
+cmap ww w !sudo tee > /dev/null %
 
 " Autocommands
 autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
