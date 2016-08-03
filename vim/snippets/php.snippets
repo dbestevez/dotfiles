@@ -1,3 +1,5 @@
+snippet em "The ORM EntityManager"
+	$em = $this->get('orm.manager');
 snippet fdoc "PHP documentation for function"
 	/**
 	 * ${1:description}
@@ -14,6 +16,16 @@ snippet license "Openhost license notice"
 	 *
 	 * For the full copyright and license information, please view the LICENSE
 	 * file that was distributed with this source code.
+	 */
+snippet smtplugin "PHP documentation for smarty plugin"
+	/*
+	 * Smarty plugin
+	 * -------------------------------------------------------------
+	 * File:     function.${1:function}.php
+	 * Type:     function
+	 * Name:     ${2:name}
+	 * Purpose:  ${3:description}
+	 * -------------------------------------------------------------
 	 */
 snippet svdie "Dump variable and die using Symfony dumper"
 	\Symfony\Component\VarDumper\VarDumper::dump(${1:this});die();
