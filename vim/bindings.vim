@@ -35,6 +35,7 @@ nmap <leader>a= :Tabularize /=<CR>
 nmap <leader>a=> :Tabularize /=><CR>
 nmap <leader>a: :Tabularize /:<CR>
 nmap <leader>bb :CtrlPBuffer<CR>
+nmap <leader>g :Gstatus<CR>
 imap \foo <C-R>=fake#gen("foobar")<CR>
 
 nnoremap <Leader>fu :CtrlPFunky<Cr>
