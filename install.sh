@@ -20,16 +20,23 @@ for file in $files; do
         echo "Symlinking $file..."
         ln -s $PWD/$file ~/.$file
     fi
+
+    # Custom links for neovim
+    if type nvim > /dev/null; then
+        ln -s ~./vim ~/.config/nvim
+        ln -s ~/.vimrc ~/.config/nvim/init.vim
+    fi
 done;
 
-# Install Vundle and vim plugins
-if [ ! -d ~/.vim/bundle/vundle ]; then
-    echo "Installing Vundle for vim.."
-    git clone https://github.com/gmarik/Vundle.vim ~/.vim/bundle/vundle
+# Install vim plugins
+echo "Installing vim plugins..."
+vim -c PlugInstall -c q
 
-    echo "Installing vim plugins..."
-    vim -c BundleInstall -c q
-fi;
+# Install neovim plugins
+if type nvim > /dev/null; then
+    echo "Installing neovim plugins..."
+    nvim -c PlugInstall -c q
+fi
 
 # Ask for user and email for gitconfig
 if [ "`grep user ~/.gitconfig`" == "" ]; then
