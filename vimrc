@@ -1,64 +1,70 @@
-" Vundle
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call plug#begin('~/.vim/plugged')
 
-Plugin 'gmarik/vundle'
+Plug 'altercation/vim-colors-solarized'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'BufOnly.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'algotech/ultisnips-php'
+Plug 'bkad/CamelCaseMotion'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'davidoc/taskpaper.vim'
+Plug 'duggiefresh/vim-easydir'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'epmatsw/ag.vim'
+Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'flazz/vim-colorschemes'
+Plug 'honza/vim-snippets'
+Plug 'itchyny/lightline.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-journal'
+Plug 'kana/vim-textobj-user'
+Plug 'lifepillar/vim-solarized8'
+Plug 'loremipsum'
+Plug 'mattn/emmet-vim'
+Plug 'matze/vim-move'
+Plug 'mhinz/vim-startify'
+Plug 'mrtazz/simplenote.vim'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/NERDCommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
 
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'BufOnly.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'algotech/ultisnips-php'
-Plugin 'bkad/CamelCaseMotion'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'davidoc/taskpaper.vim'
-Plugin 'duggiefresh/vim-easydir'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'epmatsw/ag.vim'
-Plugin 'ervandew/supertab'
-Plugin 'godlygeek/tabular'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'honza/vim-snippets'
-Plugin 'itchyny/lightline.vim'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'kana/vim-textobj-user'
-Plugin 'lifepillar/vim-solarized8'
-Plugin 'loremipsum'
-Plugin 'mattn/emmet-vim'
-Plugin 'matze/vim-move'
-Plugin 'mhinz/vim-startify'
-Plugin 'scrooloose/NERDCommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'stanangeloff/php.vim'
-Plugin 'ingydotnet/yaml-vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tpope/vim-cucumber'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-obsession'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'tkhren/vim-fake'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'wesQ3/vim-windowswap'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'Yggdroot/indentLine'
-Plugin 'ryanoasis/vim-devicons'
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/neocomplete.vim'
+endif
 
-Plugin 'dhruvasagar/vim-prosession'
-Plugin 'kana/vim-textobj-function'
-Plugin 'kana/vim-textobj-line'
-Plugin 'kentaro/vim-textobj-function-php'
-Plugin 'thinca/vim-textobj-function-javascript'
+Plug 'SirVer/ultisnips'
+Plug 'stanangeloff/php.vim'
+Plug 'ingydotnet/yaml-vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'tkhren/vim-fake'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'wesQ3/vim-windowswap'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Yggdroot/indentLine'
+Plug 'ryanoasis/vim-devicons'
+Plug 'dhruvasagar/vim-prosession'
+Plug 'kana/vim-textobj-function'
+Plug 'kana/vim-textobj-line'
+Plug 'kentaro/vim-textobj-function-php'
+Plug 'thinca/vim-textobj-function-javascript'
+
+call plug#end()
 
 filetype plugin indent on
 
@@ -66,7 +72,7 @@ filetype plugin indent on
 set t_Co=256
 
 set background=dark
-colorscheme solarized
+colorscheme monokai-chris
 
 syntax enable
 let &colorcolumn="".join(range(81,121),",")
@@ -77,8 +83,9 @@ set nobackup
 set noswapfile
 set mouse=a
 let mapleader="\<Space>"
+set updatetime=250
 
-if has('unnamedplus')
+if has('clipboard')
     set clipboard=unnamed,unnamedplus
 endif
 
@@ -100,9 +107,13 @@ set showmatch
 set splitbelow
 set splitright
 set ttyfast
-set ttymouse=xterm2
 set wildmenu
 set previewheight=15
+
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
 
 " Searching
 set hlsearch
@@ -134,6 +145,14 @@ let g:ctrlp_status_func = {
 \ }
 
 let g:ctrlp_funky_syntax_highlight = 1
+
+" Deoplete/Neocomplete
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+else
+    let g:neocomplete#enable_at_startup = 1
+    let g:neocomplete#max_list = 10
+endif
 
 " Easy-align
 nmap ga <Plug>(EasyAlign)
@@ -175,10 +194,6 @@ let g:lightline = {
     \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
 \ }
 
-" Neocomplete
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#max_list = 10
-
 " NERD Tree
 let NERDTreeHighlightCursorline = 1
 
@@ -201,3 +216,6 @@ let g:fake_src_paths = [ '~/.vim/autoload/vim-fake' ]
 
 " Vim-move
 let g:move_map_keys = 0
+
+" Simplenote
+source ~/.simplenoterc
