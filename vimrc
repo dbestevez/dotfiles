@@ -218,4 +218,6 @@ let g:fake_src_paths = [ '~/.vim/autoload/vim-fake' ]
 let g:move_map_keys = 0
 
 " Simplenote
-source ~/.simplenoterc
+if filereadable(expand('~/.simplenoterc'))
+    source ~/.simplenoterc
+endif
