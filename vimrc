@@ -32,10 +32,10 @@ Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
 Plug 'mhinz/vim-startify'
 Plug 'mrtazz/simplenote.vim'
+Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/NERDCommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -114,7 +114,6 @@ if !has('nvim')
   set ttymouse=xterm2
 endif
 
-
 " Searching
 set hlsearch
 set ignorecase
@@ -128,7 +127,7 @@ set foldmethod=indent
 set foldnestmax=10
 
 source ~/.vim/functions.vim
-source ~/.vim/bindings.vim
+source ~/.vim/mapping.vim
 source ~/.vim/commands.vim
 
 " CtrlP
@@ -172,7 +171,7 @@ let g:user_emmet_leader_key='<C-w>'
 let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-    \   'right': [ [ 'syntastic', 'lineinfo' ], ['percent'] ]
+    \   'right': [ [ 'lineinfo'  ], [ 'percent', 'neomake' ] ]
     \ },
     \ 'colorscheme': 'solarized_custom',
     \ 'component_function': {
@@ -185,10 +184,10 @@ let g:lightline = {
     \     'mode': 'LightlineMode',
     \ },
     \ 'component_expand': {
-    \   'syntastic': 'SyntasticStatuslineFlag',
+    \     'neomake': 'LightlineNeomake',
     \ },
     \ 'component_type': {
-    \   'syntastic': 'error',
+    \   'neomake': 'error',
     \ },
     \ 'separator': { 'left': '⮀', 'right': '⮂' },
     \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
@@ -200,10 +199,18 @@ let NERDTreeHighlightCursorline = 1
 " Powerline
 set laststatus=2
 
-" Syntastic
-let g:syntastic_php_phpmd_post_args="cleancode,codesize,controversial,design,unusedcode"
-let g:syntastic_php_phpcs_args="--standard=PSR2 -n --report=csv"
-let g:syntastic_javascript_checkers = [ 'jshint' ]
+" Neomake
+let g:neomake_php_phpmd_maker = {
+    \ 'args': [ '%p', 'text', 'cleancode,codesize,controversial,design,unusedcode' ],
+    \ 'errorformat': '%E%f:%l%\s%m'
+    \ }
+
+let g:neomake_php_phpcs_maker = {
+    \ 'args': [ '--report=csv', '--standard=PSR2'],
+    \ 'errorformat':
+        \ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.
+        \ '"%f"\,%l\,%c\,%t%*[a-zA-Z]\,"%m"\,%*[a-zA-Z0-9_.-]\,%*[0-9]%.%#',
+    \ }
 
 " UltiSnips
 let g:UltiSnipsEditSplit="vertical"
