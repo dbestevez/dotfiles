@@ -10,6 +10,7 @@ nnoremap <CR> :nohl<CR><CR>
 nmap <leader>r :source $MYVIMRC<CR>
 nmap <leader>e :tabedit $MYVIMRC<CR>
 nmap <leader>w :w!<CR>
+cmap ww w !sudo tee > /dev/null %
 
 " Split shortcuts
 nmap <C-w>- :rightb new<CR>
@@ -51,6 +52,10 @@ map <silent> ,ge <Plug>CamelCaseMotion_ge
 " Neocomplete
 inoremap <expr> <C-j> ("\<C-n>")
 inoremap <expr> <C-k> ("\<C-p>")
+
+" Neomake
+nmap <leader>tn :let g:neomake_open_list=1<CR>
+nmap <leader>tN :let g:neomake_open_list=0<CR>
 
 " Vim-move
 map <Down> <Plug>MoveLineDown
