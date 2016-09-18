@@ -147,7 +147,7 @@ function! ZoomToggle()
     endif
 endfunction
 
-function s:find_jshintrc(dir)
+function! s:find_jshintrc(dir)
     let l:found = globpath(a:dir, '.jshintrc')
     if filereadable(l:found)
         return l:found
@@ -161,7 +161,7 @@ function s:find_jshintrc(dir)
     return "~/.jshintrc"
 endfunction
 
-function UpdateJsHintConf()
+function! UpdateJsHintConf()
     let l:dir = expand('%:p:h')
     let l:jshintrc = s:find_jshintrc(l:dir)
     let g:syntastic_javascript_jshint_args = '--config ' . l:jshintrc
