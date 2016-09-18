@@ -16,7 +16,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'epmatsw/ag.vim'
 Plug 'ervandew/supertab'
-Plug 'godlygeek/tabular'
 Plug 'flazz/vim-colorschemes'
 Plug 'honza/vim-snippets'
 Plug 'itchyny/lightline.vim'
@@ -39,7 +38,7 @@ Plug 'scrooloose/nerdtree'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
+elseif has('lua')
     Plug 'Shougo/neocomplete.vim'
 endif
 
@@ -78,12 +77,16 @@ syntax enable
 let &colorcolumn="".join(range(81,121),",")
 
 " Misc
-set encoding=utf8
 set nobackup
 set noswapfile
 set mouse=a
 let mapleader="\<Space>"
 set updatetime=250
+
+if !has('nvim')
+    set encoding=utf8
+    set ttymouse=xterm2
+endif
 
 if has('clipboard')
     set clipboard=unnamed,unnamedplus
@@ -110,10 +113,6 @@ set ttyfast
 set wildmenu
 set previewheight=15
 
-if !has('nvim')
-  set ttymouse=xterm2
-endif
-
 " Searching
 set hlsearch
 set ignorecase
@@ -131,7 +130,7 @@ source ~/.vim/mapping.vim
 source ~/.vim/commands.vim
 
 " CtrlP
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:40'
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_max_depth=20
 let g:ctrlp_max_files=0
@@ -148,7 +147,8 @@ let g:ctrlp_funky_syntax_highlight = 1
 " Deoplete/Neocomplete
 if has('nvim')
     let g:deoplete#enable_at_startup = 1
-else
+    let g:deoplete#max_list = 10
+elseif has ('lua')
     let g:neocomplete#enable_at_startup = 1
     let g:neocomplete#max_list = 10
 endif
@@ -210,7 +210,7 @@ let g:neomake_php_phpcs_maker = {
     \ 'errorformat':
         \ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.
         \ '"%f"\,%l\,%c\,%t%*[a-zA-Z]\,"%m"\,%*[a-zA-Z0-9_.-]\,%*[0-9]%.%#',
-    \ }
+\ }
 
 " UltiSnips
 let g:UltiSnipsEditSplit="vertical"
