@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Get values for the list of keys
 function redis-get() {
     keys=($(redis-search $1));
