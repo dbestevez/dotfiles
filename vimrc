@@ -174,7 +174,7 @@ let g:user_emmet_leader_key='<C-w>'
 let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-    \   'right': [ [ 'lineinfo'  ], [ 'percent', 'neomake' ] ]
+    \   'right': [ [ 'lineinfo'  ], [ 'percent', 'debug', 'neomake' ] ]
     \ },
     \ 'colorscheme': 'solarized_custom',
     \ 'component_function': {
@@ -188,8 +188,10 @@ let g:lightline = {
     \ },
     \ 'component_expand': {
     \     'neomake': 'LightlineNeomake',
+    \     'debug': 'LightlineDebug',
     \ },
     \ 'component_type': {
+    \   'debug': 'warning',
     \   'neomake': 'error',
     \ },
     \ 'separator': { 'left': '⮀', 'right': '⮂' },
