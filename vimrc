@@ -80,10 +80,11 @@ syntax enable
 let &colorcolumn="".join(range(81,121),",")
 
 " Misc
+let mapleader="\<Space>"
+set laststatus=2
+set mouse=a
 set nobackup
 set noswapfile
-set mouse=a
-let mapleader="\<Space>"
 set updatetime=250
 
 if !has('nvim')
@@ -133,13 +134,14 @@ source ~/.vim/mapping.vim
 source ~/.vim/commands.vim
 
 " CtrlP
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:40'
+let g:ctrlp_dont_split = 'nerdtree'
 let g:ctrlp_extensions = ['funky']
-let g:ctrlp_max_depth=20
-let g:ctrlp_max_files=0
-let g:ctrlp_switch_buffer=0
-let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
-let g:ctrp_working_path_mode="ra"
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:40'
+let g:ctrlp_max_depth = 20
+let g:ctrlp_max_files = 0
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_working_path_mode = "ra"
 let g:ctrlp_status_func = {
     \ 'main': 'CtrlPStatusMain',
     \ 'prog': 'CtrlPStatusProg',
@@ -168,7 +170,7 @@ nmap <leader>ss <Plug>(easymotion-s2)
 let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 
 " Emmet
-let g:user_emmet_leader_key='<C-w>'
+let g:user_emmet_leader_key = '<C-w>'
 
 " Lightline
 let g:lightline = {
@@ -201,9 +203,6 @@ let g:lightline = {
 " NERD Tree
 let NERDTreeHighlightCursorline = 1
 
-" Powerline
-set laststatus=2
-
 " Neomake
 let g:neomake_php_phpmd_maker = {
     \ 'args': [ '%p', 'text', 'cleancode,codesize,controversial,design,unusedcode' ],
@@ -218,10 +217,10 @@ let g:neomake_php_phpcs_maker = {
 \ }
 
 " UltiSnips
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsEditSplit = "vertical"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
 
 " Vim-fake
 let g:fake_src_paths = [ '~/.vim/autoload/vim-fake' ]
