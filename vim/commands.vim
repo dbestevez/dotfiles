@@ -1,7 +1,7 @@
 autocmd VimEnter * call StartUp()
 autocmd VimEnter * wincmd p
 
-autocmd BufWritePre * :call Preserve("%s/\\s\\+$//e")
+autocmd BufWritePre * :call Preserve(":call TrimWhiteSpaces()")
 autocmd BufRead,BufNewFile *.done,*.todo,*.task set filetype=taskpaper
 autocmd BufRead,BufNewFile *.tpl,*.twig set filetype=html
 autocmd BufWritePost *.* Neomake
