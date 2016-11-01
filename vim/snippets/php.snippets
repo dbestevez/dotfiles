@@ -23,6 +23,27 @@ snippet license "Openhost license notice"
 	 * For the full copyright and license information, please view the LICENSE
 	 * file that was distributed with this source code.
 	 */
+snippet phptest
+	<?php
+
+	namespace ${1:namespace};
+
+	use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+
+	/**
+	 * Defines test cases for ${2:class} class.
+	 */
+	class $2Test extends KernelTestCase
+	{
+		/**
+		 * Configures the testing environment.
+		 */
+		public function setUp()
+		{
+
+		}
+	}
+
 snippet smtplugin "PHP documentation for smarty plugin"
 	/*
 	 * Smarty plugin
