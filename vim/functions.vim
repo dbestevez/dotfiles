@@ -92,7 +92,7 @@ function! LightlineMode()
         \ &ft == 'unite' ? 'Unite' :
         \ &ft == 'vimfiler' ? 'VimFiler' :
         \ &ft == 'vimshell' ? 'VimShell' :
-        \ mode[0]
+        \ ''
 endfunction
 
 function! LightlineModified()
