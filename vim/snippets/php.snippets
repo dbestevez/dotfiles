@@ -25,13 +25,21 @@ snippet license "Openhost license notice"
 	 */
 snippet phptest
 	<?php
+	/**
+	 * This file is part of the Onm package.
+	 *
+	 * (c) Openhost, S.L. <developers@opennemas.com>
+	 *
+	 * For the full copyright and license information, please view the LICENSE
+	 * file that was distributed with this source code.
+	 */
+	namespace Tests\\${1:namespace};
 
-	namespace ${1:namespace};
-
+	use $1\\${2:class};
 	use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 	/**
-	 * Defines test cases for ${2:class} class.
+	 * Defines test cases for $2 class.
 	 */
 	class $2Test extends KernelTestCase
 	{
@@ -43,7 +51,6 @@ snippet phptest
 
 		}
 	}
-
 snippet smtplugin "PHP documentation for smarty plugin"
 	/*
 	 * Smarty plugin
