@@ -76,7 +76,7 @@ filetype plugin indent on
 set t_Co=256
 
 set background=dark
-colorscheme monokai-chris
+colorscheme solarized8_dark_high
 
 syntax enable
 let &colorcolumn="".join(range(81,121),",")
@@ -175,6 +175,7 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 let g:user_emmet_leader_key = '<C-w>'
 
 " Lightline
+let g:solarized_termcolors = 16
 let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
