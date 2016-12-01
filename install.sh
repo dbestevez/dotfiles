@@ -2,8 +2,8 @@
 
 # Install oh-my-zsh
 if [ ! -d ~/.oh-my-zsh ]; then
-    echo "Installing oh-my-zsh..."
-    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    echo "Installing zgen..."
+    git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 fi
 
 # Install patched fonts
