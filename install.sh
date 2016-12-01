@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install oh-my-zsh
-if [ ! -d ~/.oh-my-zsh ]; then
+if [ ! -d ~/.zgen ]; then
     echo "Installing zgen..."
     git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 fi
