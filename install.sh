@@ -14,7 +14,7 @@ if [ ! -d ~/.fonts ]; then
 fi
 
 # Create symlinks
-files=`ls | sed -e "/\(install.sh\)/d"`
+files=`ls | sed -e "/\(install.sh\|README.md\)/d"`
 for file in $files; do
     if [ $file != "LICENSE" ] && [ ! -f ~/.$file ] && [ ! -d ~/.$file ]; then
         echo "Symlinking $file..."
@@ -23,7 +23,7 @@ for file in $files; do
 done;
 
 # Custom links for neovim
-if type nvim > /dev/null; then
+if type nvim > /dev/null 2>&1; then
     if [ ! -d ~/.config/nvim ]; then
         echo "Symlinking ~/.config/nvim..."
         ln -s ~/.vim ~/.config/nvim
@@ -40,7 +40,7 @@ echo "Installing vim plugins..."
 vim -c PlugInstall -c q -c q
 
 # Install neovim plugins
-if type nvim > /dev/null; then
+if type nvim > /dev/null 2>&1; then
     echo "Installing neovim plugins..."
     nvim -c PlugInstall -c q -c q
 fi
