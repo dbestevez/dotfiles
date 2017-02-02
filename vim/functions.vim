@@ -10,15 +10,20 @@ function! CtrlPStatusProg(str)
     return lightline#statusline(0)
 endfunction
 
-" Closes vim if the only buffer that's left is the NERDTree buffer
-function! s:CloseIfOnlyNerdTreeLeft()
-    if exists("t:NERDTreeBufName")
-        if bufwinnr(t:NERDTreeBufName) != -1
-            if winnr("$") == 1
-                q
-            endif
-        endif
-    endif
+function! GoyoEnter()
+  set noshowmode
+  set noshowcmd
+  set scrolloff=999
+  call lightline#disable()
+  Limelight
+endfunction
+
+function! GoyoLeave()
+  set showmode
+  set showcmd
+  set scrolloff=5
+  call lightline#enable()
+  Limelight!
 endfunction
 
 function! LightlineCtrlP()
