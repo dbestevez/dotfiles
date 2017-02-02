@@ -27,6 +27,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-journal'
 Plug 'kana/vim-textobj-user'
@@ -202,6 +204,9 @@ let g:lightline = {
     \ 'separator': { 'left': '⮀', 'right': '⮂' },
     \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
 \ }
+
+" Limelight
+let g:limelight_conceal_ctermfg = 10
 
 " NERD Tree
 let NERDTreeHighlightCursorline = 1
