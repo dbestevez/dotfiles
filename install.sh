@@ -13,6 +13,12 @@ if [ ! -d ~/.fonts ]; then
     fc-cache -vf
 fi
 
+# Install git-hooks
+if [ ! -d ~/.git-hooks ]; then
+    echo "Installing git-hooks..."
+    git clone https://github.com/dhellmann/git-hooks.git "${HOME}/.git-hooks"
+fi
+
 # Create symlinks
 files=`ls | sed -e "/\(install.sh\|README.md\)/d"`
 for file in $files; do
@@ -21,6 +27,9 @@ for file in $files; do
         ln -s $PWD/$file ~/.$file
     fi
 done;
+
+# Set permissions for git_hooks
+chmod -R 755 ~/.git_hooks
 
 # Custom links for neovim
 if type nvim > /dev/null 2>&1; then
