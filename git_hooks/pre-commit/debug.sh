@@ -10,7 +10,7 @@ if [[ $staged = '' ]]; then
     exit 0
 fi
 
-echo -e "+ Checking debug messages in staged files..."
+echo -e -n "\033[1m==> Checking debug messages in staged files...\033[0m "
 
 pattern="^\s*(var_dump|console.log)"
 
@@ -24,15 +24,16 @@ for file in $staged; do
 done
 
 if [[ $counter = 0 ]]; then
-    echo -e "  + \033[1m\E[37;32mNo debug messages found\033[0m"
-else
-    echo -e "  + \E[31;5mDebug messages found in:\033[0m"
-
-    for file in $files; do
-        echo -e "     \033[1m - $file\033[0m"
-    done;
-
-    exit -1
+    echo -e "\E[37;32mDONE\033[0m"
+    exit 0
 fi
 
-exit 0
+echo -e "\E[31;5mFAIL\033[0m"
+echo -e "\E[33;5mDebug messages found in:\033[0m"
+
+for file in $files; do
+    echo -e "\E[34;5m$file\033[0m"
+done;
+
+echo -e "\033[1m\E[47;41mABORTING COMMIT\033[0m"
+exit -1
