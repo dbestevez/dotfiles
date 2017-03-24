@@ -71,8 +71,8 @@ function jira_log_week() {
 alias ja="jira assign"
 alias jaw="jira add worklog"
 alias jawd="jira_log_day"
-alias jawt="jira_log_day $(date +%Y-%m-%d)";
 alias jawft="jira_log_from_to"
+alias jawt="jira_log_day $(date +%Y-%m-%d)";
 alias jaww="jira_log_week"
 alias jc="jira create"
 alias jl="jira list"
@@ -81,3 +81,4 @@ alias jtd="jira trans 'Done' --noedit"
 alias jtnf="jira trans 'Won\'t fix' --noedit"
 alias jtp="jira trans 'In development' --noedit"
 alias jtqa="jira trans 'Waiting for QA' --noedit"
+alias jtwd="jira trans 'Waiting for deployment' --noedit"
