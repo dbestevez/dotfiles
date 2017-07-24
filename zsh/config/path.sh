@@ -17,3 +17,7 @@ fi
 if [ -d $HOME/.git-hooks ]; then
     export PATH=$HOME/.git-hooks:$PATH
 fi
+
+if [ -d $HOME/.themer ]; then
+    export PATH=$HOME/.themer:$PATH
+fi
