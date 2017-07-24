@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'algotech/ultisnips-php'
 Plug 'bkad/CamelCaseMotion'
@@ -33,7 +32,6 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-journal'
 Plug 'kana/vim-textobj-user'
 Plug 'lifepillar/vim-solarized8'
-Plug 'loremipsum'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
 Plug 'mhinz/vim-startify'
@@ -42,6 +40,9 @@ Plug 'neomake/neomake'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/NERDCommenter'
 Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'vim-scripts/loremipsum'
+Plug 'vim-scripts/po.vim-Jelenak'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -76,9 +77,10 @@ filetype plugin indent on
 
 " Colors
 set t_Co=256
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:block-Cursor/lCursor-blinkon100,r-cr:hor20-Cursor/lCursor
 
 set background=dark
-colorscheme solarized8_dark_high
+colorscheme solarized
 
 syntax enable
 let &colorcolumn="".join(range(81,121),",")
@@ -177,13 +179,12 @@ let g:EditorConfig_exec_path = '/usr/bin/editorconfig'
 let g:user_emmet_leader_key = '<C-w>'
 
 " Lightline
-let g:solarized_termcolors = 16
 let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
     \   'right': [ [ 'lineinfo'  ], [ 'percent', 'debug', 'neomake' ] ]
     \ },
-    \ 'colorscheme': 'solarized_custom',
+    \ 'colorscheme': 'powerline',
     \ 'component_function': {
     \     'ctrlpmark': 'LightlineCtrlP',
     \     'fileencoding': 'LightlineFileEncoding',
