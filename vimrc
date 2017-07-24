@@ -80,7 +80,7 @@ set t_Co=256
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:block-Cursor/lCursor-blinkon100,r-cr:hor20-Cursor/lCursor
 
 set background=dark
-colorscheme solarized
+colorscheme default
 
 syntax enable
 let &colorcolumn="".join(range(81,121),",")
@@ -184,7 +184,7 @@ let g:lightline = {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
     \   'right': [ [ 'lineinfo'  ], [ 'percent', 'debug', 'neomake' ] ]
     \ },
-    \ 'colorscheme': 'powerline',
+    \ 'colorscheme': 'default',
     \ 'component_function': {
     \     'ctrlpmark': 'LightlineCtrlP',
     \     'fileencoding': 'LightlineFileEncoding',
