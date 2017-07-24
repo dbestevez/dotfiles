@@ -1,14 +1,29 @@
 #!/bin/sh
 
+function jira_done_all() {
+    tickets=`jira $1 | sed -e "/.*\(\(ONM\|OT\)-[0-9]\+\).*/!d" -e "s/.*\(\(ONM\|OT\)-[0-9]\+\).*/\1/g" | sort | uniq`
+
+    for i in `echo "$tickets"`; do
+        jira trans 'Done' --noedit $i
+    done
+}
+
 function jira_extract() {
     field=`jira $1 | ag ^$2: | sed -e "s/$2:\s\+//g"`
 
-    echo $1: $field
-    echo $1: $field | xclip -selection c
+    echo $1 $field
+    echo $1 $field | xclip -selection c
 }
 
 function jira_extract_summary() {
     jira_extract $1 summary
+}
+
+function jira_list_and_extract() {
+    tickets=`jira list -q "$1" | sed -e "s/:\s\+/ /g"`
+
+    echo $tickets
+    echo $tickets | xclip -selection c
 }
 
 function jira_log_activity() {
@@ -76,9 +91,13 @@ alias jawt="jira_log_day $(date +%Y-%m-%d)";
 alias jaww="jira_log_week"
 alias jc="jira create"
 alias jl="jira list"
+alias jlcd="jira_list_and_extract \"project = ONM AND status = 'Waiting for deployment' AND (labels IS EMPTY OR labels != themes) ORDER BY key ASC\""
+alias jltd="jira_list_and_extract \"project = ONM AND status = 'Waiting for deployment' AND type != Deployment AND labels = themes ORDER BY key ASC\""
 alias js="jira_extract_summary"
 alias jtd="jira trans 'Done' --noedit"
+alias jtda="jira_done_all"
 alias jtnf="jira trans 'Won\'t fix' --noedit"
-alias jtp="jira trans 'In development' --noedit"
+alias jtid="jira trans 'In development' --noedit"
 alias jtqa="jira trans 'Waiting for QA' --noedit"
+alias jtm="jira trans 'Waiting for release' --noedit"
 alias jtwd="jira trans 'Waiting for deployment' --noedit"
