@@ -1,3 +1,35 @@
+snippet dc "Deploy checking"
+	Server: proxy101
+	Status: ${1:PASS/FAIL}
+
+	Server: cloud0
+	Status: $1
+
+	Server: cloud1
+	Status: $1
+
+	Server: cloud2
+	Status: $1
+snippet dcn "Deploy checking with notes"
+	Server: proxy101
+	Status: ${1:PASS/FAIL}
+	Notes:
+	  - ${2:note}
+
+	Server: cloud0
+	Status: $1
+	Notes:
+	  - $2
+
+	Server: cloud1
+	Status: $1
+	Notes:
+	  - $2
+
+	Server: cloud2
+	Status: $1
+	Notes:
+	  - $2
 snippet f "FAIL"
 	FAIL
 snippet p "PASS"
