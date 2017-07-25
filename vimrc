@@ -42,7 +42,7 @@ Plug 'scrooloose/NERDCommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/loremipsum'
-Plug 'vim-scripts/po.vim-Jelenak'
+Plug 'vim-scripts/po.vim--Jelenak'
 
 if has('nvim')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
