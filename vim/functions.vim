@@ -75,7 +75,7 @@ endfunction
 function! LightlineFugitive()
     try
         if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
-            let mark = '⭠ '  " edit here for cool mark
+            let mark = ' '  " edit here for cool mark
             let _ = fugitive#head()
             return strlen(_) ? mark._ : ''
         endif
@@ -105,7 +105,7 @@ function! LightlineModified()
 endfunction
 
 function! LightlineReadonly()
-    return &ft !~? 'help' && &readonly ? '' : ''
+    return &ft !~? 'help' && &readonly ? '' : ''
 endfunction
 
 function! LightlineNeomake()
