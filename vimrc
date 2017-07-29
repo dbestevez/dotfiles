@@ -202,8 +202,8 @@ let g:lightline = {
     \   'debug': 'warning',
     \   'neomake': 'error',
     \ },
-    \ 'separator': { 'left': '⮀', 'right': '⮂' },
-    \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+    \ 'separator': { 'left': '', 'right': '' },
+    \ 'subseparator': { 'left': '', 'right': '' }
 \ }
 
 " Limelight
