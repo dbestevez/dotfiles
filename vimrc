@@ -213,17 +213,22 @@ let g:limelight_conceal_ctermfg = 10
 let NERDTreeHighlightCursorline = 1
 
 " Neomake
+let g:neomake_php_phpcs_maker = {
+    \ 'args': [ '--report=csv' ],
+    \ 'errorformat':
+        \ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.
+        \ '"%f"\,%l\,%c\,%t%*[a-zA-Z]\,"%m"\,%*[a-zA-Z0-9_.-]\,%*[0-9]%.%#',
+\ }
+
 let g:neomake_php_phpmd_maker = {
     \ 'args': [ '%p', 'text', 'cleancode,codesize,controversial,design,unusedcode' ],
     \ 'errorformat': '%E%f:%l%\s%m'
     \ }
 
-let g:neomake_php_phpcs_maker = {
-    \ 'args': [ '--report=csv', '--standard=PSR2'],
-    \ 'errorformat':
-        \ '%-GFile\,Line\,Column\,Type\,Message\,Source\,Severity%.%#,'.
-        \ '"%f"\,%l\,%c\,%t%*[a-zA-Z]\,"%m"\,%*[a-zA-Z0-9_.-]\,%*[0-9]%.%#',
-\ }
+let g:neomake_javascript_jshint_maker = {
+    \ 'args': [ '--verbose' ],
+    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+    \ }
 
 " UltiSnips
 let g:UltiSnipsEditSplit = "vertical"
