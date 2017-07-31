@@ -50,7 +50,7 @@
 [difftool]
     prompt = false
 [merge]
-    tool = meld
+    tool = vimdiff
 [mergetool]
     keepBackup = false
     prompt = false
