@@ -43,9 +43,9 @@ if [ $returnCode -eq 0 ]; then
     exit 0
 fi
 
-errors=`echo "$output" | grep "FOUND" | sed -e "s/.*\([0-9]\+\)\s\+ERROR.*/\1/g"`
-warnings=`echo "$output" | grep "FOUND" | sed -e "s/.*\([0-9]\+\)\s\+WARNING.*/\1/g"`
-files=`echo "$output" | grep FILE: | sed -e "s/.*$(basename $PWD)/./g"`
+errors=`echo "$output" | grep "FOUND" | sed -e "s/.*\([0-9]\+\)\s\+ERROR.*/\1/g" | awk '{s+=$1} END {print s}'`
+warnings=`echo "$output" | grep "FOUND" | sed -e "s/.*\([0-9]\+\)\s\+WARNING.*/\1/g" | awk '{s+=$1} END {print s}'`
+files=`echo "$output" | grep "FILE:" | sed -e "s/.*\/$(basename $PWD)/./g"`
 issue="warnings"
 
 if [[ "$errors" != "0" ]]; then
@@ -57,7 +57,7 @@ fi
 
 # output the status.
 echo -e "PHPCS output saved in \E[34;5m${outputlog}\033[0m"
-echo -e "\E[33;5mCoding style $issue found in:\033[0m"
+echo -e "\E[33;5mCoding style issues found ($errors errors, $warnings warnings) found in:\033[0m"
 
 for file in "${files[@]}"; do
     echo -e " \E[34;5m$file\033[0m"
