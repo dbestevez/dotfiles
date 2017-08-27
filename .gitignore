@@ -1,7 +1,7 @@
+nvim/autoload/lightline/colorscheme
+nvim/autoload/plug.vim
+nvim/colors
+nvim/init.vim
+nvim/plugged
+nvim/session
 tmux/theme.conf
-vim/autoload/lightline/colorscheme
-vim/autoload/plug.vim
-vim/colors
-vim/init.vim
-vim/plugged
-vim/session
