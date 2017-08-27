@@ -2,7 +2,6 @@ bspwm/theme
 nvim/autoload/lightline/colorscheme
 nvim/autoload/plug.vim
 nvim/colors
-nvim/init.vim
 nvim/plugged
 nvim/session
 tmux/theme.conf
