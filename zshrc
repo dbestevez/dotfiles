@@ -27,14 +27,13 @@ if ! zgen saved; then
 
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-autosuggestions
-
   zgen load zsh-users/zsh-history-substring-search
 
   zgen save
 fi
 
 # Load zsh configuration
-for file in ~/.zsh/(config|functions)/*; do
+for file in ~/.config/zsh/(config|functions)/*; do
     source "$file"
 done
 
