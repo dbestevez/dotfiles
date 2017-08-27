@@ -43,13 +43,22 @@ nmap <leader>bb :CtrlPBuffer<CR>
 nnoremap <Leader>fu :CtrlPFunky<CR>
 nnoremap <Leader>fU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 
+" Easymotion
+map s  <Plug>(easymotion-s)
+map S <Plug>(easymotion-overwin-f)
+map <Leader>h <Plug>(easymotion-linebackward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>l <Plug>(easymotion-lineforward)
+
+" Incsearch
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
-map z/ <Plug>(incsearch-easymotion-/)
-map z? <Plug>(incsearch-easymotion-?)
-map zg/ <Plug>(incsearch-easymotion-stay)
+map <leader>/ <Plug>(incsearch-easymotion-/)
+map <leader>? <Plug>(incsearch-easymotion-?)
+map <leader>g/ <Plug>(incsearch-easymotion-stay)
 
 " Fugitive
 nmap <leader>g :Gstatus<CR>
