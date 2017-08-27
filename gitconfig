@@ -46,9 +46,11 @@
     whitespace = trailing-space,space-before-tab
 [diff]
     mnemonicprefix = true
-    tool = meld
+    tool = vimdiff
 [difftool]
     prompt = false
+[hooks]
+    global = $HOME/.githooks
 [merge]
     tool = vimdiff
 [mergetool]
