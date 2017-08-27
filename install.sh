@@ -46,8 +46,8 @@ install_local() {
         return
     fi
 
-    echo -n "Installing $1 config..."
-    ln -s $PWD/$file $target > /dev/null 2>&1
+    echo -n "Installing $1..."
+    ln -s $PWD/$1 $target > /dev/null 2>&1
 
     if [ $? -ne 0 ]; then
         echo -e "\E[31;5mFAIL\033[0m"
