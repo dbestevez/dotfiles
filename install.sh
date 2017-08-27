@@ -151,7 +151,7 @@ post_install_gitconfig() {
 # Sets permissions for git_hooks after symlinking git_hooks folder.
 # ---
 post_install_githooks() {
-    chmod -R 755 $HOME/.githooks
+    chmod -R 755 $HOME/.config/githooks
 }
 
 # ---
