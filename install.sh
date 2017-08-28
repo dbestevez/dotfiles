@@ -54,10 +54,10 @@ install_local() {
         return
     fi
 
+    echo -e "\E[37;32mDONE\033[0m"
+
     # Execute post_install function if exists
     type "post_install_$1" > /dev/null 2>&1 && post_install_$1
-
-    echo -e "\E[37;32mDONE\033[0m"
 }
 
 # ---
@@ -138,8 +138,8 @@ post_install_gitconfig() {
     read -e -p "Do you want to add your credentials to your .gitconfig? (Y/n) " q
 
     if [ "$q" == "Y" ] || [ "$q" == "y" ] || [ "$q" == "" ]; then
-        read -e -p "Name: " username
-        read -e -p "Email: " email
+        read -e -p "  Name: " username
+        read -e -p "  Email: " email
 
         echo "[user]" >> $HOME/.gitconfig
         echo "    name = " $username >> $HOME/.gitconfig
@@ -152,6 +152,26 @@ post_install_gitconfig() {
 # ---
 post_install_githooks() {
     chmod -R 755 $HOME/.config/githooks
+}
+
+# ---
+# Executes post-installation commands after symlinking muttrc file.
+# ---
+post_install_muttrc() {
+    # Ask for user and email for mutt
+    if [ "`grep \"<user>\" $HOME/.muttrc`" != "" ]; then
+        return
+    fi
+
+    read -e -p "Do you want to add your email to your .muttrc? (Y/n) " q
+
+    if [ "$q" == "Y" ] || [ "$q" == "y" ] || [ "$q" == "" ]; then
+        read -e -p "  Account: " account
+        read -e -p "  Email: " email
+
+        sed $HOME/.muttrc -i -e "s/<account>/$account/g"
+        sed $HOME/.muttrc -i -e "s/<email>/$email/g"
+    fi
 }
 
 # ---
