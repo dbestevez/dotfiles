@@ -14,7 +14,7 @@ install_dotfiles() {
     fi
 
     if [[ "$2" != "" ]]; then
-        toignore=$(echo $2 | sed -s "s/\s\+/\\\|/g")
+        toignore=$(echo $2 | sed -e "s/\s\+/\\\|/g")
         dotfiles=$(echo $tools | sed -e "s/$toignore//g")
     fi
 
@@ -103,7 +103,7 @@ install_tools() {
     fi
 
     if [[ "$2" != "" ]]; then
-        toignore=$(echo $2 | sed -s "s/\s\+/\\\|/g")
+        toignore=$(echo $2 | sed -e "s/\s\+/\\\|/g")
         tools=$(echo $tools | sed -e "s/$toignore//g")
     fi
 
@@ -169,8 +169,8 @@ post_install_muttrc() {
         read -e -p "  Account: " account
         read -e -p "  Email: " email
 
-        sed $HOME/.muttrc -i -e "s/<account>/$account/g"
-        sed $HOME/.muttrc -i -e "s/<email>/$email/g"
+        sed --follow-symlinks -i -e "s/<account>/$account/g" $HOME/.muttrc
+        sed --follow-symlinks -i -e "s/<email>/$email/g"     $HOME/.muttrc
     fi
 }
 
