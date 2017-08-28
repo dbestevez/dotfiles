@@ -178,16 +178,14 @@ post_install_muttrc() {
 # ---
 post_install_nvim() {
     # Custom links for vim
-    if type nvim > /dev/null 2>&1; then
-        if [ ! -d $HOME/.vim ]; then
-            echo "  Installing $HOME/.vim..."
-            ln -s $HOME/.config/nvim $HOME/.vim
-        fi
+    if [ ! -d $HOME/.vim ]; then
+        echo "  Installing $HOME/.vim..."
+        ln -s $HOME/.config/nvim $HOME/.vim
+    fi
 
-        if [ ! -f $HOME/.vimrc ]; then
-            echo "  Installing $HOME/.config/nvim/init.vim..."
-            ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc
-        fi
+    if [ ! -f $HOME/.vimrc ]; then
+        echo "  Installing $HOME/.config/nvim/init.vim..."
+        ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc
     fi
 
     # Install vim-plug
