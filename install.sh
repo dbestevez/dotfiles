@@ -130,7 +130,6 @@ post_install_fonts() {
 # Executes post-installation commands after symlinking gitconfig file.
 # ---
 post_install_gitconfig() {
-    # Ask for user and email for gitconfig
     if [ "`grep user $HOME/.gitconfig`" != "" ]; then
         return
     fi
@@ -159,7 +158,7 @@ post_install_githooks() {
 # ---
 post_install_muttrc() {
     # Ask for user and email for mutt
-    if [ "`grep \"<user>\" $HOME/.muttrc`" != "" ]; then
+    if [ "`grep -e '<email>' $HOME/.muttrc`" == "" ]; then
         return
     fi
 
@@ -207,6 +206,27 @@ post_install_nvim() {
     echo "  Installing vim plugins..."
     if type /usr/bin/vim > /dev/null 2>&1; then
         /usr/bin/vim -c PlugInstall -c q -c q
+    fi
+}
+
+# ---
+# Executes post-installation commands after symlinking offlineimaprc file.
+# ---
+post_install_offlineimaprc() {
+    if [ "`grep -e '<email>' $HOME/.offlineimaprc`" == "" ]; then
+        return
+    fi
+
+    read -e -p "Do you want to add your email to your .offlineimaprc? (Y/n) " q
+
+    if [ "$q" == "Y" ] || [ "$q" == "y" ] || [ "$q" == "" ]; then
+        read -e -p " Account: " account
+        read -e -p " Email: " email
+        read -s -e -p " Password: " password
+
+        sed --follow-symlinks -i -e "s/<account>/$account/g"   $HOME/.offlineimaprc
+        sed --follow-symlinks -i -e "s/<email>/$email/g"       $HOME/.offlineimaprc
+        sed --follow-symlinks -i -e "s/<password>/$password/g" $HOME/.offlineimaprc
     fi
 }
 
