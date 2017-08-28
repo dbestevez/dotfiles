@@ -1,5 +1,3 @@
-bindkey -v
-
 source ~/.zgen/zgen.zsh
 
 if ! zgen saved; then
