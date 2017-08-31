@@ -58,11 +58,14 @@ bind pager R group-reply
 bind pager l list-reply
 bind pager L list-reply
 
+bind attach <return> view-mailcap
+
 # '?' is used for search-opposite
 bind pager \Ch help
 
-# Refresh mailbox
+# Macros
 macro index,pager s '<sync-mailbox><shell-escape>~/.bin/mail-sync &<enter>'
+macro index,pager d '<save-message>=diego@openhost.es/Trash<enter>'
 
 macro index I  '<change-folder>=diego@openhost.es/Inbox<enter>'
 macro index T  '<change-folder>=diego@openhost.es/Trash<enter>'
@@ -70,4 +73,3 @@ macro index St '<change-folder>=diego@openhost.es/Sent<enter>'
 macro index Sp '<change-folder>=diego@openhost.es/Spam<enter>'
 macro index a  '<save-message>=diego@openhost.es/Archives.'
 macro index A  '<tag-prefix-cond><save-message>=diego@openhost.es/Archives.'
-bind attach <return>    view-mailcap
