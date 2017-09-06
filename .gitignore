@@ -1,3 +1,4 @@
+*.log
 bspwm/theme
 mutt/theme
 nvim/autoload/lightline/colorscheme
