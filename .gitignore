@@ -1,6 +1,7 @@
 *.log
 bspwm/theme
 mutt/theme
+mutt/tmp
 nvim/autoload/lightline/colorscheme
 nvim/autoload/plug.vim
 nvim/colors
