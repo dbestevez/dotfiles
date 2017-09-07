@@ -43,6 +43,7 @@ Plug 'scrooloose/NERDCommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'vim-scripts/loremipsum'
+Plug 'vim-scripts/nginx.vim'
 Plug 'vim-scripts/po.vim--Jelenak'
 
 if has('nvim')
