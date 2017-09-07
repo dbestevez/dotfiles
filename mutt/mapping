@@ -30,8 +30,8 @@ bind index L list-reply
 bind index h limit
 
 # '?' is used for search-opposite
+bind index,pager H help
 
-bind index \Ch help
 # Pager
 bind pager j next-line
 bind pager k previous-line
@@ -59,9 +59,6 @@ bind pager l list-reply
 bind pager L list-reply
 
 bind attach <return> view-mailcap
-
-# '?' is used for search-opposite
-bind pager \Ch help
 
 # Macros
 macro index,pager s '<sync-mailbox><shell-escape>~/.bin/mail-sync &<enter>'
