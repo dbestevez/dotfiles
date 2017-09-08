@@ -44,7 +44,7 @@ for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2`; do
         HDMI* )
             if [[ "$PRIMARY" == "" ]] || \
                     ([[ "$PRIMARY" != "eDP1" ]] && \
-                    [[ "$PRIMARY" != "LVDS-1" ]]); then
+                    [[ "PRIMART" != "LVDS-1" ]]); then
                 SECONDARY="$PRIMARY"
                 PRIMARY="$m"
             else
@@ -71,6 +71,13 @@ for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2`; do
     esac
 done;
 
+if [[ "$SECONDARY" == "" ]]; then
+    bspc monitor $PRIMARY -d web im music code ssh email
+else
+    bspc monitor $PRIMARY -d web im music
+    bspc monitor $SECONDARY -d code ssh email
+fi
+
 echo "$PRIMARY" > /tmp/monitor
 
 # Configure monitors
@@ -81,16 +88,10 @@ if [[ "$PRIMARY" != "LVDS-1" ]] && [[ "$PRIMARY" != "eDP1" ]]; then
     p=$(mons | grep " $PRIMARY " | cut -d':' -f1)
     s=$(mons | grep " $SECONDARY " | cut -d':' -f1)
 
+    echo "mons -S $p,$s:R" > /tmp/mons.log
     mons -S $p,$s:R
 else
     mons -e right
-fi
-
-if [[ "$SECONDARY" == "" ]]; then
-    bspc monitor $PRIMARY -d web im music code ssh email
-else
-    bspc monitor $PRIMARY -d web im music
-    bspc monitor $SECONDARY -d code ssh email
 fi
 
 # Source the bspwm theme
