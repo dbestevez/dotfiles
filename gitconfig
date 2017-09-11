@@ -50,7 +50,7 @@
 [difftool]
     prompt = false
 [hooks]
-    global = $HOME/.githooks
+    global = $HOME/.config/githooks
 [merge]
     tool = vimdiff
 [mergetool]
