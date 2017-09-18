@@ -1,6 +1,7 @@
 autocmd VimEnter * call StartUp()
 autocmd VimEnter * wincmd p
 autocmd VimEnter * call UpdateNeomakePHPCS()
+autocmd VimEnter * call UpdateNeomakePHPMD()
 autocmd VimEnter * call UpdateNeomakeJsHint()
 
 autocmd BufWritePre * :call Preserve(":call TrimWhiteSpaces()")
