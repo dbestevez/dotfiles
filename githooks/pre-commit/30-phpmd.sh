@@ -27,15 +27,15 @@ phpmd_args="text phpmd.xml"
 
 # Define a location to save the output.
 outputlog="/tmp/phpmd_output_`date +%s`.log"
+returnCode=0
 
-echo -e -n "\033[1m==> Executing coding style checking...\033[0m "
+echo -e -n "\033[1m==> Executing code checking...\033[0m "
 
 # Execute code checking. (Assume that phpmd.xml is in root of project).
-output=`${phpmd} ${staged} ${phpmd_args}`
-returnCode=$?
-
-# Save the output of phpmd for posterity.
-echo "$output" > $outputlog
+for file in ${staged[@]}; do
+    ${phpmd} ${file} ${phpmd_args} >> $outputlog
+    returnCode=$(($returnCode + $?))
+done;
 
 # if unit tests fail, output a summary and exit with failure code.
 if [ $returnCode -eq 0 ]; then
@@ -54,9 +54,6 @@ fi
 echo -e "phpmd output saved in \E[34;5m${outputlog}\033[0m"
 echo -e "\E[33;5mCoding style issues found ($issues issues) found in:\033[0m"
 
-for file in "${staged[@]}"; do
+for file in ${staged[@]}; do
     echo -e " \E[34;5m$file\033[0m"
 done;
-
-# PHPMD never aborts commit
-exit 0
