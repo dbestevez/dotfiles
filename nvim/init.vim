@@ -223,7 +223,7 @@ let g:neomake_php_phpcs_maker = {
 \ }
 
 let g:neomake_php_phpmd_maker = {
-    \ 'args': [ '%p', 'text', 'cleancode,codesize,controversial,design,unusedcode' ],
+    \ 'args': [ '%:p', 'text' ],
     \ 'errorformat': '%E%f:%l%\s%m'
     \ }
 
