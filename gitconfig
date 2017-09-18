@@ -9,6 +9,7 @@
     co = checkout
     cp = cherry-pick
     d = diff
+    df = !git diff --name-only $(git rev-parse --abbrev-ref HEAD) $(git merge-base $(git rev-parse --abbrev-ref HEAD) $1)
     dc = diff --cached
     dt = difftool
     filelog = log -u
@@ -22,6 +23,7 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     p = push
+    prune = fetch --prune
     ra = log --graph --abbrev-commit --date=relative -20 --all --pretty='format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
     rh = reset --hard
     s = status --short --branch
@@ -62,3 +64,5 @@
     rebase = true
 [push]
     default = simple
+[status]
+    showUntrackedFiles = all
