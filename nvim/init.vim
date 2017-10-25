@@ -224,7 +224,7 @@ let g:neomake_php_phpcs_maker = {
 
 let g:neomake_php_phpmd_maker = {
     \ 'args': [ '%:p', 'text' ],
-    \ 'errorformat': '%E%f:%l%\s%m'
+    \ 'errorformat': '%W%f:%l%\s%\s%#%m'
     \ }
 
 let g:neomake_javascript_jshint_maker = {
