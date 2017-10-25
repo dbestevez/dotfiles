@@ -17,6 +17,7 @@
     h = help
     hide = update-index --assume-unchanged
     unhide = update-index --no-assume-unchanged
+    unhideall= !git ls-files -v | grep '^h' | sed -e 's/h //g' | xargs git update-index --no-assume-unchanged
     l = !git log --graph --pretty='tformat:%C(yellow)%h{%C(green)%ar{%C(bold blue)%an{%C(red)%d%C(reset) %s' $* | column -t -s '{' | less -FXRS
     la = !git list-aliases
     list-aliases = !git config -l | grep alias | cut -c 7-
@@ -51,6 +52,8 @@
     tool = vimdiff
 [difftool]
     prompt = false
+[icdiff]
+    options = --line-numbers
 [hooks]
     global = $HOME/.config/githooks
 [merge]
