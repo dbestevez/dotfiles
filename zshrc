@@ -23,6 +23,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/web-search
   zgen oh-my-zsh themes/murilasso
 
+  zgen load willghatch/zsh-snippets
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-history-substring-search
