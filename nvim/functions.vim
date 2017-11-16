@@ -195,6 +195,12 @@ function! s:find_file(dir, file, default)
     return a:default
 endfunction
 
+function! UpdateNeomakeCssLint()
+    let l:dir = expand('%:p:h')
+    let l:jshintrc = s:find_file(l:dir, '.csslintrc', '~/.csslintrc')
+    call add(g:neomake_css_csslint_maker.args, '--config=' . l:jshintrc)
+endfunction
+
 function! UpdateNeomakeJsHint()
     let l:dir = expand('%:p:h')
     let l:jshintrc = s:find_file(l:dir, '.jshintrc', '~/.jshintrc')
