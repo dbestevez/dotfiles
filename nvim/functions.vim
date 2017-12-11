@@ -201,10 +201,10 @@ function! UpdateNeomakeCssLint()
     call add(g:neomake_css_csslint_maker.args, '--config=' . l:jshintrc)
 endfunction
 
-function! UpdateNeomakeJsHint()
+function! UpdateNeomakeEsLint()
     let l:dir = expand('%:p:h')
-    let l:jshintrc = s:find_file(l:dir, '.jshintrc', '~/.jshintrc')
-    call add(g:neomake_javascript_jshint_maker.args, '--config=' . l:jshintrc)
+    let l:eslintrc = s:find_file(l:dir, '.eslintrc', '~/.eslintrc')
+    call add(g:neomake_javascript_eslint_maker.args, '--config=' . l:eslintrc)
 endfunction
 
 function! UpdateNeomakePHPCS()
