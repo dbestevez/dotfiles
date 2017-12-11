@@ -240,10 +240,18 @@ let g:neomake_php_phpmd_maker = {
     \ 'errorformat': '%W%f:%l%\s%\s%#%m'
     \ }
 
-let g:neomake_javascript_jshint_maker = {
-    \ 'args': [ '--verbose' ],
-    \ 'errorformat': '%A%f: line %l\, col %v\, %m \(%t%*\d\)',
+let g:neomake_javascript_eslint_maker = {
+    \ 'args': [ '--format=compact' ],
+    \ 'errorformat':
+    \   '%-G,'.
+    \   '%-G%f: lint free!,'.
+    \   '%f: line %l\, col %c\, %trror - %m,'.
+    \   '%f: line %l\, col %c\, %tarning - %m,'.
+    \   '%f: line %l\, col %c\, %m,'.
+    \   '%f: %tarning - %m'
     \ }
+
+let g:neomake_javascript_enabled_makers = [ 'eslint' ]
 
 " UltiSnips
 let g:UltiSnipsEditSplit = "vertical"

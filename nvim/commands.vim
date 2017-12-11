@@ -3,7 +3,7 @@ autocmd VimEnter * wincmd p
 autocmd VimEnter * call UpdateNeomakePHPCS()
 autocmd VimEnter * call UpdateNeomakePHPMD()
 autocmd VimEnter * call UpdateNeomakeCssLint()
-autocmd VimEnter * call UpdateNeomakeJsHint()
+autocmd VimEnter * call UpdateNeomakeEsLint()
 
 autocmd BufWritePre * :call Preserve(":call TrimWhiteSpaces()")
 autocmd BufRead,BufNewFile *.done,*.todo,*.task set filetype=taskpaper
