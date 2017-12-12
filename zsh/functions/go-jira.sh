@@ -6,9 +6,9 @@
 function jira_create_deployment()
 {
     template="$HOME/.jira.d/templates/deployment"
-    core=$(jira list -q "project = ONM AND status = 'Waiting for deployment' \
+    core=$(jira list -q "project = ONM AND status = 'In pre' \
         AND (labels IS EMPTY OR labels != themes) ORDER BY key ASC")
-    themes=$(jira list -q "project = ONM AND status = 'Waiting for deployment' \
+    themes=$(jira list -q "project = ONM AND status = 'In pre' \
         AND type != Deployment AND labels = themes ORDER BY key ASC")
 
     if [[ "$core" == "" ]] && [[ "$themes" == "" ]]; then
@@ -169,14 +169,15 @@ alias jawt="jira_log_day $(date +%Y-%m-%d)";
 alias jaww="jira_log_week"
 alias jc="jira create"
 alias jl="jira list"
-alias jlcd="jira_list_and_extract \"project = ONM AND status = 'Waiting for deployment' AND (labels IS EMPTY OR labels != themes) ORDER BY key ASC\""
-alias jlqa="jl -q \"assignee = currentUser() AND status = 'Waiting for QA'\""
-alias jltd="jira_list_and_extract \"project = ONM AND status = 'Waiting for deployment' AND type != Deployment AND labels = themes ORDER BY key ASC\""
+alias jlcd="jira_list_and_extract \"project = ONM AND status = 'In pre' AND (labels IS EMPTY OR labels != themes) ORDER BY key ASC\""
+alias jlqa="jl -q \"assignee = currentUser() AND status = 'In pre'\""
+alias jltd="jira_list_and_extract \"project = ONM AND status = 'In pre' AND type != Deployment AND labels = themes ORDER BY key ASC\""
 alias js="jira_extract_summary"
 alias jtd="jira trans 'Done' --noedit"
 alias jtda="jira_done_all"
-alias jtnf="jira trans 'Won\'t fix' --noedit"
 alias jtid="jira trans 'In development' --noedit"
+alias jtit="jira trans 'In testing' --noedit"
+alias jtnf="jira trans 'Won\'t fix' --noedit"
+alias jtipe="jira trans 'In pre' --noedit"
+alias jtipo="jira trans 'In production' --noedit"
 alias jtqa="jira trans 'Waiting for QA' --noedit"
-alias jtm="jira trans 'Waiting for release' --noedit"
-alias jtwd="jira trans 'Waiting for deployment' --noedit"
