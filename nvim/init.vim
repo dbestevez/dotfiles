@@ -217,6 +217,11 @@ let g:limelight_conceal_ctermfg = 10
 let NERDTreeHighlightCursorline = 1
 
 " Neomake
+let g:neomake_error_sign = { 'text': "\uf00d", 'texthl': 'NeomakeError' }
+let g:neomake_warning_sign = { 'text': "\uf071", 'texthl': 'NeomakeWarning' }
+let g:neomake_informational_sign = { 'text': "\uf05a", 'texthl': 'NeomakeInfo' }
+let g:neomake_message_sign = { 'text': "\uf09a", 'texthl': 'NeomakeInfo' }
+
 let g:neomake_css_csslint_maker = {
     \ 'args': [ '--format=compact' ],
     \ 'errorformat':
