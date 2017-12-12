@@ -25,12 +25,12 @@ set sort = date
 
 # Sidebar Patch --------------------------------------
 set mail_check_stats
-set sidebar_visible     = yes
-set sidebar_width       = 24
-set sidebar_short_path = yes
+set sidebar_visible       = yes
+set sidebar_width         = 24
+set sidebar_short_path    = yes
 set sidebar_folder_indent = yes
-set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
-set index_format = '%4C %Z %{%Y/%m/%d %H:%M} (%?l?%4l&%4c?) %-20.20L  %s'
+set sidebar_format        = '%B%?F? [%F]?%* %?N?%N/?%S'
+set index_format          = '%4C %Z %{%Y/%m/%d %H:%M} (%?l?%4l&%4c?) %-20.20L  %s'
 
 # Status Bar -----------------------------------------
 set status_chars  = " *%A"
