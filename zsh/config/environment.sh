@@ -25,3 +25,6 @@ export LESSOPEN="|~/.bin/lessfilter.sh %s"
 
 # Path
 export PATH=$HOME/.themer:$HOME/.git-hooks:$HOME/.bin:$HOME/.devtools/vendor/bin:$HOME/.devtools/node_modules/.bin:$HOME/.gem/ruby/2.4.0/bin:$PATH
+
+# Terminal
+[[ $TMUX = "" ]] && export TERM="xterm-256color"
