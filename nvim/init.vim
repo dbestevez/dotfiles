@@ -39,6 +39,7 @@ Plug 'matze/vim-move'
 Plug 'mhinz/vim-startify'
 Plug 'mrtazz/simplenote.vim'
 Plug 'neomake/neomake'
+Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
 Plug 'scrooloose/NERDCommenter'
 Plug 'scrooloose/nerdtree'
@@ -55,7 +56,7 @@ elseif has('lua')
 endif
 
 Plug 'SirVer/ultisnips'
-Plug 'stanangeloff/php.vim'
+Plug 'dbestevez/php.vim'
 Plug 'ingydotnet/yaml-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-cucumber'
@@ -211,7 +212,7 @@ let g:lightline = {
 \ }
 
 " Limelight
-let g:limelight_conceal_ctermfg = 10
+let g:limelight_conceal_ctermfg = 7
 
 " NERD Tree
 let NERDTreeHighlightCursorline = 1
