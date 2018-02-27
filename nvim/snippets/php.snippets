@@ -6,6 +6,9 @@ snippet @sec "The Security annotation"
 	@Security("${1:expresion}")
 snippet em "The ORM EntityManager"
 	$em = $this->get('orm.manager');
+snippet ex "Mock expects"
+	$this->${1:mock}->expects($this->${2:times}())->method('${3:method}')
+		->with(${4:data})->willReturn(${5:return});
 snippet fdoc "PHP documentation for function"
 	/**
 	 * ${1:description}
@@ -23,6 +26,10 @@ snippet license "Openhost license notice"
 	 * For the full copyright and license information, please view the LICENSE
 	 * file that was distributed with this source code.
 	 */
+snippet mb "Create a mock with MockBuilder"
+	$this->${1:name} = $this->getMockBuilder('${2:Class}')
+	    ->setMethods([ '${3:methods}' ])
+		->getMock();
 snippet phptest
 	<?php
 	/**
@@ -36,12 +43,11 @@ snippet phptest
 	namespace Tests\\${1:namespace};
 
 	use $1\\${2:class};
-	use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 	/**
 	 * Defines test cases for $2 class.
 	 */
-	class $2Test extends KernelTestCase
+	class $2Test extends \PHPUnit_Framework_TestCase
 	{
 		/**
 		 * Configures the testing environment.
