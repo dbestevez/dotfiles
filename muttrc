@@ -21,7 +21,7 @@ unset mark_old           # read/new is good enough for me
 set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
-set sort = date
+set sort = threads
 
 # Sidebar Patch --------------------------------------
 set mail_check_stats
@@ -29,12 +29,11 @@ set sidebar_visible       = yes
 set sidebar_width         = 24
 set sidebar_short_path    = yes
 set sidebar_folder_indent = yes
-set sidebar_format        = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_format        = '%B%?F? [%F]?%* %?N?%N/?%S '
 set index_format          = '%4C %Z %{%Y/%m/%d %H:%M} (%?l?%4l&%4c?) %-20.20L  %s'
 
 # Status Bar -----------------------------------------
 set status_chars  = " *%A"
-set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
 
 # Header Options -------------------------------------
 ignore *                                # ignore all headers
