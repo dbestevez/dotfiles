@@ -57,6 +57,7 @@
 [hooks]
     global = $HOME/.config/githooks
 [merge]
+    log = false
     tool = vimdiff
 [mergetool]
     keepBackup = false
