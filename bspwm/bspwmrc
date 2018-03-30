@@ -31,8 +31,8 @@ bspc config external_rules_command $HOME/.config/bspwm/spotify
 PRIMARY=""
 SECONDARY=""
 
-t=$(mons | grep enabled | wc -l)
-for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2`; do
+total=$(mons | grep enabled | wc -l)
+for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2 | sort`; do
     case "$m" in
         eDP1 )
             SECONDARY="$PRIMARY"
@@ -55,7 +55,7 @@ for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2`; do
             ;;
         DP* )
             if [[ "$PRIMARY" != "LVDS-1" ]] && [[ "$PRIMARY" != "eDP1" ]] \
-                    || ([[ "$PRIMARY" == "eDP1" ]] && [[ $t -eq 3 ]]); then
+                    || ([[ "$PRIMARY" == "eDP1" ]] && [[ $total -eq 3 ]]); then
                 SECONDARY="$PRIMARY"
                 PRIMARY="$m"
             else
