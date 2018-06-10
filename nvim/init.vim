@@ -163,6 +163,7 @@ let g:ctrlp_funky_syntax_highlight = 1
 
 " Deoplete/Neocomplete
 if has('nvim')
+    let g:deoplete#num_processes = 1
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#max_list = 10
 elseif has ('lua')
