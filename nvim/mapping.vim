@@ -7,8 +7,8 @@ noremap <Right> <NOP>
 " Vim shortcuts
 nnoremap ; :
 nnoremap <CR> :nohl<CR><CR>
-nnoremap - <C-a>
-nnoremap + <C-x>
+nnoremap + <C-a>
+nnoremap - <C-x>
 nmap <leader>php :set filetype=php<CR>
 nmap <leader>r :source $MYVIMRC<CR>
 nmap <leader>e :tabedit $MYVIMRC<CR>
@@ -89,3 +89,5 @@ vmap <Down> <Plug>MoveBlockDown
 vmap <Up>   <Plug>MoveBlockUp
 
 map -a :call SyntaxAttr()<CR>
+nnoremap <leader>d "=strftime('%Y-%m-%d %H:%M:%S')<CR>P
+inoremap \date <C-R>=strftime('%Y-%m-%d %H:%M:%S')<CR>
