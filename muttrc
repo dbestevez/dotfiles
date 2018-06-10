@@ -30,10 +30,14 @@ set sidebar_width         = 24
 set sidebar_short_path    = yes
 set sidebar_folder_indent = yes
 set sidebar_format        = '%B%?F? [%F]?%* %?N?%N/?%S '
-set index_format          = '%4C %Z %{%Y/%m/%d %H:%M} (%?l?%4l&%4c?) %-20.20L  %s'
+set index_format          = '%4C %Z %{%Y/%m/%d %H:%M} (%?l?%4l&%4c?) %-20.20L  %s %?M?(%M)?'
 
 # Status Bar -----------------------------------------
 set status_chars  = " *%A"
+
+# Pager ----------------------------------------------
+set pager_context = 5
+set pager_index_lines = 20
 
 # Header Options -------------------------------------
 ignore *                                # ignore all headers
@@ -72,3 +76,4 @@ push <collapse-all><last-entry>
 
 source ~/.config/mutt/alias
 source ~/.config/mutt/mapping
+source ~/.config/mutt/theme
