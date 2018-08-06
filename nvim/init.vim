@@ -277,3 +277,7 @@ let g:move_map_keys = 0
 if filereadable(expand('~/.simplenoterc'))
     source ~/.simplenoterc
 endif
+
+if filereadable(expand('~/.vim/autoload/theme.vim'))
+    source ~/.vim/autoload/theme.vim
+endif
