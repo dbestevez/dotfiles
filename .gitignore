@@ -5,6 +5,7 @@ mutt/theme
 mutt/tmp
 nvim/autoload/lightline/colorscheme
 nvim/autoload/plug.vim
+nvim/autoload/theme.vim
 nvim/colors
 nvim/plugged
 nvim/session
