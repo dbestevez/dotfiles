@@ -17,6 +17,7 @@ bspc config gapless_monocle      false
 bspc rule -a Firefox desktop='^1' follow=on
 bspc rule -a Google-chrome desktop='^1' follow=off
 bspc rule -a Chromium desktop='^1' follow=off
+bspc rule -a Hamster desktop='^1' follow=on
 bspc rule -a qutebrowser desktop='^1' follow=on
 bspc rule -a Slack desktop='^2' follow=off
 bspc config external_rules_command $HOME/.config/bspwm/spotify
@@ -69,6 +70,7 @@ done;
 
 echo "$PRIMARY" > /tmp/monitor
 export PRIMARY=$PRIMARY
+export SECONDARY=$SECONDARY
 
 # Configure monitors
 if [[ "$PRIMARY" != "LVDS-1" ]] && [[ "$PRIMARY" != "eDP1" ]]; then
