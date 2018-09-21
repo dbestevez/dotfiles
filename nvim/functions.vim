@@ -147,7 +147,7 @@ endfunction
 " Removes whitespaces at the end of the line
 function! TrimWhiteSpaces()
     " Ignore vmail buffer list
-    if &filetype == 'vmailMessageList'
+    if &filetype == 'vmailMessageList' || &filetype == 'mail'
         return
     endif
 
