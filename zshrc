@@ -14,7 +14,6 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/history
   zgen oh-my-zsh plugins/redis-cli
   zgen oh-my-zsh plugins/sublime
-  zgen oh-my-zsh plugins/thefuck
   zgen oh-my-zsh plugins/tmux
   zgen oh-my-zsh plugins/tmuxinator
   zgen oh-my-zsh plugins/vagrant
