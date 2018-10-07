@@ -22,75 +22,15 @@ bspc rule -a qutebrowser desktop='^1' follow=on
 bspc rule -a Slack desktop='^2' follow=off
 bspc config external_rules_command $HOME/.config/bspwm/spotify
 
-# Check monitors to define desktops
-PRIMARY=""
-SECONDARY=""
+# Detect and load specific environment settings
+[[ -f $HOME/.config/zsh/config/environments/$(hostname).sh ]] \
+    && source $HOME/.config/zsh/config/environments/$(hostname).sh \
+    || source $HOME/.config/zsh/config/environments/auto-detect.sh
 
-total=$(mons | grep enabled | wc -l)
-for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2 | sort`; do
-    case "$m" in
-        eDP1 )
-            SECONDARY="$PRIMARY"
-            PRIMARY="$m"
-            ;;
-        LVDS-1 )
-            SECONDARY="$PRIMARY"
-            PRIMARY="$m"
-            ;;
-        HDMI* )
-            if [[ "$PRIMARY" == "" ]] || \
-                    ([[ "$PRIMARY" != "DP1" ]] && \
-                    [[ "$PRIMARY" != "eDP1" ]] && \
-                    [[ "$PRIMARY" != "LVDS-1" ]]); then
-                SECONDARY="$PRIMARY"
-                PRIMARY="$m"
-            else
-                SECONDARY="$m"
-            fi
-            ;;
-        DP* )
-            if [[ "$PRIMARY" != "LVDS-1" ]] && [[ "$PRIMARY" != "eDP1" ]] \
-                    || ([[ "$PRIMARY" == "eDP1" ]] && [[ $total -eq 3 ]]); then
-                SECONDARY="$PRIMARY"
-                PRIMARY="$m"
-            else
-                SECONDARY="$m"
-            fi
-            ;;
-        VGA* )
-            if  [[ "$PRIMARY" == "LVDS-1" ]]; then
-               SECONDARY="VGA-1"
-            else
-                SECONDARY="$PRIMARY";
-                PRIMARY="VGA-1"
-            fi
-            ;;
-    esac
-done;
-
-echo "$PRIMARY" > /tmp/monitor
-export PRIMARY=$PRIMARY
-export SECONDARY=$SECONDARY
-
-# Configure monitors
-if [[ "$PRIMARY" != "LVDS-1" ]] && [[ "$PRIMARY" != "eDP1" ]]; then
-    # Turn off built-in display
-    xrandr --output eDP1 --off
-
-    p=$(mons | grep " $PRIMARY " | cut -d':' -f1)
-    s=$(mons | grep " $SECONDARY " | cut -d':' -f1)
-
-    mons -S $p,$s:R
-else
-    mons -e left
-fi
-
-if [[ "$SECONDARY" == "" ]]; then
-    bspc monitor $PRIMARY -d web im music code ssh email
-else
-    bspc monitor $PRIMARY -d web im music
-    bspc monitor $SECONDARY -d code ssh email
-fi
+# Configure bspwm for environment
+[[ -f $HOME/.config/bspwm/environments/$(hostname).sh ]] \
+    && source $HOME/.config/bspwm/environments/$(hostname).sh \
+    || source $HOME/.config/bspwm/environments/auto-detect.sh
 
 # Source the bspwm theme
 if [[ -f $HOME/.config/bspwm/theme ]]; then
