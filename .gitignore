@@ -1,13 +1,22 @@
 *.log
+
+# bspwm
 src/config/bspwm/theme
+
+# mutt
 src/config/mutt/alias
 src/config/mutt/cache
+src/config/mutt/sig
 src/config/mutt/theme
 src/config/mutt/tmp
+
+# nvim
 src/config/nvim/autoload/lightline/colorscheme
 src/config/nvim/autoload/plug.vim
 src/config/nvim/autoload/theme.vim
 src/config/nvim/colors
 src/config/nvim/plugged
 src/config/nvim/session
+
+# tmux
 src/config/tmux/theme.conf
