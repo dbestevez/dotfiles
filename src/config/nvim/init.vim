@@ -89,7 +89,7 @@ set background=dark
 colorscheme default
 
 syntax enable
-let &colorcolumn="".join(range(81,121),",")
+let &colorcolumn="".join(range(81,120),",")
 
 " Misc
 let mapleader="\<Space>"
@@ -189,7 +189,7 @@ let g:user_emmet_leader_key = '<C-w>'
 let g:lightline = {
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
-    \   'right': [ [ 'lineinfo'  ], [ 'percent', 'debug', 'neomake' ] ]
+    \   'right': [ [ 'lineinfo' ], [ 'percent', 'debug', 'neomake' ] ]
     \ },
     \ 'colorscheme': 'default',
     \ 'component_function': {
