@@ -1,5 +1,8 @@
 vol() {
+    sinks=$(pacmd list-sinks | grep index | sed -e "s/.*index:\s\+//g")
     volume=$(((65536 * $1 + 99) / 100))
 
-    pacmd set-sink-volume $SINK $volume
+    for sink in $(echo $sinks); do
+        pacmd set-sink-volume $sink $volume
+    done
 }
