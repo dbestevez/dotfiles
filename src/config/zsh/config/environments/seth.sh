@@ -6,9 +6,6 @@ export ETH="enp2s0"
 # Battery name
 export POWER=
 
-# Sink index for pamcd for vol function
-export SINK=5
-
 # Wireless internet interface for polybar
 export WLAN=
 

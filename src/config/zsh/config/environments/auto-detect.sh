@@ -6,9 +6,6 @@ export ETH=$(ifconfig | grep enp | cut -d ':' -f1)
 # Battery name
 export POWER=`ls /sys/class/power_supply | grep AC`
 
-# Sink index for pamcd for vol function
-export SINK=0
-
 # Wireless internet interface for polybar
 export WLAN=$(ifconfig | grep wlp | cut -d ':' -f1)
 
