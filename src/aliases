@@ -1,5 +1,4 @@
 alias gcal=gcalcli
-alias gnome-control-center='env XDG_CURRENT_DESKTOP=GNOME gnome-control-center'
 alias gs='gss'
 alias hl='hamster list'
 alias hsa='hamster start'
