@@ -22,6 +22,7 @@ type = Gmail
 remoteuser = <email>
 remotepass = <password>
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+ssl_version = tls1_2
 folderfilter = lambda folder: folder not in ['[Gmail]/All Mail']
 nametrans = lambda folder: { 'Archives': 'Archives',
                              '[Gmail]/Drafts': 'Drafts',
