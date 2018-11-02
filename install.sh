@@ -82,7 +82,8 @@ install_local() {
     echo -e "\E[37;32mDONE\033[0m"
 
     # Execute post_install function if exists
-    type "post_install_$1" > /dev/null 2>&1 && post_install_$1
+    name=$(echo $1 | sed -e "s/config\///g")
+    type "post_install_$name" > /dev/null 2>&1 && post_install_$name
 }
 
 # ---
