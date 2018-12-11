@@ -184,7 +184,8 @@ post_install_githooks() {
 # ---
 post_install_muttrc() {
     # Ask for user and email for mutt
-    if [ "`grep -e '<email>' $HOME/.muttrc`" == "" ]; then
+    if [ "`grep -e '<email>' $HOME/.muttrc`" == "" ] \
+            && [ "`grep -e '<email>' $HOME/.config/mutt/mapping`" == "" ]; then
         return
     fi
 
@@ -196,6 +197,7 @@ post_install_muttrc() {
 
         sed --follow-symlinks -i -e "s/<account>/$account/g" $HOME/.muttrc
         sed --follow-symlinks -i -e "s/<email>/$email/g"     $HOME/.muttrc
+        sed --follow-symlinks -i -e "s/<email>/$email/g"     $HOME/.config/mutt/mapping
     fi
 }
 
