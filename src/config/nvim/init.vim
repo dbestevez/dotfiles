@@ -38,7 +38,6 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'lilydjwg/colorizer'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
-Plug 'mhinz/vim-startify'
 Plug 'mrtazz/simplenote.vim'
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
@@ -73,6 +72,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Yggdroot/indentLine'
 Plug 'ryanoasis/vim-devicons'
 Plug 'dhruvasagar/vim-prosession'
+Plug 'mhinz/vim-startify'
 Plug 'kana/vim-textobj-function'
 Plug 'kana/vim-textobj-line'
 Plug 'kentaro/vim-textobj-function-php'
@@ -140,7 +140,7 @@ set smartcase
 set foldenable
 set foldlevelstart=10
 set foldmethod=indent
-set foldnestmax=10
+set foldnestmax=20
 
 source ~/.vim/functions.vim
 source ~/.vim/mapping.vim
