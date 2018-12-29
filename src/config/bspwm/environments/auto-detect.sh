@@ -14,8 +14,8 @@ else
 fi
 
 if [[ "$SECONDARY" == "" ]]; then
-    bspc monitor $PRIMARY -d web im music code ssh email
+    bspc monitor $PRIMARY -d web music extra code ssh extra
 else
-    bspc monitor $PRIMARY -d web im music
-    bspc monitor $SECONDARY -d code ssh email
+    bspc monitor $PRIMARY   -d web  music extra
+    bspc monitor $SECONDARY -d code ssh   extra
 fi
