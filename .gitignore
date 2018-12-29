@@ -18,5 +18,12 @@ src/config/nvim/colors
 src/config/nvim/plugged
 src/config/nvim/session
 
+# ranger
+src/config/ranger/__pycache__
+src/config/ranger/devicons.py
+src/config/ranger/bookmarks
+src/config/ranger/history
+src/config/ranger/plugins
+
 # tmux
 src/config/tmux/theme.conf
