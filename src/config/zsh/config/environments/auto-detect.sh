@@ -4,10 +4,10 @@
 export ETH=$(ifconfig | grep enp | cut -d ':' -f1)
 
 # Battery name
-export POWER=`ls /sys/class/power_supply | grep AC`
+export POWER=$(ls /sys/class/power_supply | grep AC)
 
 # Path to temperature source
-export TMP="$(find /sys/devices -name temp1_input | head -n 1)"
+export TMP=$(find /sys/devices -name temp1_input | head -n 1)
 
 # Wireless internet interface for polybar
 export WLAN=$(ifconfig | grep wlp | cut -d ':' -f1)
