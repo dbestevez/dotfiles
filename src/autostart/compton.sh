@@ -3,4 +3,6 @@
 # This script launches the compton compositor in background.
 # ---
 
-compton &
+killall compton
+
+compton --respect-prop-shadow &
