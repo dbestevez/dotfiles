@@ -20,7 +20,7 @@ bspc rule -a Chromium desktop='^1' follow=off
 bspc rule -a Hamster desktop='^1' follow=on
 bspc rule -a qutebrowser desktop='^1' follow=on
 bspc rule -a Slack desktop='^2' follow=off
-bspc config external_rules_command $HOME/.config/bspwm/spotify
+bspc config external_rules_command $HOME/.config/bspwm/external
 
 # Detect and load specific environment settings
 [[ -f $HOME/.config/zsh/config/environments/$(hostname).sh ]] \
