@@ -7,7 +7,7 @@ export ETH="enp2s0"
 export POWER=
 
 # Path to temperature source
-export TMP="/sys/devices/platform/it87.656/hwmon/hwmon4/temp1_input"
+export TEMPERATURE="/sys/devices/platform/it87.656/hwmon/hwmon4/temp1_input"
 
 # Wireless internet interface for polybar
 export WLAN=
