@@ -9,6 +9,7 @@ keysym l = l L Right NoSymbol lstroke Lstroke
 
 !CapsLock to Control_L
 keycode 66 = Control_L
+keycode 64 = Alt_L Alt_L ISO_Level3_Shift
 
 !Tab to Mode_switch
 keycode 23 = Mode_switch ISO_Left_Tab Tab ISO_Left_Tab Tab ISO_Left_Tab
