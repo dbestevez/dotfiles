@@ -34,7 +34,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-journal'
 Plug 'kana/vim-textobj-user'
-Plug 'lifepillar/vim-solarized8'
 Plug 'lilydjwg/colorizer'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
@@ -87,7 +86,6 @@ set t_Co=256
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:block-Cursor/lCursor-blinkon100,r-cr:hor20-Cursor/lCursor
 
 set background=dark
-colorscheme default
 
 syntax enable
 let &colorcolumn="".join(range(81,120),",")
@@ -138,7 +136,7 @@ set smartcase
 
 " Folding
 set foldenable
-set foldlevelstart=10
+set foldlevelstart=20
 set foldmethod=indent
 set foldnestmax=20
 
@@ -221,6 +219,8 @@ let g:limelight_conceal_ctermfg = 7
 let NERDTreeHighlightCursorline = 1
 
 " Neomake
+call neomake#configure#automake('w')
+
 let g:neomake_error_sign = { 'text': "\uf00d", 'texthl': 'NeomakeError' }
 let g:neomake_warning_sign = { 'text': "\uf071", 'texthl': 'NeomakeWarning' }
 let g:neomake_informational_sign = { 'text': "\uf05a", 'texthl': 'NeomakeInfo' }
@@ -261,6 +261,9 @@ let g:neomake_javascript_eslint_maker = {
     \ }
 
 let g:neomake_javascript_enabled_makers = [ 'eslint' ]
+
+" PHP
+let PHP_noArrowMatching = 1
 
 " UltiSnips
 let g:UltiSnipsEditSplit = "vertical"
