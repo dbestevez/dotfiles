@@ -35,10 +35,6 @@ mouse_support = no
 allow_for_physical_item_deletion = no
 show_hidden_files_in_local_browser = no
 
-# You can specify third character which will
-# be used to build 'empty' part of progressbar.
-progressbar_look = "─╼─"
-
 # Available values: database, playlist.
 default_place_to_search_in = database
 
@@ -46,6 +42,10 @@ default_place_to_search_in = database
 # media_library, playlist_editor, tag_editor, outputs, visualizer, clock.
 startup_screen = playlist
 screen_switcher_mode = playlist, browser
+
+# You can specify third character which will
+# be used to build 'empty' part of progressbar.
+progressbar_look = "─╼─"
 
 ##### song format #####
 ##
@@ -115,8 +115,7 @@ screen_switcher_mode = playlist, browser
 ##
 ## Note: colors can be nested.
 song_list_format = "$/r{$7%t $9}$R{$5%a$9} {$3|$9} {$8%b$9} {$3|$9} {$b$5%l$9$/b}"
-song_status_format = "$b{$8%t$9} | {$3%a$9} $1|$9 {$7%b$9} {$1|$9} {$6%y$9} {$/b}"
-#song_status_format = "{$3%a$9} - {$7%b$9} {$6(%y)$9} - {$8%t$9}"
+song_status_format = "{$8 %t$9} {$3 %a$9} {$7 %b$9} {$6 %y$9}"
 
 alternative_header_first_line_format = "$8$aqqu$/a$b {%t}|{%f} $/b$8$atqq$/a$9"
 alternative_header_second_line_format = "{{$8%a}{$8 - %b$9}{$8 (%y)$8}}|{%D$9}"
@@ -181,7 +180,7 @@ browser_playlist_prefix = "$5[P]$9 "
 ##   not available.
 ##
 #
-song_columns_list_format = "(20)[3]{a} (6f)[8]{NE:#} (50)[16]{t|f:Title} (20)[7]{b} (20)[14]{y:Year} (8f)[12]{l}"
+song_columns_list_format = "(4f)[2]{NE:#} (50)[16]{t|f:Title} (20)[3]{a} (20)[5]{b} (6f)[14]{yr:Year} (6f)[12]{lr} "
 
 ##### colors definitions #####
 ##
@@ -204,19 +203,19 @@ song_columns_list_format = "(20)[3]{a} (6f)[8]{NE:#} (50)[16]{t|f:Title} (20)[7]
 ##
 colors_enabled = yes
 
-window_border_color = 8
-active_window_border = 8
-alternative_ui_separator_color = 8
-header_window_color = 12
-main_window_color = 8
+window_border_color                 = 1
+active_window_border                = 1
+alternative_ui_separator_color      = 1
+header_window_color                 = 12
+main_window_color                   = 8
 current_item_inactive_column_prefix = "$(7_1)"
 current_item_inactive_column_suffix = "$9"
-current_item_prefix = "$b$(7_1)"
-current_item_suffix = "$9$/b"
-empty_tag_color = 8
-progressbar_color = 8
-progressbar_elapsed_color = 12
-state_flags_color = default
-state_line_color = 8
-statusbar_color = 8
-volume_color = 8
+current_item_prefix                 = "$b$(7_1)"
+current_item_suffix                 = "$9$/b"
+empty_tag_color                     = 1
+progressbar_color                   = 1
+progressbar_elapsed_color           = 12
+state_flags_color                   = default
+state_line_color                    = 1
+statusbar_color                     = 1
+volume_color                        = 1
