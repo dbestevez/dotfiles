@@ -90,6 +90,7 @@ noremap <F12> :NERDTreeTabsToggle<CR>
 
 " Vim-fake
 imap \foo <C-R>=fake#gen("foobar")<CR>
+imap \1 <C-R>=system('echo -n $RANDOM')<CR>
 
 " Vim-move
 nmap <Down> <Plug>MoveLineDown
