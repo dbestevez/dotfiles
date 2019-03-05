@@ -1,8 +1,9 @@
+" CtrlP
 function! CtrlPStatusMain(focus, byfname, regex, prev, item, next, marked)
     let g:lightline.ctrlp_regex = a:regex
-    let g:lightline.ctrlp_prev = a:prev
-    let g:lightline.ctrlp_item = a:item
-    let g:lightline.ctrlp_next = a:next
+    let g:lightline.ctrlp_prev  = a:prev
+    let g:lightline.ctrlp_item  = a:item
+    let g:lightline.ctrlp_next  = a:next
     return lightline#statusline(0)
 endfunction
 
@@ -10,6 +11,7 @@ function! CtrlPStatusProg(str)
     return lightline#statusline(0)
 endfunction
 
+" Goyo
 function! GoyoEnter()
   set noshowmode
   set noshowcmd
@@ -26,11 +28,39 @@ function! GoyoLeave()
   Limelight!
 endfunction
 
+" Lightline
 function! LightlineCtrlP()
     if expand('%:t') =~ 'ControlP'
         call lightline#link('iR'[g:lightline.ctrlp_regex])
-        return lightline#concatenate([g:lightline.ctrlp_prev, g:lightline.ctrlp_item
-                    \ , g:lightline.ctrlp_next], 0)
+        return lightline#concatenate([ g:lightline.ctrlp_prev,
+                    \ g:lightline.ctrlp_item, g:lightline.ctrlp_next ], 0)
+    else
+        return ''
+    endif
+endfunction
+
+function! LightlineCtrlPItem()
+    if expand('%:t') =~ 'ControlP'
+        call lightline#link('iR'[g:lightline.ctrlp_regex])
+        return g:lightline.ctrlp_item
+    else
+        return ''
+    endif
+endfunction
+
+function! LightlineCtrlPNext()
+    if expand('%:t') =~ 'ControlP'
+        call lightline#link('iR'[g:lightline.ctrlp_regex])
+        return lightline#concatenate([ '',  g:lightline.ctrlp_next ], 0)
+    else
+        return ''
+    endif
+endfunction
+
+function! LightlineCtrlPPrev()
+    if expand('%:t') =~ 'ControlP'
+        call lightline#link('iR'[g:lightline.ctrlp_regex])
+        return g:lightline.ctrlp_prev . ' '
     else
         return ''
     endif
@@ -38,38 +68,23 @@ endfunction
 
 function! LightlineDebug()
     if g:debug != 0
-        return 'D:' . substitute(g:debug, "\n", "", "")
+        return ' ' . substitute(g:debug, "\n", "", "")
     endif
 
     return ''
 endfunction
 
-function! LightlineFileEncoding()
-    return winwidth(0) > 83 ? (strlen(&fenc) ? &fenc : &enc) : ''
-endfunction
-
-function! LightlineFileFormat()
-    return winwidth(0) > 80 ? &fileformat . ' ' . WebDevIconsGetFileFormatSymbol() : ''
-endfunction
-
 function! LightlineFileName()
     let sname = expand('%:t')
     let fname = expand('%:T')
-    return fname == 'ControlP' ? g:lightline.ctrlp_item :
+    return fname == 'ControlP' ? '' :
         \ fname == '__Tagbar__' ? g:lightline.fname :
         \ fname =~ '__Gundo\' ? '' :
-        \ fname =~ 'NERD_tree' ? 'NERDTree' :
-        \ &ft == 'vimfiler' ? vimfiler#get_status_string() :
-        \ &ft == 'unite' ? unite#get_status_string() :
-        \ &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ fname =~ 'NERD_tree' ? '' :
         \ WebDevIconsGetFileTypeSymbol() . ' ' .
         \ ('' != fname ? (winwidth(0) > 100 ? fname : sname) : '[No Name]') .
         \ ('' != LightlineReadonly() ? ' ' . LightlineReadonly() : '') .
         \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
-endfunction
-
-function! LightlineFileType()
-    return winwidth(0) > 60 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
 function! LightlineFugitive()
@@ -89,15 +104,16 @@ function! LightlineMode()
     let fname = expand('%:t')
     let mode  = lightline#mode()
 
-    return fname == '__Tagbar__' ? 'Tagbar' :
-        \ fname == 'ControlP' ? 'CtrlP' :
-        \ fname == '__Gundo__' ? 'Gundo' :
-        \ fname == '__Gundo_Preview__' ? 'Gundo Preview' :
-        \ fname =~ 'NERD_tree' ? '' :
-        \ &ft == 'unite' ? 'Unite' :
-        \ &ft == 'vimfiler' ? 'VimFiler' :
-        \ &ft == 'vimshell' ? 'VimShell' :
-        \ ''
+    return fname == '__Tagbar__'        ? '' :
+        \ fname  == 'ControlP'          ? '' :
+        \ fname  == '__Gundo__'         ? '' :
+        \ fname  == '__Gundo_Preview__' ? '' :
+        \ fname  =~ 'NERD_tree'         ? 'פּ' :
+        \ mode   == 'COMMAND'           ? '' :
+        \ mode   == 'INSERT'            ? '' :
+        \ mode   == 'REPLACE'           ? '' :
+        \ mode   == 'NORMAL'            ? '' :
+        \ mode   == 'VISUAL'            ? '' : ''
 endfunction
 
 function! LightlineModified()
@@ -110,6 +126,10 @@ endfunction
 
 function! LightlineNeomake()
     return neomake#statusline#LoclistStatus()
+endfunction
+
+function! LightlinePaste()
+    return &paste != 0 ? '' : ''
 endfunction
 
 " Called once right before you start selecting multiple cursors

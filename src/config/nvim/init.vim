@@ -187,25 +187,26 @@ let g:user_emmet_leader_key = '<C-w>'
 " Lightline
 let g:lightline = {
     \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], ['ctrlpmark'] ],
+    \   'left':  [ [ 'mode', 'paste', 'ctrlpprev' ], [ 'fugitive', 'ctrlpitem' ], [ 'filename', 'ctrlpnext' ] ],
     \   'right': [ [ 'lineinfo' ], [ 'percent', 'debug', 'neomake' ] ]
     \ },
     \ 'colorscheme': 'default',
     \ 'component_function': {
-    \     'ctrlpmark': 'LightlineCtrlP',
-    \     'fileencoding': 'LightlineFileEncoding',
-    \     'fileformat': 'LightlineFileFormat',
-    \     'filename': 'LightlineFileName',
-    \     'filetype': 'LightlineFileType',
-    \     'fugitive': 'LightlineFugitive',
-    \     'mode': 'LightlineMode',
+    \     'ctrlp':     'LightlineCtrlP',
+    \     'ctrlpitem': 'LightlineCtrlPItem',
+    \     'ctrlpprev': 'LightlineCtrlPPrev',
+    \     'ctrlpnext': 'LightlineCtrlPNext',
+    \     'filename':  'LightlineFileName',
+    \     'fugitive':  'LightlineFugitive',
+    \     'mode':      'LightlineMode',
+    \     'paste':     'LightlinePaste',
     \ },
     \ 'component_expand': {
     \     'neomake': 'LightlineNeomake',
-    \     'debug': 'LightlineDebug',
+    \     'debug':   'LightlineDebug',
     \ },
     \ 'component_type': {
-    \   'debug': 'warning',
+    \   'debug':   'warning',
     \   'neomake': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
