@@ -128,6 +128,14 @@ function! LightlineNeomake()
     return neomake#statusline#LoclistStatus()
 endfunction
 
+function! LightlineNeomakeErrors()
+    return substitute(neomake#statusline#LoclistStatus(), 'E:\([0-9]\+\).*', ' \1', '')
+endfunction
+
+function! LightlineNeomakeWarnings()
+    return substitute(neomake#statusline#LoclistStatus(), '.*W:\([0-9]\+\)', ' \1', '')
+endfunction
+
 function! LightlinePaste()
     return &paste != 0 ? '' : ''
 endfunction
