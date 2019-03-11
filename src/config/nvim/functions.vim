@@ -129,11 +129,21 @@ function! LightlineNeomake()
 endfunction
 
 function! LightlineNeomakeErrors()
-    return substitute(neomake#statusline#LoclistStatus(), 'E:\([0-9]\+\).*', ' \1', '')
+    return substitute(
+        \ substitute(neomake#statusline#LoclistStatus(), 'W:.*', '', ''),
+        \ 'E:\([0-9]\+\).*',
+        \ ' \1',
+        \ ''
+    \ )
 endfunction
 
 function! LightlineNeomakeWarnings()
-    return substitute(neomake#statusline#LoclistStatus(), '.*W:\([0-9]\+\)', ' \1', '')
+    return substitute(
+        \ substitute(neomake#statusline#LoclistStatus(), 'E:\([0-9]\+\)', '', ''),
+        \ '.*W:\([0-9]\+\)',
+        \ ' \1',
+        \ ''
+    \ )
 endfunction
 
 function! LightlinePaste()
