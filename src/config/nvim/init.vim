@@ -101,6 +101,7 @@ set updatetime=250
 if !has('nvim')
     set encoding=utf8
     set ttymouse=xterm2
+    set clipboard=unnamed,unnamedplus
 endif
 
 if has('clipboard')
@@ -202,11 +203,15 @@ let g:lightline = {
     \     'paste':     'LightlinePaste',
     \ },
     \ 'component_expand': {
-    \     'neomake': 'LightlineNeomake',
-    \     'debug':   'LightlineDebug',
+    \     'debug':    'LightlineDebug',
+    \     'errors':   'LightlineNeomakeErrors',
+    \     'neomake':  'LightlineNeomake',
+    \     'warnings': 'LightlineNeomakeWarnings',
     \ },
     \ 'component_type': {
-    \   'debug':   'warning',
+    \   'warnings': 'warning',
+    \   'errors':  'error',
+    \   'debug':   'info',
     \   'neomake': 'error',
     \ },
     \ 'separator': { 'left': '', 'right': '' },
