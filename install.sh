@@ -1,6 +1,107 @@
 #!/bin/bash
 
 # ---
+# Displays a message with a bold font.
+#
+# @param $1 The message to display.
+# ---
+echo_bold() {
+    message=$1
+    shift
+    echo -e $@ "\033[1m$message\033[0m"
+}
+
+# ---
+# Displays an info message.
+#
+# @param $1 The message to display.
+# @param $@ Extra parameters for echo command.
+# ---
+echo_info() {
+    message="SKIP"
+    [ ! -z "$1" ] && message="$1"; shift;
+
+    echo -e $@ "\033[34;1m$message\033[0m"
+}
+
+# ---
+# Displays a warning message.
+#
+# @param $1 The message to display.
+# ---
+echo_failure() {
+    message="FAIL"
+    [ ! -z "$1" ] && message="$1"; shift;
+
+    echo -e $@ "\033[31;1m$message\033[0m"
+}
+
+# ---
+# Displays a message and adds extra characters at the end until a specified
+# string length is reached.
+#
+# @param $1 The message to display.
+# @param $2 The character to add at the end.
+# @param $3 The maximum string length.
+# @param $4 The string to show after extra characters.
+# ---
+echo_pad() {
+    local string=$1
+    local char=$2
+    local spaces=""
+    local size=80
+    local i=0
+
+    [[ "$2" != "" ]] && char="$2"
+    [[ "$3" != "" ]] && size=$3
+
+    for (( i = 0; i < $size; i++ )); do
+        spaces="$spaces$char"
+    done
+
+    echo -e -n "$string"
+    printf '%*.*s' 0 $(($size - ${#string} )) "$spaces"
+    echo -n -e "$4"
+}
+
+# ---
+# Displays a warning message.
+#
+# @param $1 The message to display.
+# ---
+echo_success() {
+    message="DONE"
+    [ ! -z "$1" ] && message="$1"; shift;
+
+    echo -e $@ "\E[32;1m$message\033[0m"
+}
+
+# ---
+# Displays a warning message.
+#
+# @param $1 The message to display.
+# ---
+echo_warning() {
+    message="SKIP"
+    [ ! -z "$1" ] && message="$1"; shift;
+
+    echo -e $@ "\033[33;1m$message\033[0m"
+}
+
+# ---
+# Check if the application is already installed.
+#
+# @param $1 The path to the source.
+# ---
+is_installed() {
+    [ -f $1 ] && return 0
+    [ -d $1 ] && return 0
+    [ -h $1 ] && return 0
+
+    return 1
+}
+
+# ---
 # Installs configurations.
 #
 # @param $1 The list of applications to install.
@@ -9,23 +110,22 @@
 install_configs() {
     dotfiles=`ls src/config`
 
-    if [[ "$1" != "" ]]; then
-        dotfiles=$1
-    fi
+    echo_bold "==> Installing configs..."
 
-    if [[ "$2" != "" ]]; then
-        toignore=$(echo $2 | sed -e "s/\s\+/\\\|/g")
-        dotfiles=$(echo $tools | sed -e "s/$toignore//g")
-    fi
+    i=1
+    total=$(echo "$dotfiles" | wc -w)
 
     for dotfile in $dotfiles; do
-        if [ -f src/config/$dotfile ]; then
-            install_local $dotfile false
-        fi
+        sPath="src/config/$dotfile"
+        tPath="$HOME/.config/$dotfile"
 
-        if [ -d src/config/$dotfile ]; then
-            install_local config/$dotfile true
-        fi
+        echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $dotfile)" "." 50
+
+        is_installed $tPath && { echo_warning "SKIP" -n; echo_info " (INSTALLED)"; continue; }
+
+        install_local $dotfile $sPath $tPath
+
+        i=$(($i+1))
     done;
 }
 
@@ -38,48 +138,40 @@ install_configs() {
 install_dotfiles() {
     dotfiles=`ls src --hide config`
 
-    if [[ "$1" != "" ]]; then
-        dotfiles=$1
-    fi
+    echo_bold "==> Installing dotfiles..."
 
-    if [[ "$2" != "" ]]; then
-        toignore=$(echo $2 | sed -e "s/\s\+/\\\|/g")
-        dotfiles=$(echo $tools | sed -e "s/$toignore//g")
-    fi
+    i=1
+    total=$(echo "$dotfiles" | wc -w)
 
     for dotfile in $dotfiles; do
-        if [ -f src/$dotfile ]; then
-            install_local $dotfile false
-        fi
+        sPath="$PWD/src/$dotfile"
+        tPath="$HOME/.$dotfile"
 
-        if [ -d src/$dotfile ]; then
-            install_local $dotfile true
-        fi
+        echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $dotfile)" "." 50
+
+        is_installed $tPath && { echo_warning "SKIP" -n; echo_info " (INSTALLED)"; continue; }
+
+        install_local $dotfile $sPath $tPath
+
+        i=$(($i+1))
     done;
 }
 
 # ---
-# Installs a configuration file or directory in $HOME or $HOME/.config.
+# Installs $1 into $2 and executes post-install function, if exists.
 #
-# @param $1 The file or directory to install.
-# @param $2 Whether to install in $HOME (false) or $HOME/.config (true).
+# @param $1 The name of the item to install.
+# @param $2 The source of the symlink.
+# @param $3 The target of the symlink.
 # ---
 install_local() {
-    target="$HOME/.$1"
-
-    if [ -f $target ] || [ -d $target ]; then
-        return
-    fi
-
-    echo -n "Installing $1..."
-    ln -s $PWD/src/$1 $target > /dev/null 2>&1
+    ln -s $2 $3 > /dev/null 2>&1
 
     if [ $? -ne 0 ]; then
-        echo -e "\E[31;5mFAIL\033[0m"
-        return
+        echo_failure && return;
     fi
 
-    echo -e "\E[37;32mDONE\033[0m"
+    echo_success
 
     # Execute post_install function if exists
     name=$(echo $1 | sed -e "s/config\///g")
@@ -90,22 +182,11 @@ install_local() {
 # Installs a library from a remote repository in $HOME or $HOME/.config.
 #
 # @param $1 The library to install.
-# @param $2 Whether to install in $HOME (false) or $HOME/.config (true).
-# @param $3 The URL of the remote repository.
+# @param $2 The URL of the remote repository.
+# @param $3 The target path to install the library to.
 # ---
 install_remote() {
-    target="$HOME/.$1"
-
-    if [[ $2 == true ]]; then
-        target="$HOME/.config/$1"
-    fi
-
-    if [ -f $target ] || [ -d $target ]; then
-        return
-    fi
-
-    echo -n "Installing $1..."
-    git clone $3 $target > /dev/null 2>&1
+    git clone $2 $3 > /dev/null 2>&1
 
     if [ $? -ne 0 ]; then
         echo -e "\E[31;5mFAIL\033[0m"
@@ -122,25 +203,26 @@ install_remote() {
 # @param $2 The list of applications to ignore.
 # ---
 install_tools() {
-    tools="git-hooks fonts zgen"
+    tools="https://github.com/dhellmann/git-hooks https://github.com/tarjoilija/zgen"
 
-    if [[ $1 != "" ]]; then
-        tools=$1
-    fi
+    echo_bold "==> Installing tools..."
 
-    if [[ "$2" != "" ]]; then
-        toignore=$(echo $2 | sed -e "s/\s\+/\\\|/g")
-        tools=$(echo $tools | sed -e "s/$toignore//g")
-    fi
+    i=1
+    total=$(echo "$tools" | wc -w)
 
-    echo $tools | grep "git-hooks" > /dev/null && \
-        install_remote git-hooks false https://github.com/dhellmann/git-hooks.git
+    for tool in $tools; do
+        name=$(echo $tool | sed -e "s/.*\/\([^\/]\)/\1/g")
+        tPath="$HOME/.config/$name"
 
-    echo $tools | grep "fonts" > /dev/null && \
-        install_remote fonts false https://github.com/powerline/fonts.git
+        echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $name)" "." 50
 
-    echo $tools | grep "zgen" > /dev/null && \
-        install_remote zgen false https://github.com/tarjoilija/zgen.git
+        is_installed $tPath && { echo_warning "SKIP" -n; echo_info " (INSTALLED)"; continue; }
+
+        install_remote $name $tool $tPath
+
+        i=$(($i+1))
+    done;
+
 }
 
 # ---
@@ -277,9 +359,7 @@ main() {
             -t | --no-tools )    ignoring=false; tools=false ;;
 
             -*)                  usage "Unknown option '$1'" ;;
-            * )                  [ $ignoring == true ] && \
-                                    toignore="$toignore $1" || \
-                                    toinstall="$toinstall $1" ;;
+            * )                  usage "Invalid argument '$1'" ;;
         esac
 
         shift;
@@ -301,12 +381,11 @@ usage() {
         echo "";
     fi
 
-    echo "Usage: install.sh [OPTION] [TOOL]"
+    echo "Usage: install.sh [OPTION]"
     echo "Installs all dotfiles and tools or the list of selected tools"
     echo ""
     echo "  -c, --no-configs     The script does not install configurations"
     echo "  -d, --no-dotfiles    The script does not install dotfiles"
-    echo "  -i, --ignore <tool>  The list of tools to ignore"
     echo "  -t, --no-tools       The script does not install tools"
 
     exit 0;
