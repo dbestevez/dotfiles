@@ -1,4 +1,4 @@
-source ~/.zgen/zgen.zsh
+source ~/.config/zgen/zgen.zsh
 
 if ! zgen saved; then
   zgen oh-my-zsh
