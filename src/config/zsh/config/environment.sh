@@ -21,10 +21,10 @@ export LANGUAGE=en_US.UTF-8
 
 # Less
 export LESS="-R"
-export LESSOPEN="|~/.bin/lessfilter.sh %s"
+export LESSOPEN="|~/config/zsh/bin/lessfilter.sh %s"
 
 # Path
-export PATH=$HOME/.themer:$HOME/.git-hooks:$HOME/.bin:$HOME/.devtools/vendor/bin:$HOME/.devtools/node_modules/.bin:$HOME/.gem/ruby/2.4.0/bin:$PATH
+export PATH=$HOME/.themer:$HOME/.config/git-hooks:$HOME/.config/zsh/bin:$HOME/.devtools/vendor/bin:$HOME/.devtools/node_modules/.bin:$HOME/.gem/ruby/2.4.0/bin:$PATH
 
 # Terminal
 [[ $TMUX = "" ]] && export TERM="xterm-256color"

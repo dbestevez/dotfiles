@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Run forever in background
+while true; do
+    offlineimap -u quiet 2>&1 > /tmp/offlineimap.log
+    sleep 900
+done &
+
+# Copy PID of loop
+LOOP_PID=$!
+
+# Run mutt in foreground (and wait for mutt to exit)
+neomutt
+
+kill $LOOP_PID              # These two lines are a cool trick to kill the
+wait $LOOP_PID 2>/dev/null  # infinite loop and hide the error that it generates
+
+# Sync mail once more after mutt exits
+mail-sync &
+
+# Force script to exit "cleanly"
+exit 0
