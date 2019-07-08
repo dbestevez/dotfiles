@@ -33,7 +33,9 @@ nmap <C-w><S-k> :res -5<CR>
 nmap <C-w><S-l> :vertical res +5<CR>
 
 " Terminal
-tnoremap <Esc> <C-\><C-n>
+if has("nvim")
+    tnoremap <Esc> <C-\><C-n>
+end
 
 " Function shortcuts
 nnoremap <silent> <C-h> :call WinMove('h')<CR>
