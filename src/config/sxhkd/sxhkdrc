@@ -6,6 +6,9 @@
 super + Return
     termite
 
+ctrl + alt + l
+    betterlockscreen -l blur
+
 # Program launcher
 super + r
     rofi -show run
@@ -18,7 +21,7 @@ super + s
 
 # make sxhkd reload its configuration files:
 super + Escape
-    pkill -USR1 -x sxhkd
+    $HOME/.autostart/sxhkd.sh
 
 # ---
 # bspwm hotkeys
@@ -32,9 +35,9 @@ super + h
 super + l
     bspc node -f east || bspc monitor -f east || bspc desktop -f east
 
-# quit bspwm normally
-super + ctrl + Escape
-    bspc quit
+# quit/restart bspwm normally
+super + ctrl + {Escape,r}
+    bspc {quit,wm -r}
 
 # close and kill
 super + {_,shift + }q
