@@ -1,3 +1,4 @@
+alias compton="sh ~/.autostart/compton.sh"
 alias gs='gss'
 alias hl='hamster list'
 alias hsa='hamster start'
