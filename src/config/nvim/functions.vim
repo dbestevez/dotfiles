@@ -78,9 +78,7 @@ function! LightlineFileName()
     let sname = expand('%:t')
     let fname = expand('%:T')
     return fname == 'ControlP' ? '' :
-        \ fname == '__Tagbar__' ? g:lightline.fname :
-        \ fname =~ '__Gundo\' ? '' :
-        \ fname =~ 'NERD_tree' ? '' :
+        \ fname =~ 'NERD_tree' ? 'NERD' :
         \ WebDevIconsGetFileTypeSymbol() . ' ' .
         \ ('' != fname ? (winwidth(0) > 100 ? fname : sname) : '[No Name]') .
         \ ('' != LightlineReadonly() ? ' ' . LightlineReadonly() : '') .
@@ -89,7 +87,7 @@ endfunction
 
 function! LightlineFugitive()
     try
-        if expand('%:t') !~? 'Tagbar\|Gundo\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+        if expand('%:t') !~? 'ControlP\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
             let mark = ' '  " edit here for cool mark
             let _ = fugitive#head()
             return strlen(_) ? mark._ : ''
