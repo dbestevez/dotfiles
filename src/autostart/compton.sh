@@ -3,6 +3,8 @@
 # This script launches the compton compositor in background.
 # ---
 
-killall compton
+killall compton > /dev/null 2>&1
 
-compton --respect-prop-shadow &
+if [ -f $HOME/.compton.conf ]; then
+    /usr/bin/compton --respect-prop-shadow &
+fi
