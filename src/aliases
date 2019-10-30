@@ -1,14 +1,12 @@
-alias gcal=gcalcli
 alias gs='gss'
 alias hl='hamster list'
 alias hsa='hamster start'
 alias hso='hamster stop'
 alias ks='tmux kill-session'
 alias kb='sh ~/.autostart/keyboard.sh'
+alias ls='exa'
 alias music=ncmpcpp
 alias mutt='mail'
 alias mux='tmuxinator'
 alias nf='neofetch --ascii ~/.neofetch --ascii_colors 27 39 45'
-alias odd='rm .development'
-alias ode='touch .development'
 alias zr='source ~/.zshrc'
