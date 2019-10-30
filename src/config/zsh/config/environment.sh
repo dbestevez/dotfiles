@@ -24,7 +24,14 @@ export LESS="-R"
 export LESSOPEN="|$HOME/.bin/lessfilter.sh %s"
 
 # Path
-export PATH=$HOME/.themer:$HOME/.config/git-hooks:$HOME/.config/zsh/bin:$HOME/.devtools/vendor/bin:$HOME/.devtools/node_modules/.bin:$HOME/.gem/ruby/2.4.0/bin:$PATH
+export PATH="$HOME/.themer:$HOME/.bin:$PATH"
 
 # Terminal
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
+
+# Environment configurations
+if [ -d $HOME/.environment ]; then
+    for file in $HOME/.environment/*; do
+        source $file
+    done
+fi
