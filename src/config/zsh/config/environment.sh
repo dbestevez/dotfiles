@@ -21,7 +21,7 @@ export LANGUAGE=en_US.UTF-8
 
 # Less
 export LESS="-R"
-export LESSOPEN="|~/.config/zsh/bin/lessfilter.sh %s"
+export LESSOPEN="|$HOME/.bin/lessfilter.sh %s"
 
 # Path
 export PATH=$HOME/.themer:$HOME/.config/git-hooks:$HOME/.config/zsh/bin:$HOME/.devtools/vendor/bin:$HOME/.devtools/node_modules/.bin:$HOME/.gem/ruby/2.4.0/bin:$PATH
