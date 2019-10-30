@@ -1,4 +1,4 @@
 text/html; w3m -v -F -o display_link_number=1 -T text/html %s; edit=vim; compose=vim; nametemplate=%s.html; copiousoutput; needsterminal
 text/csv; less; copiousoutput;
 application/pdf; evince %s
-image/*; ~/.bin/img.sh %s ; copiousoutput;
+image/*; ~/.config/zsh/bin/img.sh %s ; copiousoutput;
