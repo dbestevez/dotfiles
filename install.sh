@@ -116,7 +116,7 @@ install_configs() {
     total=$(echo "$dotfiles" | wc -w)
 
     for dotfile in $dotfiles; do
-        sPath="src/config/$dotfile"
+        sPath="$PWD/src/config/$dotfile"
         tPath="$HOME/.config/$dotfile"
 
         echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $dotfile)" "." 50
