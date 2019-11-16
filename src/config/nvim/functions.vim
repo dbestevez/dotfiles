@@ -89,13 +89,13 @@ function! LightlineFugitive()
     try
         if expand('%:t') !~? 'ControlP\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
             let mark = ' '  " edit here for cool mark
-            let _ = fugitive#head()
-            return strlen(_) ? mark._ : ''
+            let branch = fugitive#head()
+            return strlen(branch) ? mark . branch : ''
         endif
     catch
     endtry
 
-    return ''
+    return ''
 endfunction
 
 function! LightlineMode()
@@ -111,7 +111,8 @@ function! LightlineMode()
         \ mode   == 'INSERT'            ? '' :
         \ mode   == 'REPLACE'           ? '' :
         \ mode   == 'NORMAL'            ? '' :
-        \ mode   == 'VISUAL'            ? '' : ''
+        \ mode   == 'VISUAL'            ? '' :
+        \ mode   == 'V-BLOCK'           ? '' : mode
 endfunction
 
 function! LightlineModified()
