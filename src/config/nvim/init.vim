@@ -35,6 +35,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-journal'
 Plug 'kana/vim-textobj-user'
+Plug 'lambdalisue/suda.vim'
 Plug 'lilydjwg/colorizer'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
@@ -271,6 +272,9 @@ let g:neomake_javascript_enabled_makers = [ 'eslint' ]
 
 " PHP
 let PHP_noArrowMatching = 1
+
+" Suda
+let g:suda_smart_edit = 1
 
 " UltiSnips
 let g:UltiSnipsEditSplit = "vertical"
