@@ -12,14 +12,6 @@ nnoremap - <C-x>
 nmap <leader>php :set filetype=php<CR>
 nmap <leader>r :source $MYVIMRC<CR>
 nmap <leader>e :tabedit $MYVIMRC<CR>
-nmap <leader>w :w!<CR>
-
-if has("nvim")
-  command! W w !sudo -n tee % > /dev/null || echo "Press <leader>w to authenticate and try again"
-  map <leader>w :new<cr>:term sudo true<cr>
-else
-  command! W w !sudo tee % > /dev/null
-end
 
 " Split shortcuts
 nmap <C-w>- :rightb new<CR>
