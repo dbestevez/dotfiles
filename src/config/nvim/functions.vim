@@ -255,3 +255,38 @@ function! UpdateNeomakePHPMD()
     let l:phpmd_xml = s:find_file(l:dir, 'phpmd.xml', 'codesize,design,unusedcode,naming')
     call add(g:neomake_php_phpmd_maker.args, l:phpmd_xml)
 endfunction
+
+" Get an age weighted by generation distribution
+call fake#define('age', 'float2nr(floor(110 * fake#betapdf(1.0, 1.45)))')
+
+call fake#define('domain', 'tolower(substitute(printf("%s.%s",'
+    \ . 'fake#gen("surname"),'
+    \ . 'fake#gen("tld")), "\\s", "-", "g"))')
+
+call fake#define('email', 'tolower(substitute(printf("%s@%s.%s",'
+    \ . 'fake#gen("name"),'
+    \ . 'fake#gen("surname"),'
+    \ . 'fake#gen("tld")), "\\s", "-", "g"))')
+
+" Get a full name
+call fake#define('fullname', 'fake#gen("name") . " " . fake#gen("surname")')
+
+" Choose a random element from a list
+call fake#define('sex', 'fake#choice(["male", "female"])')
+
+" Get a name of male or female
+call fake#define('name', 'fake#int(1) ? fake#gen("male_name")'
+  \ . ' : fake#gen("female_name")')
+
+call fake#define('paragraph', 'join(map(range(fake#int(3,10)),"fake#gen(\"sentence\")"))')
+
+" Get a nonsense text like Lorem ipsum
+call fake#define('sentence', 'fake#capitalize('
+    \ . 'join(map(range(fake#int(3,15)),"fake#gen(\"nonsense\")"))'
+    \ . ' . fake#chars(1,"..............!?"))')
+
+call fake#define('text', 'join(map(range(fake#int(3,6)),"fake#gen(\"paragraph\")"), "--")')
+
+" Get a TLD (ordered by number of websites)
+call fake#define('tld', 'fake#get(fake#load("gtld"),'
+    \ . 'fake#betapdf(0.2, 3.0))')

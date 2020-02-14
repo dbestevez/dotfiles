@@ -283,7 +283,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 
 " Vim-fake
-let g:fake_src_paths = [ '~/.vim/autoload/vim-fake' ]
+let g:fake_src_paths = [ '~/.vim/autoload/vim-fake', '~/.vim/plugged/vim-fake/src' ]
 
 " Vim-move
 let g:move_map_keys = 0

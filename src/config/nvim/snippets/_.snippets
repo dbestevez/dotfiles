@@ -1,0 +1,50 @@
+snippet fakeage "fake#gen('age')"
+	`fake#gen('age')`
+
+snippet fakecountry "fake#gen('country')"
+	`fake#gen('country')`
+
+snippet fakedomain "fake#gen('domain')"
+	`fake#gen('domain')`
+
+snippet fakeemail "fake#gen('email')"
+	`fake#gen('email')`
+
+snippet fakefloat "fake#gen('float')"
+	`printf('%0.4f', fake#float())`
+
+snippet fakefoo "fake#gen('foobar')"
+	`fake#gen('foobar')`
+
+snippet fakefullname "fake#gen('fullname')"
+	`fake#gen('fullname')`
+
+snippet fakeint "fake#int()"
+	`fake#int()`
+
+snippet fakeintsmall "fake#int(0, 1000)"
+	`fake#int(0, 1000)`
+
+snippet fakejob "fake#gen('job')"
+	`fake#gen('job')`
+
+snippet fakeparagraph "fake#gen('paragraph')"
+	`substitute(fake#gen('paragraph'), '\v(.{70}\S*)\s+', "\\1\n", 'g')`
+
+snippet fakepassword "fake#chars(8)"
+	`fake#chars(8)`
+
+snippet fakesex "fake#gen('sex')"
+	`fake#gen('sex')`
+
+snippet fakeuser "fake#gen('name')"
+	`tolower(fake#gen('name'))`
+
+snippet faketext "fake#gen('text')"
+	`substitute(substitute(fake#gen('text'), '\v(.{70}\S*)\s+', "\\1\n", 'g'), '--', "\n\n", 'g')`
+
+snippet fakeword "fake#gen('word')"
+	`fake#gen('word')`
+
+snippet fakesentence "fake#gen('sentence')"
+	`fake#gen('sentence')`
