@@ -78,7 +78,7 @@ function! LightlineFileName()
     let sname = expand('%:t')
     let fname = expand('%:T')
     return fname == 'ControlP' ? '' :
-        \ fname =~ 'NERD_tree' ? 'NERD' :
+        \ fname =~ 'NERD_tree' ? '' :
         \ WebDevIconsGetFileTypeSymbol() . ' ' .
         \ ('' != fname ? (winwidth(0) > 100 ? fname : sname) : '[No Name]') .
         \ ('' != LightlineReadonly() ? ' ' . LightlineReadonly() : '') .
