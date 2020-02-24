@@ -52,10 +52,12 @@
     tool = vimdiff
 [difftool]
     prompt = false
+[hooks]
+    global = ~/.config/githooks
 [icdiff]
     options = --line-numbers
-[hooks]
-    global = $HOME/.config/githooks
+[include]
+    path = ~/.gitauthor
 [merge]
     log = false
     tool = vimdiff
