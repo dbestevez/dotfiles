@@ -87,7 +87,7 @@ endfunction
 
 function! LightlineFugitive()
     try
-        if expand('%:t') !~? 'ControlP\|NERD' && &ft !~? 'vimfiler' && exists('*fugitive#head')
+        if expand('%:t') !~? 'ControlP\|NERD' && &ft !~? 'vimfiler'
             let mark = ' '  " edit here for cool mark
             let branch = fugitive#head()
             return strlen(branch) ? mark . branch : ''
