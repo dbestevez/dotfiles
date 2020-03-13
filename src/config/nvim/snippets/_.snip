@@ -1,0 +1,75 @@
+snippet date "current date"
+options word
+    `strftime('%Y-%m-%d %H:%M:%S')`
+
+snippet fkage "fake#gen('age')"
+options word
+    `fake#gen('age')`
+
+snippet fkcountry "fake#gen('country')"
+options word
+    `fake#gen('country')`
+
+snippet fkdomain "fake#gen('domain')"
+options word
+    `fake#gen('domain')`
+
+snippet fkemail "fake#gen('email')"
+options word
+    `fake#gen('email')`
+
+snippet fkfloat "fake#gen('float')"
+options word
+    `printf('%0.4f', fake#float())`
+
+snippet fkfoo "fake#gen('foobar')" w
+options word
+    `fake#gen('foobar')`
+
+snippet fkfullname "fake#gen('fullname')"
+options word
+    `fake#gen('fullname')`
+
+snippet fkint "fake#int()"
+options word
+    `fake#int()`
+
+snippet fkjob "fake#gen('job')"
+options word
+    `fake#gen('job')`
+
+snippet fkname "fake#gen('name')"
+options word
+    `fake#gen('name')`
+
+snippet fkparagraph "fake#gen('paragraph')"
+options word
+    `substitute(fake#gen('paragraph'), '\v(.{70}\S*)\s+', "\\1\n", 'g')`
+
+snippet fkpassword "fake#chars(8)"
+options word
+    `fake#chars(8)`
+
+snippet fksentence "fake#gen('sentence')"
+options word
+    `fake#gen('sentence')`
+
+snippet fksex "fake#gen('sex')"
+options word
+    `fake#gen('sex')`
+
+snippet fksint "fake#int(0, 1000)"
+options word
+    `fake#int(0, 1000)`
+
+snippet fkuser "fake#gen('name')"
+options word
+    `tolower(fake#gen('name'))`
+
+snippet fktext "fake#gen('text')"
+options word
+    `substitute(substitute(fake#gen('text'), '\v(.{70}\S*)\s+', "\\1\n", 'g'), '--', "\n\n", 'g')`
+
+snippet fkword "fake#gen('word')"
+options word
+    `fake#gen('word')`
