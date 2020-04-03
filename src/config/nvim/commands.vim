@@ -6,7 +6,6 @@ autocmd VimEnter * call UpdateNeomakeCssLint()
 autocmd VimEnter * call UpdateNeomakeEsLint()
 
 autocmd BufWritePre * :call Preserve(":call TrimWhiteSpaces()")
-autocmd BufRead,BufNewFile *.done,*.todo,*.task set filetype=taskpaper
 
 autocmd User NeomakeFinished call lightline#update()
 
