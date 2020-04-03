@@ -27,7 +27,6 @@ Plug 'lambdalisue/suda.vim'
 Plug 'lilydjwg/colorizer'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
-Plug 'mhinz/vim-startify'
 Plug 'mrtazz/simplenote.vim'
 Plug 'neomake/neomake'
 Plug 'scrooloose/NERDCommenter'
@@ -40,6 +39,7 @@ Plug 'vim-scripts/po.vim--Jelenak'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'wesQ3/vim-windowswap'
 Plug 'Yggdroot/indentLine'
+Plug 'vim-vdebug/vdebug'
 
 " Autocompletion
 if has('nvim')
@@ -64,14 +64,15 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 " Obsession
 Plug 'tpope/vim-obsession'
 Plug 'dhruvasagar/vim-prosession'
+Plug 'mhinz/vim-startify'
 
 " Snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 
 " Syntax
-Plug 'blueyed/smarty.vim'
 Plug 'dbestevez/php.vim'
+Plug 'dbestevez/smarty.vim'
 Plug 'ingydotnet/yaml-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'plasticboy/vim-markdown'
