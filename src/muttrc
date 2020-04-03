@@ -6,7 +6,6 @@ set message_cachedir = ~/.config/mutt/cache/bodies  # Where to store bodies
 set certificate_file = ~/.config/mutt/certificates  # Where to store certs
 set mailcap_path     = ~/.config/mutt/mailcap       # Entries for filetypes
 set tmpdir           = ~/.config/mutt/tmp           # Where to keep temp files
-set signature        = ~/.config/mutt/sig           # My signature file
 
 # Basic Options --------------------------------------
 set wait_key = no        # shut up, mutt
@@ -47,29 +46,6 @@ hdr_order from: to: cc: date: subject:  # and in this order
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
-
-# Account Settings -----------------------------------
-
-# Default inbox.
-set spoolfile = "+<email>/Inbox"
-
-# Mailboxes to show in the sidebar.
-mailboxes +<email>/Inbox \
-          +<email>/Archives \
-          +<email>/Sent \
-          +<email>/Drafts \
-          +<email>/Spam \
-          +<email>/Trash
-
-# Other special folders.
-set mbox      = "+<email>/Archives"
-set postponed = "+<email>/Drafts"
-set record    = "+<email>/Sent"
-set trash     = "+<email>/Trash"
-
-set from     = "<email>"
-set sendmail = "/usr/bin/msmtp -a <account>"
-set sendmail_wait = 0
 
 # Always start with threads collapsed and with the most recent thread selected
 push <collapse-all><last-entry>
