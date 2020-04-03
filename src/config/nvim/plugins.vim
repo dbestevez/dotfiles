@@ -1,11 +1,12 @@
 " CtrlP
-let g:ctrlp_dont_split = 'nerdtree'
-let g:ctrlp_extensions = ['funky']
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:40'
-let g:ctrlp_max_depth = 20
-let g:ctrlp_max_files = 0
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_dont_split        = 'nerdtree'
+let g:ctrlp_extensions        = ['funky']
+let g:ctrlp_match_window      = 'bottom,order:btt,min:1,max:20,results:40'
+let g:ctrlp_max_depth         = 20
+let g:ctrlp_max_files         = 0
+let g:ctrlp_switch_buffer     = 0
+let g:ctrlp_user_command      = 'rg %s --files --color=never --glob ""'
+let g:ctrlp_usecaching        = 0
 let g:ctrlp_working_path_mode = "ra"
 let g:ctrlp_status_func = {
     \ 'main': 'CtrlPStatusMain',
@@ -121,6 +122,10 @@ let g:neosnippet#snippets_directory='~/.vim/snippets'
 
 " PHP
 let PHP_noArrowMatching = 1
+
+" Ripgrep
+let g:rg_command = 'rg --vimgrep --sort path'
+
 
 " Suda
 let g:suda_smart_edit = 1
