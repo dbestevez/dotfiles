@@ -50,6 +50,6 @@ alternative_order text/plain text/enriched text/html
 # Always start with threads collapsed and with the most recent thread selected
 push <collapse-all><last-entry>
 
-source ~/.config/mutt/alias
 source ~/.config/mutt/mapping
+source ~/.config/mutt/accounts
 source ~/.config/mutt/theme
