@@ -56,11 +56,4 @@ bind attach <return> view-mailcap
 
 # Macros
 macro index,pager s  '<sync-mailbox><shell-escape>~/.bin/mail-sync &<enter>'
-macro index,pager d  '<save-message>=<email>/Trash<enter>'
-macro index       gi '<change-folder>=<email>/Inbox<enter>'
-macro index       gt '<change-folder>=<email>/Trash<enter>'
-macro index       gs '<change-folder>=<email>/Sent<enter>'
-macro index       gp '<change-folder>=<email>/Spam<enter>'
-macro index       a  '<save-message>=<email>/Archives.'
-macro index       A  '<tag-prefix-cond><save-message>=<email>/Archives.'
 macro attach      W  '<save-entry><kill-line>~/Downloads'
