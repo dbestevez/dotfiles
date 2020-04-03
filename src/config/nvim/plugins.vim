@@ -126,6 +126,8 @@ let PHP_noArrowMatching = 1
 " Ripgrep
 let g:rg_command = 'rg --vimgrep --sort path'
 
+" Smarty
+let g:smarty_indent_block = 1
 
 " Suda
 let g:suda_smart_edit = 1
