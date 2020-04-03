@@ -120,12 +120,11 @@ install_configs() {
         tPath="$HOME/.config/$dotfile"
 
         echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $dotfile)" "." 50
+        i=$(($i+1))
 
         is_installed $tPath && { echo_warning "SKIP" -n; echo_info " (INSTALLED)"; continue; }
 
         install_local $dotfile $sPath $tPath
-
-        i=$(($i+1))
     done;
 }
 
@@ -148,12 +147,9 @@ install_dotfiles() {
         tPath="$HOME/.$dotfile"
 
         echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $dotfile)" "." 50
-
-        is_installed $tPath && { echo_warning "SKIP" -n; echo_info " (INSTALLED)"; continue; }
+        i=$(($i+1))
 
         install_local $dotfile $sPath $tPath
-
-        i=$(($i+1))
     done;
 }
 
@@ -165,6 +161,12 @@ install_dotfiles() {
 # @param $3 The target of the symlink.
 # ---
 install_local() {
+    if is_installed $3; then
+       echo_warning "SKIP" -n
+       echo_info " (INSTALLED)"
+       return 0
+    fi
+
     ln -s $2 $3 > /dev/null 2>&1
 
     if [ $? -ne 0 ]; then
@@ -215,23 +217,12 @@ install_tools() {
         tPath="$HOME/.config/$name"
 
         echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $name)" "." 50
+        i=$(($i+1))
 
         is_installed $tPath && { echo_warning "SKIP" -n; echo_info " (INSTALLED)"; continue; }
 
         install_remote $name $tool $tPath
-
-        i=$(($i+1))
     done;
-
-}
-
-# ---
-# Executes post-installation commands after installing fonts.
-# ---
-post_install_fonts() {
-    if [ -d $HOME/.fonts ]; then
-        fc-cache -vf
-    fi
 }
 
 # ---
