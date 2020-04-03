@@ -149,16 +149,6 @@ function! LightlinePaste()
     return &paste != 0 ? '' : ''
 endfunction
 
-" Called once right before you start selecting multiple cursors
-function! Multiple_cursors_before()
-    call keepcursor#disable()
-endfunction
-
-" Called once only when the multiple selection is canceled (default <Esc>)
-function! Multiple_cursors_after()
-    call keepcursor#enable()
-endfunction
-
 " Executes a command keeping the cursor position
 function! Preserve(command)
     "Save last search, and cursor position
