@@ -152,8 +152,8 @@ source ~/.vim/commands.vim
 source ~/.vim/keys.vim
 
 " Theme provided by themer (https://github.com/dbestevez/themer)
-if filereadable(expand('~/.vim/autoload/theme.vim'))
-    source ~/.vim/autoload/theme.vim
+if filereadable(expand('~/.vim/theme.vim'))
+    source ~/.vim/theme.vim
 endif
 
 " Simplenote
