@@ -145,6 +145,7 @@ set ignorecase
 set incsearch
 set smartcase
 
+source ~/.vim/detect.vim
 source ~/.vim/plugins.vim
 source ~/.vim/functions.vim
 source ~/.vim/commands.vim
