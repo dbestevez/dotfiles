@@ -4,9 +4,8 @@
 src/config/bspwm/theme
 
 # mutt
-src/config/mutt/alias
 src/config/mutt/cache
-src/config/mutt/sig
+src/config/mutt/accounts
 src/config/mutt/theme
 src/config/mutt/tmp
 
