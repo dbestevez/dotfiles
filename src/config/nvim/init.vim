@@ -89,10 +89,10 @@ filetype plugin indent on
 syntax   enable
 
 " Colors
-set t_Co=256
-set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:block-Cursor/lCursor-blinkon100,r-cr:hor20-Cursor/lCursor
 set background=dark
 let &colorcolumn="".join(range(81,120),",")
+set guicursor=n-v-c:block-blinkon0,i-ci-r-cr:block-blinkwait100-blinkon100-blinkon100
+set t_Co=256
 
 " Misc
 let mapleader="\<Space>"
