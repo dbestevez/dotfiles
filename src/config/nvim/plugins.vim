@@ -1,19 +1,22 @@
+" Comfortable-motion
+let g:comfortable_motion_friction = 80.0
+let g:comfortable_motion_air_drag = 3.75
+
 " CtrlP
-let g:ctrlp_dont_split        = 'nerdtree'
-let g:ctrlp_extensions        = ['funky']
-let g:ctrlp_match_window      = 'bottom,order:btt,min:1,max:20,results:40'
-let g:ctrlp_max_depth         = 20
-let g:ctrlp_max_files         = 0
-let g:ctrlp_switch_buffer     = 0
-let g:ctrlp_user_command      = 'rg %s --files --color=never --glob ""'
-let g:ctrlp_usecaching        = 0
-let g:ctrlp_working_path_mode = "ra"
-let g:ctrlp_status_func = {
+let g:ctrlp_dont_split             = 'nerdtree'
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_extensions             = ['funky']
+let g:ctrlp_match_window           = 'bottom,order:btt,min:1,max:20,results:40'
+let g:ctrlp_max_depth              = 20
+let g:ctrlp_max_files              = 0
+let g:ctrlp_switch_buffer          = 0
+let g:ctrlp_user_command           = 'rg %s --files --color=never --glob ""'
+let g:ctrlp_usecaching             = 0
+let g:ctrlp_working_path_mode      = "ra"
+let g:ctrlp_status_func            = {
     \ 'main': 'CtrlPStatusMain',
     \ 'prog': 'CtrlPStatusProg',
 \ }
-
-let g:ctrlp_funky_syntax_highlight = 1
 
 " Deoplete
 let g:deoplete#num_processes = 1

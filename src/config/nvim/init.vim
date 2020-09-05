@@ -36,6 +36,7 @@ Plug 'vim-scripts/po.vim--Jelenak'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'wesQ3/vim-windowswap'
 Plug 'Yggdroot/indentLine'
+Plug 'yuttie/comfortable-motion.vim'
 Plug 'vim-vdebug/vdebug'
 
 " Autocompletion
