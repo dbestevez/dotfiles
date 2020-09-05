@@ -1,13 +1,13 @@
 # Editor
 export EDITOR=vim
-export VISUAL=vim
 
 # Use neovim if available
 if type nvim > /dev/null; then
     export EDITOR=nvim
-    export VISUAL=nvim
     alias vim=nvim
 fi
+
+export VISUAL=$EDITOR
 
 # Language
 export LC_ALL=en_US.UTF-8
