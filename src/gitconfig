@@ -45,7 +45,6 @@
     untracked = green
 [core]
     excludesfile = ~/.gitignore
-    editor = vim
     whitespace = trailing-space,space-before-tab
 [diff]
     mnemonicprefix = true
