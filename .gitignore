@@ -28,3 +28,6 @@ src/config/ranger/plugins
 
 # tmux
 src/config/tmux/theme.conf
+
+# zsh
+src/config/zsh/config/environments/theme.sh
