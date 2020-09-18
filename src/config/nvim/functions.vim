@@ -90,12 +90,12 @@ function! LightlineFugitive()
         if expand('%:t') !~? 'ControlP\|NERD' && &ft !~? 'vimfiler'
             let mark = ' '  " edit here for cool mark
             let branch = fugitive#head()
-            return strlen(branch) ? mark . branch : ''
+            return strlen(branch) ? mark . branch : ''
         endif
     catch
     endtry
 
-    return ''
+    return ''
 endfunction
 
 function! LightlineMode()
