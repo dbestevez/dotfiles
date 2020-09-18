@@ -19,6 +19,9 @@ super + w
 super + s
     rofi -show ssh
 
+super + p
+    rofi -show combi
+
 # make sxhkd reload its configuration files:
 super + Escape
     $HOME/.autostart/sxhkd.sh
