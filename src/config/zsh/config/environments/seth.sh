@@ -15,3 +15,6 @@ export WLAN=
 # Monitors
 export PRIMARY="HDMI-A-1"
 export SECONDARY="DVI-D-0"
+
+# Monitor where xmenu should be shown
+export MENU_MONITOR=1

@@ -57,3 +57,6 @@ for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2 | sort`; do
             ;;
     esac
 done;
+
+# Monitor where xmenu should be shown
+export MENU_MONITOR=0
