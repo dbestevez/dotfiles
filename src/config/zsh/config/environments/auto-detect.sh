@@ -23,7 +23,7 @@ for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2 | sort`; do
             SECONDARY="$PRIMARY"
             PRIMARY="$m"
             ;;
-        LVDS-1 )
+        LVDS1 )
             SECONDARY="$PRIMARY"
             PRIMARY="$m"
             ;;
@@ -31,7 +31,7 @@ for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2 | sort`; do
             if [[ "$PRIMARY" == "" ]] || \
                     ([[ "$PRIMARY" != "DP1" ]] && \
                     [[ "$PRIMARY" != "eDP1" ]] && \
-                    [[ "$PRIMARY" != "LVDS-1" ]]); then
+                    [[ "$PRIMARY" != "LVDS1" ]]); then
                 SECONDARY="$PRIMARY"
                 PRIMARY="$m"
             else
@@ -39,7 +39,7 @@ for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2 | sort`; do
             fi
             ;;
         DP* )
-            if [[ "$PRIMARY" != "LVDS-1" ]] && [[ "$PRIMARY" != "eDP1" ]] \
+            if [[ "$PRIMARY" != "LVDS1" ]] && [[ "$PRIMARY" != "eDP1" ]] \
                     || ([[ "$PRIMARY" == "eDP1" ]] && [[ $total -eq 3 ]]); then
                 SECONDARY="$PRIMARY"
                 PRIMARY="$m"
@@ -48,7 +48,7 @@ for m in `mons | grep enabled | sed "s/\s\+/ /g" | cut -d' ' -f2 | sort`; do
             fi
             ;;
         VGA* )
-            if  [[ "$PRIMARY" == "LVDS-1" ]]; then
+            if  [[ "$PRIMARY" == "LVDS1" ]]; then
                SECONDARY="VGA-1"
             else
                 SECONDARY="$PRIMARY";
