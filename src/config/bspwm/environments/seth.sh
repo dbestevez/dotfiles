@@ -5,5 +5,5 @@ SECONDARY_INDEX=$(mons | grep " $SECONDARY " | cut -d':' -f1)
 
 mons -S $SECONDARY_INDEX,$PRIMARY_INDEX:R
 
-bspc monitor $PRIMARY   -d web  music extra
-bspc monitor $SECONDARY -d code ssh   extra
+bspc monitor $PRIMARY   -d 1 2 3
+bspc monitor $SECONDARY -d 4 5 6
