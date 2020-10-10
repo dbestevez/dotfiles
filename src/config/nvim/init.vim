@@ -1,7 +1,7 @@
 set nocompatible
 filetype off
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
@@ -146,15 +146,15 @@ set ignorecase
 set incsearch
 set smartcase
 
-source ~/.vim/detect.vim
-source ~/.vim/plugins.vim
-source ~/.vim/functions.vim
-source ~/.vim/commands.vim
-source ~/.vim/keys.vim
+source ~/.config/nvim/detect.vim
+source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/functions.vim
+source ~/.config/nvim/commands.vim
+source ~/.config/nvim/keys.vim
 
 " Theme provided by themer (https://github.com/dbestevez/themer)
-if filereadable(expand('~/.vim/theme.vim'))
-    source ~/.vim/theme.vim
+if filereadable(expand('~/.config/nvim/themer.vim'))
+    source ~/.config/nvim/themer.vim
 endif
 
 " Simplenote

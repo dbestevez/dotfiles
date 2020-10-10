@@ -123,7 +123,7 @@ let g:neomake_javascript_eslint_maker = {
 let g:neomake_javascript_enabled_makers = [ 'eslint' ]
 
 " Neosnippet
-let g:neosnippet#snippets_directory='~/.vim/snippets'
+let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 
 " PHP
 let PHP_noArrowMatching = 1
@@ -141,7 +141,7 @@ let g:suda_smart_edit = 1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Vim-fake
-let g:fake_src_paths = [ '~/.vim/autoload/vim-fake', '~/.vim/plugged/vim-fake/src' ]
+let g:fake_src_paths = [ '~/.config/nvim/autoload/vim-fake', '~/.config/nvim/plugged/vim-fake/src' ]
 
 " Vim-move
 let g:move_map_keys = 0
