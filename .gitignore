@@ -20,6 +20,9 @@ src/config/nvim/snippets/qa.snippets
 src/config/nvim/themer.vim
 src/config/nvim/themes
 
+# polybar
+src/config/polybar/config
+
 # ranger
 src/config/ranger/__pycache__
 src/config/ranger/devicons.py
