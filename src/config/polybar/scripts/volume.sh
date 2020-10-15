@@ -153,10 +153,6 @@ function mute() {
 # @param $3 The notification icon.
 # ---
 function sendNotification() {
-    if [[ "$NOTIFICATIONS" == "no" ]]; then
-        return
-    fi
-
     local title="$1"
 
     if command -v dunstify &>/dev/null; then
@@ -252,7 +248,6 @@ function main() {
     MUTED_BACKGROUND_END=
     MUTED_FOREGROUND_START=
     MUTED_FOREGROUND_END=
-    NOTIFICATIONS="yes"
 
     # Environment & global constants for the script
 
