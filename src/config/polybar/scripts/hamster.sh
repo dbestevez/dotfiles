@@ -106,8 +106,12 @@ function notify() {
     icon="error"
 
     if command -v hamster > /dev/null 2>&1; then
-        text=$(hamster current | cut -d ' ' -f 3)
+        text=$(hamster current)
         icon="task-due"
+
+        if [[ "$text" != "No activity" ]]; then
+            text=$(echo $text | cut -d ' ' -f 3)
+        fi
     fi
 
     sendNotification "Hamster" "$text" $icon
