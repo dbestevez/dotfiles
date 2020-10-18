@@ -30,6 +30,9 @@ export PATH="$HOME/.themer:$HOME/.bin:$PATH"
 # Terminal
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
+# Clipmenu + rofi
+export CM_LAUNCHER=rofi-script
+
 # Environment configurations
 if [ -d $HOME/.environment ]; then
     for file in $HOME/.environment/*; do

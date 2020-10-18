@@ -11,15 +11,18 @@ ctrl + alt + l
 
 # Program launcher
 super + r
-    rofi -show run
+    rofi -modi "run,window,ssh,:clipmenu" -show run
 
 super + w
-    rofi -show window
+    rofi -modi "run,window,ssh,:clipmenu" -show window
 
 super + s
-    rofi -show ssh
+    rofi -modi "run,window,ssh,:clipmenu" -show ssh
 
 super + p
+    rofi -modi "run,window,ssh,:clipmenu" -show ""
+
+super + a
     rofi -show combi
 
 # make sxhkd reload its configuration files:
