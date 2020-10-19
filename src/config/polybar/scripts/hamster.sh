@@ -28,11 +28,13 @@ function help() {
 function isActive() {
     command -v hamster > /dev/null 2>&1 || return 1
 
-    if [[ "$(hamster current)" != "No activity" ]]; then
-        return 0
+    output=$(hamster current 2>&1)
+
+    if [[ "$output" = "No activity" ]] || [[ "$output" =~ "Unable to init server"  ]]; then
+        return 1
     fi
 
-    return 1
+    return 0
 }
 
 # ---
