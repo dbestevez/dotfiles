@@ -11,16 +11,16 @@ ctrl + alt + l
 
 # Program launcher
 super + r
-    rofi -modi "run,window,ssh,:clipmenu" -show run
+    rofi -modi "run,window,ssh,:clipmenu" -show run
 
 super + w
-    rofi -modi "run,window,ssh,:clipmenu" -show window
+    rofi -modi "run,window,ssh,:clipmenu" -show window
 
 super + s
-    rofi -modi "run,window,ssh,:clipmenu" -show ssh
+    rofi -modi "run,window,ssh,:clipmenu" -show ssh
 
 super + p
-    rofi -modi "run,window,ssh,:clipmenu" -show ""
+    rofi -modi "run,window,ssh,:clipmenu" -show ""
 
 super + a
     rofi -show combi
