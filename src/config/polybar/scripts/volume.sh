@@ -5,15 +5,14 @@
 # ---
 function decreaseVolume() {
     local sink=$(getSink)
-    local volume=$(($(getVolume "$sink") - STEP))
+    local volume=$(getVolume "$sink")
+    local newVolume=$((volume - STEP))
 
-    if [ "$volume" -le "0" ]; then
-        pactl set-sink-volume "$sink" "0%"
-    else
+    if [ "$volume" -gt "0" ]; then
+        volume=$newVolume
         pactl set-sink-volume "$sink" "$volume%"
+        sendNotification "Volume" "$volume%" "audio-volume-high"
     fi
-
-    sendNotification "Volume" $volume% "audio-volume-high"
 }
 
 # ---
@@ -77,15 +76,14 @@ function getVolume() {
 # ---
 function increaseVolume() {
     local sink=$(getSink)
-    local volume=$(($(getVolume "$sink") + STEP))
+    local volume=$(getVolume "$sink")
+    local newVolume=$(($(getVolume "$sink") + STEP))
 
-    if [ "$volume" -ge "$MAX_VOL" ]; then
-        pactl set-sink-volume "$sink" "$MAX_VOL%"
-    else
+    if [ "$volume" -lt "$MAX_VOL" ]; then
+        volume=$newVolume
         pactl set-sink-volume "$sink" "$volume%"
+        sendNotification "Volume" "$volume%" "audio-volume-high"
     fi
-
-    sendNotification "Volume" "$volume%" "audio-volume-high"
 }
 
 # ---
@@ -241,7 +239,7 @@ function help() {
 # ---
 function main() {
     STEP=5
-    MAX_VOL=10
+    MAX_VOL=100
     VOLUME_ICONS=( "" "" "" )
     MUTED_ICON="ﱝ"
     MUTED_BACKGROUND_START=
