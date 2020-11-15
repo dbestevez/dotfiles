@@ -8,11 +8,7 @@ function decreaseVolume() {
     local volume=$(getVolume "$sink")
     local newVolume=$((volume - STEP))
 
-    if [ "$volume" -gt "0" ]; then
-        volume=$newVolume
-        pactl set-sink-volume "$sink" "$volume%"
-        sendNotification "Volume" "$volume%" "audio-volume-high"
-    fi
+    setVolume $newVolume
 }
 
 # ---
@@ -79,11 +75,7 @@ function increaseVolume() {
     local volume=$(getVolume "$sink")
     local newVolume=$(($(getVolume "$sink") + STEP))
 
-    if [ "$volume" -lt "$MAX_VOL" ]; then
-        volume=$newVolume
-        pactl set-sink-volume "$sink" "$volume%"
-        sendNotification "Volume" "$volume%" "audio-volume-high"
-    fi
+    setVolume $newVolume
 }
 
 # ---
@@ -146,6 +138,8 @@ function mute() {
 }
 
 # ---
+# Displays a notification.
+#
 # @param $1 The notification title.
 # @param $2 The notification text.
 # @param $3 The notification icon.
@@ -160,6 +154,23 @@ function sendNotification() {
     fi
 
     $notify "$title" "$2" --icon=$3 &
+}
+
+# --
+# Changes the volume to the specified value.
+#
+# @param $1 The volume value.
+# --
+function setVolume() {
+    local sink=$(getSink)
+    local volume=$(getVolume "$sink")
+
+    if [ "$1" -le "$MAX_VOL" ] && [ "$1" -ge "0" ]; then
+        volume=$1
+    fi
+
+    pactl set-sink-volume "$sink" "$volume%"
+    sendNotification "Volume" "$volume%" "audio-volume-high"
 }
 
 # ---
@@ -240,6 +251,7 @@ function help() {
 function main() {
     STEP=5
     MAX_VOL=100
+    VOLUME=0
     VOLUME_ICONS=( "" "" "" )
     MUTED_ICON="ﱝ"
     MUTED_BACKGROUND_START=
@@ -265,6 +277,11 @@ function main() {
 
             -s | --step )
                 STEP=$1
+                shift
+                ;;
+
+            -v | --volume )
+                VOLUME=$2
                 shift
                 ;;
 
@@ -298,6 +315,10 @@ function main() {
         mute | toggle | unmute)
             mute $action
             synchronize
+            ;;
+
+        set)
+            setVolume $VOLUME
             ;;
 
         show)
