@@ -10,3 +10,4 @@ alias mutt='mail'
 alias mux='tmuxinator'
 alias nf='neofetch --ascii ~/.neofetch --ascii_colors 27 39 45'
 alias zr='source ~/.zshrc'
+alias zsp="zsh_snippets"
