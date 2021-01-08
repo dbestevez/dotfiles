@@ -5,3 +5,5 @@ function print_colors() {
         printf "\x1b[38;5;${i}mcolour${i}\n"
     done
 }
+
+print_colors
