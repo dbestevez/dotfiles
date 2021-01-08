@@ -205,7 +205,7 @@ install_remote() {
 # @param $2 The list of applications to ignore.
 # ---
 install_tools() {
-    tools="https://github.com/dhellmann/git-hooks https://github.com/tarjoilija/zgen"
+    tools="https://github.com/tarjoilija/zgen"
 
     echo_bold "==> Installing tools..."
 
@@ -243,13 +243,6 @@ post_install_gitconfig() {
         echo "    name = " $username >> $HOME/.gitconfig
         echo "    email = " $email >> $HOME/.gitconfig
     fi
-}
-
-# ---
-# Sets permissions for git_hooks after symlinking git_hooks folder.
-# ---
-post_install_githooks() {
-    chmod -R 755 $HOME/.config/githooks
 }
 
 # ---
