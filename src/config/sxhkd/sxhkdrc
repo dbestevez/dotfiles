@@ -4,7 +4,7 @@
 
 # terminal emulator
 super + Return
-    termite
+    kitty
 
 ctrl + alt + l
     betterlockscreen -l blur
