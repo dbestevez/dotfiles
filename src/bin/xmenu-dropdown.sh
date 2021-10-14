@@ -5,7 +5,7 @@ cat <<EOF | xmenu -i -p 0x30:$MENU_MONITOR | sh
 	  Google Chrome	google-chrome-stable &
 	  Firefox	firefox &
 	  Thunderbird	thunderbird &
-	  Termite	termite &
+	  Kitty	kitty &
   System
 	  Sound	gnome-control-center sound &
 	酪  Network	gnome-control-center network &
