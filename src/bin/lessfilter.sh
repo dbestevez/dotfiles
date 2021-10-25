@@ -6,12 +6,13 @@ case "$1" in
     *.lsp|*.l|*.pas|*.p|*.xml|*.xps|*.xsl|*.axp|*.ppd|*.pov|\
     *.diff|*.patch|*.py|*.rb|*.sql|*.ebuild|*.eclass)
         pygmentize "$1";;
+
     *.json)
         cat "$1" | json_reformat | pygmentize -l json;;
 
-    .bashrc|.bash_aliases|.bash_environment)
-        pygmentize -l sh "$1"
-        ;;
+    .aliases|.bashrc|.bash_environment|.zshrc)
+        pygmentize -l sh "$1" ;;
+
     *)
         grep "#\!/bin/bash" "$1" > /dev/null
         if [ "$?" -eq "0" ]; then
