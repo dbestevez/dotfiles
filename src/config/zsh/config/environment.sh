@@ -25,7 +25,16 @@ export LESS="-R"
 export LESSOPEN="|$HOME/.bin/lessfilter.sh %s"
 
 # Path
-export PATH="$HOME/.themer:$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
+
+echo "$PATH" | grep ".themer" -q -v \
+    && [ -d $HOME/.themer ] \
+    && export PATH="$HOME/.themer/:$PATH"
+
+echo "$PATH" | grep ".devtools" -q -v \
+    && [ -d $HOME/.themer ] \
+    && export PATH="$HOME/.devtools/vendor/bin:$PATH" \
+    && export PATH="$HOME/.devtools/node_modules/.bin:$PATH"
 
 # Terminal
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
