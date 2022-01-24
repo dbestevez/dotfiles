@@ -76,7 +76,7 @@ snippet phptest
 	namespace Tests\\${1:namespace};
 
 	use $1\\${2:class};
-	use PHPUnit\Framework\TestCase
+	use PHPUnit\Framework\TestCase;
 
 	/**
 	 * Defines test cases for $2 class.
@@ -84,7 +84,7 @@ snippet phptest
 	class $2Test extends TestCase
 	{
 	    /**
-	     * Configures the testing environment.
+	     * {@inheritdoc}
 	     */
 	    public function setUp()
 	    {
