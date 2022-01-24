@@ -36,6 +36,10 @@ echo "$PATH" | grep ".devtools" -q -v \
     && export PATH="$HOME/.devtools/vendor/bin:$PATH" \
     && export PATH="$HOME/.devtools/node_modules/.bin:$PATH"
 
+echo "$PATH" | grep ".git-hooks" -q -v \
+    && [ -d $HOME/.config/git-hooks ] \
+    && export PATH="$HOME/.config/git-hooks:$PATH"
+
 # Terminal
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
 
