@@ -65,16 +65,6 @@ snippet fdoc "PHP documentation for function"
 	 * @return ${5:type} ${6:Description}
 	 */
 
-snippet license "Openhost license notice"
-	/**
-	 * This file is part of the Onm package.
-	 *
-	 * (c) Openhost, S.L. <developers@opennemas.com>
-	 *
-	 * For the full copyright and license information, please view the LICENSE
-	 * file that was distributed with this source code.
-	 */
-
 snippet mb "Create a mock with MockBuilder"
 	$this->${1:name} = $this->getMockBuilder('${2:Class}')
 	    ->setMethods([ '${3:methods}' ])
@@ -82,22 +72,16 @@ snippet mb "Create a mock with MockBuilder"
 
 snippet phptest
 	<?php
-	/**
-	 * This file is part of the Onm package.
-	 *
-	 * (c) Openhost, S.L. <developers@opennemas.com>
-	 *
-	 * For the full copyright and license information, please view the LICENSE
-	 * file that was distributed with this source code.
-	 */
+
 	namespace Tests\\${1:namespace};
 
 	use $1\\${2:class};
+	use PHPUnit\Framework\TestCase
 
 	/**
 	 * Defines test cases for $2 class.
 	 */
-	class $2Test extends \PHPUnit\Framework\TestCase
+	class $2Test extends TestCase
 	{
 	    /**
 	     * Configures the testing environment.
