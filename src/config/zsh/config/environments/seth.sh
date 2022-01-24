@@ -13,8 +13,8 @@ export TEMPERATURE="/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp3_inpu
 export WLAN=
 
 # Monitors
-export PRIMARY="HDMI-A-0"
-export SECONDARY="HDMI-A-1"
+export PRIMARY="DisplayPort-1"
+export SECONDARY="HDMI-A-0"
 
 # Monitor where xmenu should be shown
 export MENU_MONITOR=1
