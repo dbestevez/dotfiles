@@ -236,7 +236,7 @@ endfunction
 
 function! UpdateNeomakePHPCS()
     let l:dir = expand('%:p:h')
-    let l:phpcs_xml = s:find_file(l:dir, 'phpcs.xml', 'PSR2')
+    let l:phpcs_xml = s:find_file(l:dir, 'phpcs.xml', 'PSR12')
     call add(g:neomake_php_phpcs_maker.args, '--standard=' . l:phpcs_xml)
 endfunction
 
