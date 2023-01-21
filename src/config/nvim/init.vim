@@ -38,6 +38,8 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'Yggdroot/indentLine'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'vim-vdebug/vdebug'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
 
 " Autocompletion
 if has('nvim')
