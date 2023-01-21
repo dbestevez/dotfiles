@@ -66,8 +66,8 @@ snippet fdoc "PHP documentation for function"
 	 */
 
 snippet mb "Create a mock with MockBuilder"
-	$this->${1:name} = $this->getMockBuilder('${2:Class}')
-	    ->setMethods([ '${3:methods}' ])
+	$this->${1:name} = $this->getMockBuilder(${2:Class})
+	    ->onlyMethods([ '${3:methods}' ])
 	    ->getMock();
 
 snippet phptest
@@ -76,6 +76,7 @@ snippet phptest
 	namespace Tests\\${1:namespace};
 
 	use $1\\${2:class};
+	use PHPUnit\Framework\MockObject\MockObject;
 	use PHPUnit\Framework\TestCase;
 
 	/**
@@ -86,22 +87,11 @@ snippet phptest
 	    /**
 	     * {@inheritdoc}
 	     */
-	    public function setUp()
+	    public function setUp(): void
 	    {
 
 	    }
 	}
-
-snippet smtplugin "PHP documentation for smarty plugin"
-	/*
-	 * Smarty plugin
-	 * -------------------------------------------------------------
-	 * File:     function.${1:function}.php
-	 * Type:     function
-	 * Name:     ${2:name}
-	 * Purpose:  ${3:description}
-	 * -------------------------------------------------------------
-	 */
 
 snippet sv "Dump variable and die using Symfony dumper"
 	\Symfony\Component\VarDumper\VarDumper::dump(${1:this});
