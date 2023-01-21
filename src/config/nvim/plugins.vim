@@ -109,6 +109,11 @@ let g:neomake_php_phpmd_maker = {
     \ 'errorformat': '%W%f:%l%\s%\s%#%m'
     \ }
 
+let g:neomake_php_phpstan_maker = {
+    \ 'args': [ 'analyze', '--error-format', 'raw', '--no-progress', '--level', 'max' ],
+    \ 'errorformat': '%f:%l:%m'
+    \ }
+
 let g:neomake_javascript_eslint_maker = {
     \ 'args': [ '--format=compact' ],
     \ 'errorformat':
