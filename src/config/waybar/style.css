@@ -1,0 +1,195 @@
+* {
+  /* `otf-font-awesome` is required to be installed for icons */
+  font-family: JetBrainsMono Nerd Font, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+window#waybar {
+  background: none;
+  color: #ffffff;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+  background-color: transparent;
+}
+window#waybar.solo {
+  background-color: #FFFFFF;
+}
+*/
+
+window#waybar.termite {
+  background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+  background-color: #000000;
+  border: none;
+}
+
+#battery,
+#clock,
+#cpu,
+#custom-media,
+#disk,
+#idle_inhibitor,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#scratchpad,
+#temperature,
+#tray,
+#wireplumber,
+#window,
+#workspaces button,
+#mpd {
+  background-color: #33364a;
+  border: .5px solid #282a36;
+  color: #ff79c6;
+  margin: 6px 0 0;
+  padding: 3px 9px;
+}
+
+#memory,
+#network,
+#tray,
+#window,
+#workspaces button:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+}
+
+#clock,
+#temperature,
+#tray,
+#window,
+#workspaces button:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-right: 6px;
+}
+
+window#waybar .empty #window {
+  background: none;
+}
+
+#battery.charging {
+  color: #d96aa9;
+  animation-name: blink;
+  animation-duration: .5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.critical {
+  color: #ff5555;
+  animation-name: blink;
+  animation-duration: .75s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#battery.full {
+  color: #6272a4;
+}
+
+@keyframes blink {
+  to {
+    color: #ff79c6;
+  }
+}
+
+#network.disconnected {
+  color: #6272a4;
+}
+
+#network,
+#pulseaudio {
+  padding-right: 12px;
+}
+
+#wireplumber {
+  background-color: #fff0f5;
+  color: #000000;
+}
+
+#wireplumber.muted {
+  background-color: #f53c3c;
+}
+
+#temperature.critical {
+  color: #ff5555;
+}
+
+#window {
+  background: #4c506c;
+}
+
+#waybar .empty #window {
+  background: none;
+}
+
+#workspaces button {
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+#workspaces button:first-child {
+  margin-left: 6px;
+}
+
+#workspaces button:hover {
+  background: #ff79c6;
+  color: #33364a;
+}
+
+#workspaces button.active {
+  background: #4c506c;
+  color: #ff79c6;
+}
+
+#workspaces button.urgent {
+  color: #ff5555;
+}
+
+#custom-media {
+  background-color: #66cc99;
+  color: #2a5c45;
+  min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+  background-color: #66cc99;
+}
+
+#custom-media.custom-vlc {
+  background-color: #ffa000;
+}
+
+#mpd {
+  background-color: #66cc99;
+  color: #2a5c45;
+}
+
+#mpd.disconnected {
+  background-color: #f53c3c;
+}
+
+#mpd.stopped {
+  background-color: #90b1b1;
+}
+
+#mpd.paused {
+  background-color: #51a37a;
+}

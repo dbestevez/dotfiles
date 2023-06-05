@@ -1,0 +1,127 @@
+{
+    "layer": "top", // Waybar at top layer
+    "position": "top", // Waybar position (top|bottom|left|right)
+    "spacing": 0, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["custom/media"],
+    "modules-right": ["memory", "cpu", "temperature", "network", "pulseaudio#sink", "pulseaudio#source", "battery", "clock", "tray"],
+    // Modules configuration
+    "wlr/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{name}",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": " {usage:2}%",
+        "tooltip": true
+    },
+    "memory": {
+        "format": " {:2}%"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+         "format-critical": "{icon} {temperatureC:2}°C",
+        "format": "{icon} {temperatureC:2}°C",
+        "format-icons": ["", "", "", "", "", ""]
+
+
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "format": "{icon}",
+        "tooltip-format": "{capacity}%",
+        "format-icons": [" ", " ", " ", " ", " "]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{essid}   {signalStrength}% \n{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+    },
+    "pulseaudio#sink": {
+        "format": "{icon}",
+        "format-muted": "ﱝ",
+        "format-icons": ["", "", ""],
+        "tooltip-format": "{desc}\n{icon} {volume}%",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%"
+
+    },
+    "pulseaudio#source": {
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "tooltip-format": "{desc}\n  {source_volume}%",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%"
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "spotify": "",
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+}
+

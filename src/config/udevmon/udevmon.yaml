@@ -1,0 +1,3 @@
+- JOB: "intercept -g $DEVNODE | interception-vimproved -c /etc/interception-vimproved/config.yaml | uinput -d $DEVNODE"
+  DEVICE:
+    LINK: .*-event-kbd
