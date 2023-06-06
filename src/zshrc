@@ -20,6 +20,7 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-autosuggestions
     zgen load zsh-users/zsh-history-substring-search
+    zgen load dracula/zsh-syntax-highlighting
 
     zgen save
 fi
