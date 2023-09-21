@@ -88,14 +88,14 @@ endfunction
 function! LightlineFugitive()
     try
         if expand('%:t') !~? 'ControlP\|NERD' && &ft !~? 'vimfiler'
-            let mark = ' '  " edit here for cool mark
+            let mark = '󰊢 '  " edit here for cool mark
             let branch = fugitive#head()
-            return strlen(branch) ? mark . branch : ''
+            return strlen(branch) ? mark . branch : '󰊢'
         endif
     catch
     endtry
 
-    return ''
+    return '󰊢'
 endfunction
 
 function! LightlineMode()
@@ -106,13 +106,13 @@ function! LightlineMode()
         \ fname  == 'ControlP'          ? '' :
         \ fname  == '__Gundo__'         ? '' :
         \ fname  == '__Gundo_Preview__' ? '' :
-        \ fname  =~ 'NERD_tree'         ? 'פּ' :
+        \ fname  =~ 'NERD_tree'         ? '󰙅' :
         \ mode   == 'COMMAND'           ? '' :
-        \ mode   == 'INSERT'            ? '' :
-        \ mode   == 'REPLACE'           ? '' :
+        \ mode   == 'INSERT'            ? '󰏫' :
+        \ mode   == 'REPLACE'           ? '' :
         \ mode   == 'NORMAL'            ? '' :
-        \ mode   == 'VISUAL'            ? '' :
-        \ mode   == 'V-BLOCK'           ? '' : mode
+        \ mode   == 'VISUAL'            ? '󰇀' :
+        \ mode   == 'V-BLOCK'           ? '󰇀' : mode
 endfunction
 
 function! LightlineModified()
