@@ -4,7 +4,7 @@
 # Copies the provided text to the primary clipboard to be able to paste it.
 # ---
 function copyEntry() {
-    wl-copy "$(echo "$@" | sed -e "s/↵/\n/g")"
+    wl-copy "$(echo "$@" | sed -e "s/↵/\n/g" -e "s/\\\\\\\/\\\/g")"
 }
 
 # ---
@@ -15,10 +15,10 @@ function showEntries() {
         sed -e "s/\\\n/↵/g" | \
         head -n -1 | tail -n +2 | \
         tac | \
-        sed -e "s/^\s*\"//g" -e "s/\"\s*$//g" -e "s/,$//g")
+        sed -e "s/^\s*\"//g" -e "s/\",$//g")
 
     while read -r line; do
-        echo $line
+        echo "$line"
     done <<< $entries
 }
 
@@ -29,7 +29,7 @@ function showEntries() {
 function main() {
     # If an option provided to the script
     if [[ "$@" != "" ]]; then
-        copyEntry $@;
+        copyEntry "$@";
         exit 0;
     fi
 
