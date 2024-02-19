@@ -32,6 +32,8 @@
     stl = stash list
     stp = stash pop
     undo = reset --soft HEAD^
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
 [color]
     ui = true
 [color "diff"]
