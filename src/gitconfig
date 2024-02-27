@@ -48,7 +48,15 @@
 [core]
     excludesfile = ~/.gitignore
     whitespace = trailing-space,space-before-tab
+    pager = delta
+[delta]
+    light = false
+    line-numbers = true
+    navigate = true
+    side-by-side = true
+    syntax-theme = Dracula
 [diff]
+    colorMoved = default
     mnemonicprefix = true
     tool = vimdiff
 [difftool]
@@ -59,12 +67,17 @@
     options = --line-numbers
 [include]
     path = ~/.gitauthor
+[interactive]
+    diffFilter = delta --color-only
 [merge]
+    conflictstyle = diff3
     log = false
-    tool = vimdiff
+    tool = fugitive
 [mergetool]
     keepBackup = false
     prompt = false
+[mergetool "fugitive"]
+	cmd = nvim -f -c \"Gvdiffsplit!\" \"$MERGED\"
 [pager]
     color = true
 [pull]
