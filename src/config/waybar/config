@@ -92,7 +92,7 @@
     },
     "pulseaudio#sink": {
         "format": "{icon}",
-        "format-muted": "ﱝ",
+        "format-muted": "󰝟",
         "format-icons": ["", "", ""],
         "tooltip-format": "{desc}\n{icon} {volume}%",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
