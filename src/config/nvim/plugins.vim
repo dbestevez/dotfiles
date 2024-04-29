@@ -133,6 +133,9 @@ let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
 " PHP
 let PHP_noArrowMatching = 1
 
+" Rainbow
+let g:rainbow_active = 1
+
 " Ripgrep
 let g:rg_command = 'rg --vimgrep --sort path'
 

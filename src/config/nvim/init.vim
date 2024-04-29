@@ -23,6 +23,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'lambdalisue/suda.vim'
 Plug 'lilydjwg/colorizer'
 Plug 'lumiliet/vim-twig'
+Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
 Plug 'mrtazz/simplenote.vim'
@@ -135,6 +136,7 @@ set previewheight=15
 set showmatch
 set splitbelow
 set splitright
+set switchbuf+=usetab,newtab
 set ttyfast
 set wildmenu
 
@@ -159,6 +161,15 @@ source ~/.config/nvim/keys.vim
 " Theme provided by themer (https://github.com/dbestevez/themer)
 if filereadable(expand('~/.config/nvim/themer.vim'))
     source ~/.config/nvim/themer.vim
+
+    let g:rainbow_conf = {
+    \	'guifgs': [ g:color13[0],  g:color14[0], g:color10[0], g:color11[0], g:color9[0] ],
+    \	'ctermfgs': [ g:color13[1],  g:color14[1], g:color10[1], g:color11[1], g:color9[1] ],
+    \	'operators': '_,_',
+    \	'contains_prefix': 'TOP',
+    \	'parentheses_options': '',
+    \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+    \}
 endif
 
 " Simplenote
