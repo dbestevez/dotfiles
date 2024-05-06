@@ -3,6 +3,9 @@
 # bspwm
 src/config/bspwm/theme
 
+# hypr
+src/config/hypr/theme.conf
+
 # mutt
 src/config/mutt/cache
 src/config/mutt/accounts
