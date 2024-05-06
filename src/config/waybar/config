@@ -1,25 +1,21 @@
 {
     "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
+    "position": "left", // Waybar position (top|bottom|left|right)
     "spacing": 0, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["wlr/workspaces"],
+    "modules-left": ["hyprland/workspaces", "tray"],
     "modules-center": ["custom/media"],
-    "modules-right": ["memory", "cpu", "temperature", "network", "pulseaudio#sink", "pulseaudio#source", "battery", "clock", "tray"],
+    "modules-right": ["group/hardware", "network", "group/audio", "battery", "clock", "group/powermenu"],
     // Modules configuration
-    "wlr/workspaces": {
-        "active-only": false,
-        "all-outputs": true,
-        "format": "{name}",
+    "hyprland/workspaces": {
+        "format": "{icon}",
         "format-icons": {
-            "1": "",
-            "2": "",
-            "3": "",
-            "4": "",
-            "5": "",
-            "urgent": "",
-            "focused": "",
-            "default": ""
+            "1": " ₁",
+            "2": "󰈹 ₂",
+            "3": "󰒱 ₃",
+            "4": " ₄",
+            "5": " ₅",
+            "6": "󰑣 ₆",
         }
     },
     "keyboard-state": {
@@ -50,7 +46,73 @@
     },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10
+        "spacing": 0
+    },
+	"group/hardware": {
+        "orientation": "inherit",
+        "drawer": {
+            "children-class": "button",
+            "transition-duration": 500,
+            "transition-left-to-right": false,
+        },
+		"modules": [
+            "custom/monitor",
+			"cpu",
+			"memory",
+			"temperature",
+		]
+	},
+	"group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "children-class": "button",
+            "transition-duration": 500,
+            "transition-left-to-right": false,
+        },
+		"modules": [
+            "pulseaudio#sink",
+			"pulseaudio#source",
+		]
+	},
+
+	"group/powermenu": {
+        "orientation": "inherit",
+        "drawer": {
+            "children-class": "button",
+            "transition-duration": 500,
+            "transition-left-to-right": false,
+        },
+		"modules": [
+            "custom/tray-toggle",
+            "custom/hyprland-restart",
+            "custom/logout",
+            "custom/reboot",
+            "custom/poweroff",
+		]
+	},
+    "custom/poweroff": {
+        "format": "",
+        "tooltip": "Power off",
+        "on-click": "poweroff"
+    },
+    "custom/reboot": {
+        "format": "",
+        "tooltip": "Power off",
+        "on-click": "poweroff"
+    },
+    "custom/logout": {
+        "format": "󰍃",
+        "tooltip": "Logout",
+        "on-click": "hyprctl dispatch exit"
+    },
+
+    "custom/tray-toggle": {
+        "format": "",
+        "tooltip": false,
+    },
+    "custom/monitor": {
+        "format": "",
+        "tooltip": false,
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -58,19 +120,17 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": " {usage:2}%",
+        "format": "󰻠 {usage:2}%",
         "tooltip": true
     },
     "memory": {
-        "format": " {:2}%"
+        "format": "󰍛 {:2}%"
     },
     "temperature": {
         "critical-threshold": 80,
-         "format-critical": "{icon} {temperatureC:2}°C",
-        "format": "{icon} {temperatureC:2}°C",
+        "format-critical": "{icon} {temperatureC:2}°",
+        "format": "{icon} {temperatureC:2}°",
         "format-icons": ["", "", "", "", "", ""]
-
-
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -80,7 +140,7 @@
     "battery": {
         "format": "{icon}",
         "tooltip-format": "{capacity}%",
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": ["", "", "", "", ""]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -92,7 +152,7 @@
     },
     "pulseaudio#sink": {
         "format": "{icon}",
-        "format-muted": "󰝟",
+        "format-muted": "",
         "format-icons": ["", "", ""],
         "tooltip-format": "{desc}\n{icon} {volume}%",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
