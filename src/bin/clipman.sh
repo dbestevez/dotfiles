@@ -4,7 +4,7 @@
 # Copies the provided text to the primary clipboard to be able to paste it.
 # ---
 function copyEntry() {
-    wl-copy $(echo "$@")
+    wl-copy "$(echo -e "$@")"
 }
 
 # ---
@@ -12,14 +12,13 @@ function copyEntry() {
 # ---
 function showEntries() {
     entries=$(cat ~/.local/share/clipman.json | jq | \
-        sed -e "s/\\\n/↵/g" | \
         sed -e "s/\",$/\"/g" | sed -e "s/^\s\s\"//g" -e "s/\"$//g" | \
         head -n -1 | tail -n +2 | \
         tac | \
         sed -e "s/^\s*\"//g" -e "s/\",$//g")
 
     while read -r line; do
-        echo "$line"
+        echo "$line" | sed -e 's/\\"/\"/g'
     done <<< $entries
 }
 
