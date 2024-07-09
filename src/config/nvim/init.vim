@@ -3,6 +3,7 @@ filetype off
 
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bkad/CamelCaseMotion'
@@ -22,13 +23,13 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'lambdalisue/suda.vim'
 Plug 'lilydjwg/colorizer'
-Plug 'lumiliet/vim-twig'
 Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'
 Plug 'matze/vim-move'
 Plug 'mrtazz/simplenote.vim'
+Plug 'nelsyeung/twig.vim'
 Plug 'neomake/neomake'
-Plug 'posva/vim-vue'
+"Plug 'posva/vim-vue'
 Plug 'scrooloose/NERDCommenter'
 Plug 'tkhren/vim-fake'
 Plug 'tpope/vim-fugitive'
@@ -62,7 +63,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'ryanoasis/vim-devicons'
-"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Obsession
 Plug 'tpope/vim-obsession'

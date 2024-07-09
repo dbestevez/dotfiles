@@ -94,3 +94,8 @@ nmap         <Down>      <Plug>MoveLineDown
 nmap         <Up>        <Plug>MoveLineUp
 vmap         <Down>      <Plug>MoveBlockDown
 vmap         <Up>        <Plug>MoveBlockUp
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> coc#pum#visible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? "\<C-p>" : "\<Tab>"
+inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"

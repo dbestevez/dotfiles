@@ -280,3 +280,8 @@ call fake#define('text', 'join(map(range(fake#int(3,6)),"fake#gen(\"paragraph\")
 " Get a TLD (ordered by number of websites)
 call fake#define('tld', 'fake#get(fake#load("gtld"),'
     \ . 'fake#betapdf(0.2, 3.0))')
+
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
