@@ -99,3 +99,8 @@ vmap         <Up>        <Plug>MoveBlockUp
 inoremap <expr> <Tab> coc#pum#visible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> coc#pum#visible() ? "\<C-p>" : "\<Tab>"
 inoremap <expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" Phpactor
+map         gdt     :PhpactorGotoDefinition tabnew<CR>
+map         gdv     :PhpactorGotoDefinition vsplit<CR>
+map         gh      :call CocAction('doHover')<CR>
