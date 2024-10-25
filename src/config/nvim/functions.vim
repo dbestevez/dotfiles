@@ -68,7 +68,7 @@ endfunction
 
 function! LightlineDebug()
     if g:debug != 0
-        return ' ' . substitute(g:debug, "\n", "", "")
+        return ' ' . substitute(g:debug, "\n", "", "")
     endif
 
     return ''
@@ -110,7 +110,7 @@ function! LightlineMode()
         \ mode   == 'COMMAND'           ? '' :
         \ mode   == 'INSERT'            ? '󰏫' :
         \ mode   == 'REPLACE'           ? '' :
-        \ mode   == 'NORMAL'            ? '' :
+        \ mode   == 'NORMAL'            ? (has('nvim') ? '' : '') :
         \ mode   == 'VISUAL'            ? '󰇀' :
         \ mode   == 'V-BLOCK'           ? '󰇀' : mode
 endfunction
