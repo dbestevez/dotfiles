@@ -14,7 +14,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/vi-mode
     zgen oh-my-zsh plugins/wd
     zgen oh-my-zsh plugins/web-search
-    zgen oh-my-zsh themes/common
+    zgen oh-my-zsh custom/themes/common
 
     zgen load dbestevez/zsh-snippets
     zgen load zsh-users/zsh-syntax-highlighting
