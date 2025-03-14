@@ -236,14 +236,20 @@ endfunction
 
 function! UpdateNeomakePHPCS()
     let l:dir = expand('%:p:h')
-    let l:phpcs_xml = s:find_file(l:dir, 'phpcs.xml', 'PSR12')
+    let l:phpcs_xml = s:find_file(l:dir, 'phpcs.xml.dist', 'PSR12')
     call add(g:neomake_php_phpcs_maker.args, '--standard=' . l:phpcs_xml)
 endfunction
 
 function! UpdateNeomakePHPMD()
     let l:dir = expand('%:p:h')
-    let l:phpmd_xml = s:find_file(l:dir, 'phpmd.xml', 'codesize,design,unusedcode,naming')
+    let l:phpmd_xml = s:find_file(l:dir, 'phpmd.xml.dist', 'codesize,design,unusedcode,naming')
     call add(g:neomake_php_phpmd_maker.args, l:phpmd_xml)
+endfunction
+
+function! UpdateNeomakePHPStan()
+    let l:dir = expand('%:p:h')
+    let l:phpstan_neon = s:find_file(l:dir, 'phpstan.neon', 'phpstan.neon.dist')
+    call add(g:neomake_php_phpstan_maker.args, '-c ' . l:phpstan_neon)
 endfunction
 
 " Get an age weighted by generation distribution

@@ -4,6 +4,7 @@ autocmd VimEnter * call UpdateNeomakePHPCS()
 autocmd VimEnter * call UpdateNeomakePHPMD()
 autocmd VimEnter * call UpdateNeomakeCssLint()
 autocmd VimEnter * call UpdateNeomakeEsLint()
+autocmd VimEnter * call UpdateNeomakePHPStan()
 autocmd VimLeave * set guicursor=a:block-Cursor-blinkon100
 
 autocmd BufWritePre * :call Preserve(":call TrimWhiteSpaces()")
