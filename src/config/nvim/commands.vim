@@ -15,3 +15,4 @@ autocmd BufEnter,BufWritePost *.php let g:debug = system('rg "var_dump|VarDumper
 autocmd BufEnter,BufWritePost *.js  let g:debug = system('rg console.log ' . expand('%:T') . ' | wc -l') | call lightline#update()
 autocmd BufLeave *.* let g:debug = '' | call lightline#update()
 autocmd BufWritePost *.less :silent !find public/themes public/assets -name main.less | xargs touch
+autocmd FileType nerdtree RainbowToggleOff
