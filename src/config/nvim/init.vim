@@ -42,6 +42,7 @@ Plug 'vim-scripts/po.vim--Jelenak'
 Plug 'vim-scripts/SyntaxAttr.vim'
 Plug 'wesQ3/vim-windowswap'
 Plug 'Yggdroot/indentLine'
+Plug 'yssl/qfenter'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'vim-vdebug/vdebug'
 
@@ -102,6 +103,7 @@ set guicursor=n-v-c:block-blinkon0,i-ci-r-cr:block-blinkwait100-blinkon100-blink
 set t_Co=256
 
 " Misc
+set encoding=utf-8
 let mapleader="\<Space>"
 set laststatus=2
 set mouse=a
@@ -110,7 +112,6 @@ set noswapfile
 set updatetime=250
 
 if !has('nvim')
-    set encoding=utf8
     set ttymouse=xterm2
     set clipboard=unnamed,unnamedplus
 endif
