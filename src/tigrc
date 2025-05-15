@@ -1,0 +1,46 @@
+set git-colors = no
+set main-view = id date author commit-title:yes,graph:v2,refs:true
+set main-view-date = custom
+set main-view-date-format = "%Y-%m-%d %H:%M:%S"
+
+# Override the default terminal colors to white on black.
+color default         7 16
+color cursor         13 17 bold
+color status         15 16
+color search-result  13 18
+color title-focus    13 17
+color title-blur     18 16
+
+# Main view
+color id             12 16 bold
+color author         14 16
+color date            6 16
+color graph-commit   13 16 bold
+color main-head      11 16 bold
+color main-remote    11 16 bold
+color main-tracked   11 16 bold
+
+# Blame
+color line-number    18 16
+
+# Diff
+color diff.commit    12 16 bold
+color "Author: "     14 16
+color "AuthorDate: "  6 16
+color "Commit: "     14 16
+color "CommitDate: "  6 16
+color diff-add       10 16
+color diff-chunk     18 16
+color diff-del        9 16
+color diff-header     6 17
+color diff-index     18 16
+color diff-newmode   10 16
+color diff-oldmode    9 16
+color diff-stat      12 16
+
+# Unknown colors
+color diff-add2          yellow yellow
+color diff-del2          yellow yellow
+color diff-add-highlight yellow yellow
+color diff-del-highlight yellow yellow
+color diff-similarity    yellow yellow
