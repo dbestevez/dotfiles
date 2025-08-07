@@ -110,6 +110,7 @@ set mouse=a
 set nobackup
 set noswapfile
 set updatetime=250
+set backupcopy=yes
 
 if !has('nvim')
     set ttymouse=xterm2
