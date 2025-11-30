@@ -26,7 +26,7 @@ phpmd_args="text phpmd.xml"
 outputlog="/tmp/phpmd_output_$(date +%s).log"
 returnCode=0
 
-echo -e -n "\033[1m==> Executing code checking in staged PHP files..........\033[0m "
+echo -e -n "\033[1m==> Executing code checking in staged PHP files..........\033[0m"
 
 # Execute code checking. (Assume that phpmd.xml is in root of project).
 for file in ${staged[@]}; do
@@ -44,13 +44,13 @@ issues=$(echo "$output" | wc -l)
 issue="issues"
 
 if [[ "issues" != "0" ]]; then
-    echo -e "\E[33;5mWARNING\033[0m"
+    echo -e "\E[93mWARNING\033[0m"
 fi
 
 # output the status.
-echo -e "phpmd output saved in \E[34;5m${outputlog}\033[0m"
-echo -e "\E[33;5mCoding style issues found ($issues issues) found in:\033[0m"
+echo -e "phpmd output saved in \E[34m${outputlog}\033[0m"
+echo -e "\E[93mCoding style issues found ($issues issues) found in:\033[0m"
 
 for file in ${staged[@]}; do
-    echo -e " \E[34;5m$file\033[0m"
+    echo -e " - \E[34m$file\033[0m"
 done;

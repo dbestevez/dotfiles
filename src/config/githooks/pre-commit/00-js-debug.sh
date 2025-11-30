@@ -10,7 +10,7 @@ if [[ $staged = '' ]]; then
     exit 0
 fi
 
-echo -e -n "\033[1m==> Checking debug messages in staged javascript files...\033[0m "
+echo -e -n "\033[1m==> Checking debug messages in staged javascript files...\033[0m"
 
 pattern="^\s*console.log"
 
@@ -28,11 +28,11 @@ if [[ $counter = 0 ]]; then
     exit 0
 fi
 
-echo -e "\E[31;5mFAIL\033[0m"
-echo -e "\E[33;5mDebug messages found in:\033[0m"
+echo -e "\E[31mFAIL\033[0m"
+echo -e "\E[93mDebug messages found in:\033[0m"
 
 for file in "${files[@]}"; do
-    echo -e " \E[34;5m$file\033[0m"
+    echo -e " - \E[34m$file\033[0m"
 done;
 
 echo -e "\033[1m\E[47;41mABORTING ACTION\033[0m"

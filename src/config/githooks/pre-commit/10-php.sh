@@ -10,7 +10,7 @@ if [[ $staged = '' ]]; then
     exit 0
 fi
 
-echo -e -n "\033[1m==> Checking PHP syntax in staged files..................\033[0m "
+echo -e -n "\033[1m==> Checking PHP syntax in staged files..................\033[0m"
 
 files=()
 counter=0

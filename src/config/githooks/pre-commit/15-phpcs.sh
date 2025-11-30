@@ -25,7 +25,7 @@ phpcs_args=""
 # Define a location to save the output.
 outputlog="/tmp/phpcs_output_$(date +%s).log"
 
-echo -e -n "\033[1m==> Executing PHP coding style checking..................\033[0m "
+echo -e -n "\033[1m==> Executing PHP coding style checking..................\033[0m"
 
 # Execute code checking. (Assume that phpcs.xml is in root of project).
 output=$(${phpcs} ${phpcs_args} ${staged})
@@ -47,17 +47,17 @@ issue="warnings"
 
 if [[ "$errors" != "0" ]]; then
     issue="errors"
-    echo -e "\E[31;5mFAIL\033[0m"
+    echo -e "\E[31mFAIL\033[0m"
 else
-    echo -e "\E[33;5mWARNING\033[0m"
+    echo -e "\E[93mWARNING\033[0m"
 fi
 
 # output the status.
 echo -e "PHPCS output saved in \E[34;5m${outputlog}\033[0m"
-echo -e "\E[33;5mCoding style issues found ($errors errors, $warnings warnings) found in:\033[0m"
+echo -e "\E[93mCoding style issues found ($errors errors, $warnings warnings) found in:\033[0m"
 
 for file in "${files[@]}"; do
-    echo -e " \E[34;5m$file\033[0m"
+    echo -e " - \E[34m$file\033[0m"
 done;
 
 if [[ "$errors" == "0" ]]; then

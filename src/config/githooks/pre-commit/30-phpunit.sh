@@ -19,7 +19,7 @@ phpunit_args=""
 # Define a location to save the output.
 outputlog="/tmp/phpunit_output_$(date +%s).log"
 
-echo -e -n "\033[1m==> Executing PHP unit tests.............................\033[0m "
+echo -e -n "\033[1m==> Executing PHP unit tests.............................\033[0m"
 
 # execute unit tests. (Assume that phpunit.xml is in root of project).
 output=$(${phpunit} ${phpunit_args})
@@ -43,8 +43,8 @@ while read -r line; do
 done <<< "$output"
 
 # output the status.
-echo -e "\E[31;5mFAIL\033[0m"
-echo -e "PHPUnit output saved in \E[34;5m${outputlog}\033[0m"
+echo -e "\E[31mFAIL\033[0m"
+echo -e "PHPUnit output saved in \E[34m${outputlog}\033[0m"
 echo -e "$summary\033[0m"
 
 # Abort the commit.
