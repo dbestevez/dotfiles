@@ -111,8 +111,8 @@ function! LightlineMode()
         \ mode   == 'INSERT'            ? '󰏫' :
         \ mode   == 'REPLACE'           ? '' :
         \ mode   == 'NORMAL'            ? (has('nvim') ? '' : '') :
-        \ mode   == 'VISUAL'            ? '󰇀' :
-        \ mode   == 'V-BLOCK'           ? '󰇀' : mode
+        \ mode   == 'VISUAL'            ? '󰫙' :
+        \ mode   == 'V-BLOCK'           ? '󰿚' : mode
 endfunction
 
 function! LightlineModified()
