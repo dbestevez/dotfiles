@@ -5,6 +5,7 @@ src/config/bspwm/theme
 
 # hypr
 src/config/hypr/theme.conf
+src/config/hypr/hyprpaper.conf
 
 # mutt
 src/config/mutt/cache
