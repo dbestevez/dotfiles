@@ -181,6 +181,64 @@ install_local() {
 }
 
 # ---
+# Installs files in src/local/applications.
+#
+# @param $1 The list of applications to install.
+# @param $2 The list of applications to ignore.
+# ---
+install_local_applications() {
+    dotfiles=`ls src/local/applications`
+
+    echo_bold "==> Installing .local/applications..."
+
+    i=1
+    total=$(echo "$dotfiles" | wc -w)
+
+    mkdir -p $HOME/.local/share/applications
+
+    for dotfile in $dotfiles; do
+        sPath="$PWD/src/local/applications/$dotfile"
+        tPath="$HOME/.local/share/applications/$dotfile"
+
+        echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $dotfile)" "." 50
+        i=$(($i+1))
+
+        is_installed $tPath && { echo_warning "SKIP" -n; echo_info " (INSTALLED)"; continue; }
+
+        install_local $dotfile $sPath $tPath
+    done;
+}
+
+# ---
+# Installs files in src/local/bin.
+#
+# @param $1 The list of applications to install.
+# @param $2 The list of applications to ignore.
+# ---
+install_local_bin() {
+    dotfiles=`ls src/local/bin`
+
+    echo_bold "==> Installing local/bin..."
+
+    i=1
+    total=$(echo "$dotfiles" | wc -w)
+
+    mkdir -p $HOME/.local/bin
+
+    for dotfile in $dotfiles; do
+        sPath="$PWD/src/local/bin/$dotfile"
+        tPath="$HOME/.local/bin/$dotfile"
+
+        echo_pad "$(printf "(%02d/%02d) Installing %s..." $i $total $dotfile)" "." 50
+        i=$(($i+1))
+
+        is_installed $tPath && { echo_warning "SKIP" -n; echo_info " (INSTALLED)"; continue; }
+
+        install_local $dotfile $sPath $tPath
+    done;
+}
+
+# ---
 # Installs a library from a remote repository in $HOME or $HOME/.config.
 #
 # @param $1 The library to install.
@@ -349,9 +407,11 @@ main() {
         shift;
     done
 
-    [ $dotfiles == true ] && install_dotfiles "$toinstall" "$toignore"
-    [ $configs == true ]  && install_configs  "$toinstall" "$toignore"
-    [ $tools == true ]    && install_tools    "$toinstall" "$toignore"
+    install_local_bin          "$toinstall" "$toignore"
+    install_local_applications "$toinstall" "$toignore"
+    install_dotfiles           "$toinstall" "$toignore"
+    install_configs            "$toinstall" "$toignore"
+    install_tools              "$toinstall" "$toignore"
 }
 
 # ---
@@ -368,9 +428,6 @@ usage() {
     echo "Usage: install.sh [OPTION]"
     echo "Installs all dotfiles and tools or the list of selected tools"
     echo ""
-    echo "  -c, --no-configs     The script does not install configurations"
-    echo "  -d, --no-dotfiles    The script does not install dotfiles"
-    echo "  -t, --no-tools       The script does not install tools"
 
     exit 0;
 }

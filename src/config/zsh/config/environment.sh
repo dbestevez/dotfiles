@@ -22,10 +22,10 @@ export LANGUAGE=en_US.UTF-8
 
 # Less
 export LESS="-R"
-export LESSOPEN="|$HOME/.bin/lessfilter.sh %s"
+export LESSOPEN="|$HOME/.local/bin/lessfilter.sh %s"
 
 # Path
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 echo "$PATH" | grep ".themer" -q -v \
     && [ -d $HOME/.themer ] \
