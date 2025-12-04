@@ -7,6 +7,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'bkad/CamelCaseMotion'
+Plug 'chiedo/vim-case-convert'
 Plug 'danro/rename.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'duggiefresh/vim-easydir'
