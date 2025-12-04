@@ -248,8 +248,20 @@ endfunction
 
 function! UpdateNeomakePHPStan()
     let l:dir = expand('%:p:h')
-    let l:phpstan_neon = s:find_file(l:dir, 'phpstan.neon', 'phpstan.neon.dist')
-    call add(g:neomake_php_phpstan_maker.args, '-c ' . l:phpstan_neon)
+    let l:phpstan_neon = s:find_file(l:dir, 'phpstan.neon.dist', 'phpstan.neon.dist')
+
+    let idx = index(g:neomake_php_phpstan_maker.args, '-c')
+
+    if idx != -1
+        if idx + 1 < len(g:neomake_php_phpstan_maker.args)
+            call remove(g:neomake_php_phpstan_maker.args, idx + 1)
+        endif
+
+        call remove(g:neomake_php_phpstan_maker.args, idx)
+    endif
+
+    call add(g:neomake_php_phpstan_maker.args, '-c')
+    call add(g:neomake_php_phpstan_maker.args, l:phpstan_neon)
 endfunction
 
 " Get an age weighted by generation distribution
