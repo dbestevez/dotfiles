@@ -229,19 +229,19 @@ install_tools() {
 # Executes post-installation commands after symlinking gitconfig file.
 # ---
 post_install_gitconfig() {
-    if [ "`grep user $HOME/.gitconfig`" != "" ]; then
+    if [[ -f "$HOME/.gitauthor" ]] && `grep user $HOME/.gitauthor -q`; then
         return
     fi
 
-    read -e -p "Do you want to add your credentials to your .gitconfig? (Y/n) " q
+    read -e -p "Do you want to add your credentials to your .gitauthor? (Y/n) " q
 
     if [ "$q" == "Y" ] || [ "$q" == "y" ] || [ "$q" == "" ]; then
         read -e -p "  Name: " username
         read -e -p "  Email: " email
 
-        echo "[user]" >> $HOME/.gitconfig
-        echo "    name = " $username >> $HOME/.gitconfig
-        echo "    email = " $email >> $HOME/.gitconfig
+        echo "[user]" >> $HOME/.gitauthor
+        echo "    name = " $username >> $HOME/.gitauthor
+        echo "    email = " $email >> $HOME/.gitauthor
     fi
 }
 
