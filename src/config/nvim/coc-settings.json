@@ -1,0 +1,3 @@
+{
+    "workspace.rootPatterns": [" composer.json", ".phpactor.json", ".git" ]
+}
