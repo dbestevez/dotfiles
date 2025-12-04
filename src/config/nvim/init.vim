@@ -58,6 +58,7 @@ endif
 " CtrlP
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
+Plug 'kaneshin/ctrlp-tabbed'
 
 " NERDTree
 Plug 'scrooloose/nerdtree'

@@ -5,7 +5,7 @@ let g:comfortable_motion_air_drag = 3.75
 " CtrlP
 let g:ctrlp_dont_split             = 'nerdtree'
 let g:ctrlp_funky_syntax_highlight = 1
-let g:ctrlp_extensions             = ['funky']
+let g:ctrlp_extensions             = ['funky', 'smarttabs', 'tabbed']
 let g:ctrlp_match_window           = 'bottom,order:btt,min:1,max:20,results:40'
 let g:ctrlp_max_depth              = 20
 let g:ctrlp_max_files              = 0

@@ -48,8 +48,8 @@ map          <Leader>co  <Plug>Colorizer
 
 " CtrlP
 nmap         <leader>bb  :CtrlPBuffer<CR>
+nnoremap     <leader>tt  :CtrlPTabbed<CR>
 nnoremap     <Leader>fu  :CtrlPFunky<CR>
-nnoremap     <Leader>fU  :execute 'CtrlPFunky ' . expand('<cword>')<CR>
 
 " Easymotion
 map          s           <Plug>(easymotion-s)
