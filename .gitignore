@@ -37,5 +37,8 @@ src/config/ranger/plugins
 # tmux
 src/config/tmux/theme.conf
 
+# yazi
+src/config/yazi/theme.toml
+
 # zsh
 src/config/zsh/config/environments/theme.sh
