@@ -55,5 +55,5 @@ bind pager  L        list-reply
 bind attach <return> view-mailcap
 
 # Macros
-macro index,pager s  '<sync-mailbox><shell-escape>~/.bin/mail-sync &<enter>'
+macro index,pager s  '<sync-mailbox><shell-escape>~/.local/bin/mail-sync &<enter>'
 macro attach      W  '<save-entry><kill-line>~/Downloads'
