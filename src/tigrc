@@ -6,6 +6,7 @@ set main-view-date-format = "%Y-%m-%d %H:%M:%S"
 # Override the default terminal colors to white on black.
 color default         7 16
 color cursor         13 17 bold
+color cursor-blur    13 17 bold
 color status         15 16
 color search-result  13 18
 color title-focus    13 17
