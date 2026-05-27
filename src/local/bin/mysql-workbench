@@ -1,2 +1,0 @@
-#!/bin/sh
-GDK_BACKEND="wayland" GDK_DPI_SCALE="1.6" GDK_SCALE="1.6" /usr/bin/mysql-workbench

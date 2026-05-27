@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=MySQL Workbench
 Comment=MySQL Database Design, Administration and Development Tool
-Exec=sh -c 'exec ~/.local/bin/mysql-workbench %f'
+Exec=env GDK_BACKEND="wayland" GDK_DPI_SCALE="1.6" GDK_SCALE="1.6" mysql-workbench %f
 Terminal=false
 Type=Application
 Icon=mysql-workbench

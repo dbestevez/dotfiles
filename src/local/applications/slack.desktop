@@ -4,6 +4,7 @@ StartupWMClass=Slack
 Comment=Slack Desktop
 GenericName=Slack Client for Linux
 Exec=sh -c 'exec ~/.local/bin/slack --gtk-version=3 -s %U'
+Exec=env XDG_CURRENT_DESKTOP=Hyprland /usr/bin/slack --gtk-version=3 --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer --disable-gpu -s %U
 Icon=slack
 Type=Application
 StartupNotify=true
