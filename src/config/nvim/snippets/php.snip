@@ -1,5 +1,19 @@
+snippet class "Class"
+	<?php
+
+    declare(strict_types=1);
+
+	namespace ${1:namespace};
+
+	class ${2:class}
+	{
+	    ${3}
+	}
+
 snippet command "Symfony command"
 	<?php
+
+	declare(strict_types=1);
 
 	namespace ${1:namespace}\Command
 
@@ -52,10 +66,6 @@ snippet @sec "The Security annotation"
 snippet em "The ORM EntityManager"
 	$em = $this->get('orm.manager');
 
-snippet ex "Mock expects"
-	$this->${1:mock}->expects($this->${2:times}())->method('${3:method}')
-	    ->with(${4:data})->willReturn(${5:return});
-
 snippet fdoc "PHP documentation for function"
 	/**
 	 * ${1:description}
@@ -65,18 +75,14 @@ snippet fdoc "PHP documentation for function"
 	 * @return ${5:type} ${6:Description}
 	 */
 
-snippet mb "Create a mock with MockBuilder"
-	$this->${1:name} = $this->getMockBuilder(${2:Class})
-	    ->onlyMethods([ '${3:methods}' ])
-	    ->getMock();
-
 snippet phptest
 	<?php
 
-	namespace Tests\\${1:namespace};
+    declare(strict_types=1);
+
+	namespace ${1:namespace};
 
 	use $1\\${2:class};
-	use PHPUnit\Framework\MockObject\MockObject;
 	use PHPUnit\Framework\TestCase;
 
 	/**
