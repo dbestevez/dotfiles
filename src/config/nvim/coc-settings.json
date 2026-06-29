@@ -1,3 +1,11 @@
 {
-    "workspace.rootPatterns": [" composer.json", ".phpactor.json", ".git" ]
+    "workspace.rootPatterns": [ "composer.json", ".phpactor.json", ".git" ],
+    "languageserver": {
+        "phpantom": {
+            "command": "phpantom_lsp",
+            "filetypes": ["php"],
+            "rootPatterns": ["composer.json", ".git"],
+            "disabledFeatures": ["inlayHint"]
+        }
+    }
 }
