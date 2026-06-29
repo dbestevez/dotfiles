@@ -32,13 +32,17 @@ echo "$PATH" | grep ".themer" -q -v \
     && export PATH="$HOME/.themer/:$PATH"
 
 echo "$PATH" | grep ".devtools" -q -v \
-    && [ -d $HOME/.themer ] \
+    && [ -d $HOME/.devtools ] \
     && export PATH="$HOME/.devtools/vendor/bin:$PATH" \
     && export PATH="$HOME/.devtools/node_modules/.bin:$PATH"
 
 echo "$PATH" | grep ".git-hooks" -q -v \
     && [ -d $HOME/.config/git-hooks ] \
     && export PATH="$HOME/.config/git-hooks:$PATH"
+
+echo "$PATH" | grep ".cargo" -q -v \
+    && [ -d $HOME/.cargo ] \
+    && export PATH="$HOME/.cargo/bin:$PATH"
 
 # Terminal
 [[ $TMUX = "" ]] && export TERM="xterm-256color"
