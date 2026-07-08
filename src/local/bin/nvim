@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/usr/bin/nvim "$@"
+printf '\033[1 q'
