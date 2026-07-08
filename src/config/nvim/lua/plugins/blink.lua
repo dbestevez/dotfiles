@@ -26,6 +26,10 @@ blink.setup({
         },
     },
 
+    signature = {
+        enabled = true
+    },
+
     snippets = {
         preset = 'mini_snippets',
     },
