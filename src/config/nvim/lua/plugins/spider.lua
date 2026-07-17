@@ -1,5 +1,5 @@
 require('spider').setup {
-	skipInsignificantPunctuation = true,
+	skipInsignificantPunctuation = false,
 	subwordMovement = true,
 	consistentOperatorPending = false,
 	customPatterns = {},
