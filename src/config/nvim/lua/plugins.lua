@@ -73,6 +73,7 @@ vim.pack.add({
     -- Telescope
     'https://github.com/nvim-lua/plenary.nvim',
     'https://github.com/nvim-telescope/telescope.nvim',
+    'https://github.com/nvim-telescope/telescope-live-grep-args.nvim',
     'https://github.com/LukasPietzschmann/telescope-tabs',
 
     -- Treesitter
